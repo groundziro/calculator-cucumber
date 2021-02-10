@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1614edb7-d7aa-49c2-92cf-5ddf20ef5122" name="Default Changelist" comment="" />
+    <list default="true" id="1614edb7-d7aa-49c2-92cf-5ddf20ef5122" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/visitor/Counter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/visitor/Printer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Calculator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Operation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Operation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/visitor/Evaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/visitor/Evaluator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestDivides.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestDivides.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestEvaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestEvaluator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestMinus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestMinus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestOperation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestPlus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestPlus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestTimes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestTimes.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,11 +29,15 @@
       <list>
         <option value="FxmlFile" />
         <option value="JavaFXApplication" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1oFcof8kabDOP7sRYzIarJkz8h0" />
   <component name="ProjectViewState">
@@ -31,20 +49,160 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.TestOperation.testCountDepth">
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="15" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="calculator.Main" />
+      <module name="calculator-cucumber" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="15" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="calculator.Main" />
+      <module name="calculator-cucumber" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test Eval" type="JUnit" factoryName="JUnit">
+      <module name="calculator-cucumber" />
+      <option name="PACKAGE_NAME" value="junit5tests" />
+      <option name="MAIN_CLASS_NAME" value="junit5tests.TestEvaluator" />
+      <option name="METHOD_NAME" value="testEvaluatorDividesBy0" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestOperation" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="calculator-cucumber" />
+      <selectedOptions>
+        <option name="module.classpath" />
+      </selectedOptions>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="15" />
+      <option name="PACKAGE_NAME" value="junit5tests" />
+      <option name="MAIN_CLASS_NAME" value="junit5tests.TestOperation" />
+      <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestOperation.testCountDepth" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="calculator-cucumber" />
+      <selectedOptions>
+        <option name="module.classpath" />
+      </selectedOptions>
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="junit5tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="15" />
+      <option name="PACKAGE_NAME" value="junit5tests" />
+      <option name="MAIN_CLASS_NAME" value="junit5tests.TestOperation" />
+      <option name="METHOD_NAME" value="testCountDepth" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestOperation.testCountNbs" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="calculator-cucumber" />
+      <selectedOptions>
+        <option name="module.classpath" />
+      </selectedOptions>
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="junit5tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="15" />
+      <option name="PACKAGE_NAME" value="junit5tests" />
+      <option name="MAIN_CLASS_NAME" value="junit5tests.TestOperation" />
+      <option name="METHOD_NAME" value="testCountNbs" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestOperation.testEquals" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="calculator-cucumber" />
+      <selectedOptions>
+        <option name="module.classpath" />
+      </selectedOptions>
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="junit5tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="15" />
+      <option name="PACKAGE_NAME" value="junit5tests" />
+      <option name="MAIN_CLASS_NAME" value="junit5tests.TestOperation" />
+      <option name="METHOD_NAME" value="testEquals" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <module name="calculator-cucumber" />
+      <selectedOptions>
+        <option name="module.classpath" />
+      </selectedOptions>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="15" />
+      <option name="PACKAGE_NAME" value="junit5tests" />
+      <option name="MAIN_CLASS_NAME" value="junit5tests.TestDivides" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.TestOperation" />
+      <item itemvalue="JUnit.Test Eval" />
+      <item itemvalue="JUnit.TestOperation.testEquals" />
+      <item itemvalue="JUnit.TestOperation.testCountNbs" />
+      <item itemvalue="JUnit.TestOperation.testCountDepth" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TestOperation.testCountDepth" />
+        <item itemvalue="JUnit.TestOperation.testEquals" />
+        <item itemvalue="JUnit.TestOperation.testCountNbs" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -56,6 +214,8 @@
       <updated>1612885958399</updated>
       <workItem from="1612885961440" duration="2183000" />
       <workItem from="1612941616114" duration="2248000" />
+      <workItem from="1612946171210" duration="1385000" />
+      <workItem from="1612947579532" duration="14544000" />
     </task>
     <servers />
   </component>
@@ -65,5 +225,16 @@
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/calculator_cucumber$TestOperation_testCountNbs.ic" NAME="TestOperation.testCountNbs Coverage Results" MODIFIED="1612960717099" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>junit5tests.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/calculator_cucumber$TestOperation_testEquals.ic" NAME="TestOperation.testEquals Coverage Results" MODIFIED="1612962015755" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>junit5tests.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/calculator_cucumber$TestOperation_testCountDepth.ic" NAME="TestOperation.testCountDepth Coverage Results" MODIFIED="1612962029895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>junit5tests.*</FILTER>
+    </SUITE>
   </component>
 </project>
