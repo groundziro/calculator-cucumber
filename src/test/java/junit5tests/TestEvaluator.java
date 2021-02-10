@@ -27,15 +27,13 @@ public class TestEvaluator {
 
     @Test
     public void testEvaluatorMyNumber() {
-        assertEquals( value1,
-                      calc.eval(new MyNumber(value1)));
+        assertEquals( value1, calc.eval(new MyNumber(value1)));
     }
 
     @Test
     public void testEvaluatorDivides() {
         try { op = new Divides(Arrays.asList(new MyNumber(value1), new MyNumber(value2)));
-          assertEquals( value1 / value2,
-                        calc.eval(op) );
+          assertEquals(calc.eval(op),value1 / value2);
           }
         catch(IllegalConstruction e) {
             fail();
@@ -43,10 +41,18 @@ public class TestEvaluator {
     }
 
     @Test
+    public void testEvaluatorDividesBy0(){
+        try{
+            op=new Divides(Arrays.asList(new MyNumber(value1),new MyNumber(0)));
+            assertEquals(Integer.MIN_VALUE,calc.eval(op));
+        }catch (IllegalConstruction e){
+            fail();
+        }
+    }
+    @Test
     public void testEvaluatorPlus() {
         try { op = new Plus(Arrays.asList(new MyNumber(value1), new MyNumber(value2)));
-            assertEquals( value1 + value2,
-                    calc.eval(op) );
+            assertEquals( value1 + value2, calc.eval(op) );
         }
         catch(IllegalConstruction e) {
             fail();

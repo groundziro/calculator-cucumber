@@ -4,6 +4,7 @@ package junit5tests;
 import static org.junit.jupiter.api.Assertions.*;
 
 import calculator.*;
+import io.cucumber.java.ca.Cal;
 import org.junit.jupiter.api.*;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class TestTimes {
 	private final int value2 = 6;
 	private Times op;
 	private List<Expression> params;
+	private Calculator c = new Calculator();
 
 	@BeforeEach
 	public void setUp() {
@@ -93,25 +95,19 @@ public class TestTimes {
 	@Test
 	public void testPrefix() {
 		String prefix = "* (" + value1 + ", " + value2 + ")";
-		assertEquals(prefix, op.toString(Notation.PREFIX));
-		op.notation = Notation.PREFIX;
-		assertEquals(prefix, op.toString());
+		assertEquals(prefix, c.formatPrint(op,Notation.PREFIX));
 	}
 
 	@Test
 	public void testInfix() {
 		String infix = "( " + value1 + " * " + value2 + " )";
-		assertEquals(infix, op.toString(Notation.INFIX));
-		op.notation = Notation.INFIX;
-		assertEquals(infix, op.toString());
+		assertEquals(infix, c.formatPrint(op,Notation.INFIX));
 	}
 
 	@Test
 	public void testPostfix() {
 		String postfix = "(" + value1 + ", " + value2 + ") *";
-		assertEquals(postfix, op.toString(Notation.POSTFIX));
-		op.notation = Notation.POSTFIX;
-		assertEquals(postfix, op.toString());
+		assertEquals(postfix, c.formatPrint(op,Notation.POSTFIX));
 	}
 
 }
