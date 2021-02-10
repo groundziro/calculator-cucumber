@@ -14,6 +14,7 @@ public class TestOperation {
 
 	private Operation o;
 	private Operation o2;
+	private Calculator c = new Calculator();
 
 	@BeforeEach
 	public void setUp() throws Exception {
@@ -34,17 +35,17 @@ public class TestOperation {
 
 	@Test
 	public void testCountDepth() {
-		assertEquals(Integer.valueOf(2), o.countDepth());
+		assertEquals(Integer.valueOf(2), c.count(o,0));
 	}
 
 	@Test
 	public void testCountOps() {
-		assertEquals(Integer.valueOf(3), o.countOps());
+		assertEquals(Integer.valueOf(3), c.count(o,1));
 	}
 
 	@Test
 	public void testCountNbs() {
-		assertEquals(Integer.valueOf(6), o.countNbs());
+		assertEquals(Integer.valueOf(6), c.count(o,2));
 	}
 
 }

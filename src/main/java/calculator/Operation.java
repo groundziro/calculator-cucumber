@@ -44,9 +44,11 @@ public abstract class Operation implements Expression
   	args.addAll(params);
   }
 
-  public void accept(Visitor v) {
+  public void accept(Visitor v) throws ArithmeticException{
   	// ask each of the argument expressions of the current operation to accept the visitor
-  	for(Expression a:args) { a.accept(v); }
+  	for(Expression a:args) {
+  		a.accept(v);
+  	}
   	// and then visit the current operation itself
     v.visit(this);
   }
@@ -75,28 +77,20 @@ public abstract class Operation implements Expression
 			   .getAsInt();  
   }
 
-  @Override
-  final public String toString() {
-  	return toString(notation);
-  }
-
-  final public String toString(Notation n) {
-   Stream<String> s = args.stream().map(Object::toString);
-   switch (n) {
-	   case INFIX: return "( " +
-			              s.reduce((s1,s2) -> s1 + " " + symbol + " " + s2).get() +
-			              " )";
-	   case PREFIX: return symbol + " " +
-			               "(" +
-			               s.reduce((s1,s2) -> s1 + ", " + s2).get() +
-			               ")";
-	   case POSTFIX: return "(" +
-			                s.reduce((s1,s2) -> s1 + ", " + s2).get() +
-			                ")" +
-			                " " + symbol;
-	   default: return "This case should never occur.";
-	  }
-  }
+//  @Override
+//  final public String toString() {
+//  	return toString(notation);
+//  }
+//
+//  final public String toString(Notation n) {
+//   Stream<String> s = args.stream().map(Object::toString);
+//   switch (n) {
+//	   case INFIX: return "( " + s.reduce((s1,s2) -> s1 + " " + symbol + " " + s2).get() + " )";
+//	   case PREFIX: return symbol + " (" + s.reduce((s1,s2) -> s1 + ", " + s2).get() +  ")";
+//	   case POSTFIX: return "(" + s.reduce((s1,s2) -> s1 + ", " + s2).get() + ") " + symbol;
+//	   default: return "This case should never occur.";
+//	  }
+//  }
 
 	//Two Operation expressions are equal if their list of arguments is equal and they are the same operation
 	@Override
@@ -122,4 +116,7 @@ public abstract class Operation implements Expression
 		return result;
 	}
 
+	public String getSymbol() {
+		return symbol;
+	}
 }

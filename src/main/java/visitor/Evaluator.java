@@ -1,5 +1,6 @@
 package visitor;
 
+import calculator.Divides;
 import calculator.Expression;
 import calculator.MyNumber;
 import calculator.Operation;
@@ -16,7 +17,8 @@ public class Evaluator extends Visitor {
         computedValue = n.getValue();
     }
 
-    public void visit(Operation o) {
+
+    public void visit(Operation o){
         ArrayList<Integer> evaluatedArgs = new ArrayList<>();
         //first loop to recursively evaluate each subexpression
         for(Expression a:o.args) {
@@ -27,7 +29,7 @@ public class Evaluator extends Visitor {
         int temp = evaluatedArgs.get(0);
         int max = evaluatedArgs.size();
         for(int counter=1; counter<max; counter++) {
-            temp = o.op(temp,evaluatedArgs.get(counter));
+            temp = o.op(temp, evaluatedArgs.get(counter));
         }
         // store the accumulated result
         computedValue = temp;
