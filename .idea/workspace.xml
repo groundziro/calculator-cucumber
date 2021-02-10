@@ -29,6 +29,8 @@
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
   </component>
   <component name="RunManager">
@@ -53,6 +55,7 @@
       <option name="presentableId" value="Default" />
       <updated>1612885958399</updated>
       <workItem from="1612885961440" duration="2183000" />
+      <workItem from="1612941616114" duration="2248000" />
     </task>
     <servers />
   </component>
