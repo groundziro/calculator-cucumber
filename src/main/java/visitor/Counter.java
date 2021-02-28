@@ -1,5 +1,6 @@
 package visitor;
 
+import calculator.BooleanOperation;
 import calculator.Expression;
 import calculator.MyNumber;
 import calculator.Operation;
@@ -41,5 +42,10 @@ public class Counter extends Visitor{
                 counter = max;
                 break;
         }
+    }
+
+
+    public void visit(BooleanOperation b) {
+
     }
 }

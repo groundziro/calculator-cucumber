@@ -5,6 +5,55 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1614edb7-d7aa-49c2-92cf-5ddf20ef5122" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/qaplug_profiles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/calculator/And.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/calculator/BooleanOperation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/calculator/Implies.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/calculator/Not.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/calculator/Or.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/calculator/Xor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestBooleanOperation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/cucumber-report.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/site-webapp/WEB-INF/web.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/JUnit Vintage.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-JUnit Vintage.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestDivides.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestEvaluator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestMinus.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestMyNumber.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestOperation.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestPlus.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestTimes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestDivides.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestEvaluator.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestMinus.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestMyNumber.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestOperation.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestPlus.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestTimes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Divides.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Divides.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Minus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Minus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Operation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Operation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Plus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Plus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Times.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Times.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/visitor/Counter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/visitor/Counter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/visitor/Evaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/visitor/Evaluator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/visitor/Printer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/visitor/Printer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/visitor/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/visitor/Visitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestEvaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestEvaluator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestOperation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Operation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Operation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/visitor/Counter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/visitor/Counter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/visitor/Evaluator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/visitor/Evaluator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/visitor/Printer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/visitor/Printer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/visitor/Visitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/visitor/Visitor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/junit5tests/TestEvaluator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/junit5tests/TestEvaluator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/junit5tests/TestOperation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/junit5tests/TestOperation.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,9 +72,6 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProblemsViewState">
-    <option name="selectedIndex" value="1" />
-  </component>
   <component name="ProjectId" id="1oFcof8kabDOP7sRYzIarJkz8h0" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -38,7 +84,146 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Devoirs/tyrant" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="calculator" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn compile" />
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.TestBooleanOperation.test">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestBooleanOperation.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="calculator-cucumber" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="junit5tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="junit5tests" />
+      <option name="MAIN_CLASS_NAME" value="junit5tests.TestBooleanOperation" />
+      <option name="METHOD_NAME" value="test" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestEvaluator.testEvaluatorDivides" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="calculator-cucumber" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="junit5tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="junit5tests" />
+      <option name="MAIN_CLASS_NAME" value="junit5tests.TestEvaluator" />
+      <option name="METHOD_NAME" value="testEvaluatorDivides" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestEvaluator.testEvaluatorDividesBy0" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="calculator-cucumber" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="junit5tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="junit5tests" />
+      <option name="MAIN_CLASS_NAME" value="junit5tests.TestEvaluator" />
+      <option name="METHOD_NAME" value="testEvaluatorDividesBy0" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestEvaluator.testEvaluatorMinus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="calculator-cucumber" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="junit5tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="junit5tests" />
+      <option name="MAIN_CLASS_NAME" value="junit5tests.TestEvaluator" />
+      <option name="METHOD_NAME" value="testEvaluatorMinus" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestEvaluator.testEvaluatorPlus" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="calculator-cucumber" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="junit5tests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="junit5tests" />
+      <option name="MAIN_CLASS_NAME" value="junit5tests.TestEvaluator" />
+      <option name="METHOD_NAME" value="testEvaluatorPlus" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="calculator-cucumber [site:run]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="site:run" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TestBooleanOperation.test" />
+        <item itemvalue="JUnit.TestEvaluator.testEvaluatorDivides" />
+        <item itemvalue="JUnit.TestEvaluator.testEvaluatorMinus" />
+        <item itemvalue="JUnit.TestEvaluator.testEvaluatorPlus" />
+        <item itemvalue="JUnit.TestEvaluator.testEvaluatorDividesBy0" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -50,6 +235,9 @@
       <updated>1612885958399</updated>
       <workItem from="1612885961440" duration="2183000" />
       <workItem from="1612941616114" duration="2248000" />
+      <workItem from="1614151336141" duration="259000" />
+      <workItem from="1614151636800" duration="485000" />
+      <workItem from="1614503599825" duration="9173000" />
     </task>
     <servers />
   </component>

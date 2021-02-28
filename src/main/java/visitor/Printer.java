@@ -1,9 +1,6 @@
 package visitor;
 
-import calculator.Expression;
-import calculator.MyNumber;
-import calculator.Notation;
-import calculator.Operation;
+import calculator.*;
 
 import java.util.ArrayList;
 
@@ -46,6 +43,10 @@ public class Printer extends Visitor{
             temp = prePost(numbers,o);
         }
         str = temp.toString();
+    }
+
+    public void visit(BooleanOperation b) {
+
     }
 
     private StringBuilder prePost(ArrayList<String> numbers, Operation o) {
