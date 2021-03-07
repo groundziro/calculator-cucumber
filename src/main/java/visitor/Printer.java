@@ -45,10 +45,6 @@ public class Printer extends Visitor{
         str = temp.toString();
     }
 
-    public void visit(BooleanOperation b) {
-
-    }
-
     private StringBuilder prePost(ArrayList<String> numbers, Operation o) {
         StringBuilder sol = new StringBuilder();
         if (n == Notation.PREFIX){

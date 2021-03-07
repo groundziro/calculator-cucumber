@@ -5,55 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1614edb7-d7aa-49c2-92cf-5ddf20ef5122" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/qaplug_profiles.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/calculator/And.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/calculator/BooleanOperation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/calculator/Implies.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/calculator/Not.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/calculator/Or.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/calculator/Xor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestBooleanOperation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/cucumber-report.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/site-webapp/WEB-INF/web.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/surefire-reports/JUnit Vintage.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-JUnit Vintage.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestDivides.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestEvaluator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestMinus.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestMyNumber.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestOperation.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestPlus.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestTimes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestDivides.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestEvaluator.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestMinus.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestMyNumber.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestOperation.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestPlus.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestTimes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/calculator/Memory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestMemory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Divides.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Divides.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Minus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Minus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Operation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Operation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Plus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Plus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Times.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Times.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/visitor/Counter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/visitor/Counter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/visitor/Evaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/visitor/Evaluator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Equivalence.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Equivalence.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Xor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Xor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/visitor/Printer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/visitor/Printer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/visitor/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/visitor/Visitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestEvaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestEvaluator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestOperation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Operation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Operation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/visitor/Counter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/visitor/Counter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/visitor/Evaluator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/visitor/Evaluator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/visitor/Printer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/visitor/Printer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/visitor/Visitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/visitor/Visitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/junit5tests/TestEvaluator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/junit5tests/TestEvaluator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/junit5tests/TestOperation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/junit5tests/TestOperation.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +43,9 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Devoirs/tyrant" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
@@ -237,7 +197,9 @@
       <workItem from="1612941616114" duration="2248000" />
       <workItem from="1614151336141" duration="259000" />
       <workItem from="1614151636800" duration="485000" />
-      <workItem from="1614503599825" duration="9173000" />
+      <workItem from="1614503599825" duration="9341000" />
+      <workItem from="1615121526210" duration="226000" />
+      <workItem from="1615121802359" duration="3892000" />
     </task>
     <servers />
   </component>

@@ -9,7 +9,7 @@ public class Equivalence extends BooleanOperation{
 
     @Override
     public int op(int b) {
-        return b;
+        return 0;
     }
 
     @Override
