@@ -5,7 +5,6 @@ import visitor.Evaluator;
 import visitor.Printer;
 
 public class Calculator {
-
     /*
      For the moment the calculator only contains a print method and an eval method
      It would be useful to complete this with a read method, so that we would be able

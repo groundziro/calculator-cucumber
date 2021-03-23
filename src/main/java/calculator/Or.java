@@ -14,7 +14,7 @@ public class Or extends BooleanOperation{
     }
 
     @Override
-    public void op(int l, int r) {
+    public int op(int l, int r) {
         return (l+r<=1?0:1);
     }
 }

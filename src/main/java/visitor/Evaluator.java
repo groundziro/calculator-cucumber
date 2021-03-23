@@ -33,13 +33,11 @@ public class Evaluator extends Visitor {
             temp = b.op(temp);
         }
         // store the accumulated result
-        System.out.println("Sol = "+temp);
         computedValue = temp;
     }
 
     private void getArgs(ArrayList<Integer> evaluatedArgs, Operation o){
         for(Expression a: o.args){
-            System.out.println("Operation "+a);
             a.accept(this);
             evaluatedArgs.add(computedValue);
         }

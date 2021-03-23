@@ -15,7 +15,7 @@ public class And extends BooleanOperation{
     }
 
 
-    public void op(int l, int r) {
+    public int op(int l, int r) {
         return (l==0 && r==0?0:1);
     }
 }

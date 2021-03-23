@@ -5,6 +5,7 @@ import java.util.List;
 public class Xor extends BooleanOperation{
     public Xor(List<Expression> elist) throws IllegalConstruction {
         super(elist);
+        symbol="xor";
     }
 
     @Override

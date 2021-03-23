@@ -6,6 +6,7 @@ public class Implies extends BooleanOperation{
 
     public Implies(List<Expression> elist) throws IllegalConstruction {
         super(elist);
+        symbol = "implies";
     }
 
     @Override

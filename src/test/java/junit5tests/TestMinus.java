@@ -16,7 +16,7 @@ public class TestMinus {
 	private final int value2 = 6;
 	private Minus op;
 	private List<Expression> params;
-	private Calculator c = new Calculator();
+	private final Calculator c = new Calculator();
 
 	@BeforeEach
 	public void setUp() {

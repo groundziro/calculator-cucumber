@@ -17,15 +17,19 @@ public class TestBooleanOperation {
     public void setUp()throws Exception{
         List<Expression> params1 = new ArrayList<>(Collections.singletonList(new MyNumber(0)));
         List<Expression> params2 = new ArrayList<>(Collections.singletonList(new MyNumber(1)));
-        List<Expression> params3 = new ArrayList<>(Arrays.asList(new MyNumber(0),new MyNumber(0)));
-        List<Expression> params4 = new ArrayList<>(Arrays.asList(new MyNumber(0),new MyNumber(1)));
+
+
+
         b1 = new Not(params1);
+        List<Expression> params3 = new ArrayList<>(Arrays.asList(b1,new MyNumber(0)));
         b2 = new And(params3);
+        List<Expression> params4 = new ArrayList<>(Collections.singletonList(b2));
+        b1 = new Not(params4);
     }
 
     @Test
     public void test(){
-        //assertEquals(0,c.eval(b2));
-        c.eval(b1);
+        assertEquals(1,c.eval(b2));
+        assertEquals(0,c.eval(b1));
     }
 }

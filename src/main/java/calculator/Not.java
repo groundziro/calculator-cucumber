@@ -10,7 +10,7 @@ public class Not extends BooleanOperation{
     }
 
     @Override
-    public void op(int l, int r) {
+    public int op(int l, int r) {
         return (l==1 || r == 1?0:1);
     }
 
