@@ -5,27 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1614edb7-d7aa-49c2-92cf-5ddf20ef5122" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_base_win_15_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_controls_win_15_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_openjfx_javafx_graphics_win_15_0_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/And.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/And.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Calculator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Calculator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Divides.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Divides.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Implies.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Implies.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Memory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Not.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Not.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Or.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Or.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Xor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Xor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/visitor/Evaluator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/visitor/Evaluator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/visitor/Printer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/visitor/Printer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/visitor/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/visitor/Visitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestBooleanOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestBooleanOperation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestMemory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestMinus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestMinus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Calculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Calculator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/visitor/Evaluator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/visitor/Evaluator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/visitor/Printer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/visitor/Printer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/junit5tests/TestBooleanOperation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/junit5tests/TestBooleanOperation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/junit5tests/TestMinus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/junit5tests/TestMinus.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,11 +40,11 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Devoirs/tyrant" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Devoirs/tyrant" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
@@ -74,15 +58,13 @@
     </option>
   </component>
   <component name="RunManager" selected="JUnit.TestMemory.testLoad">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -222,6 +204,8 @@
       <workItem from="1616425039374" duration="14000" />
       <workItem from="1616425095721" duration="380000" />
       <workItem from="1616506960286" duration="10159000" />
+      <workItem from="1616770149030" duration="19000" />
+      <workItem from="1616770175812" duration="195000" />
     </task>
     <servers />
   </component>
@@ -246,10 +230,10 @@
     <SUITE FILE_PATH="coverage/calculator_cucumber$TestOperation_testCountNbs.ic" NAME="TestOperation.testCountNbs Coverage Results" MODIFIED="1612960717099" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>junit5tests.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/calculator_cucumber$TestOperation_testEquals.ic" NAME="TestOperation.testEquals Coverage Results" MODIFIED="1612962015755" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/calculator_cucumber$TestOperation_testCountDepth.ic" NAME="TestOperation.testCountDepth Coverage Results" MODIFIED="1612962029895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>junit5tests.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/calculator_cucumber$TestOperation_testCountDepth.ic" NAME="TestOperation.testCountDepth Coverage Results" MODIFIED="1612962029895" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/calculator_cucumber$TestOperation_testEquals.ic" NAME="TestOperation.testEquals Coverage Results" MODIFIED="1612962015755" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>junit5tests.*</FILTER>
     </SUITE>
   </component>
