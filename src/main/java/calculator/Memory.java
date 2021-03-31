@@ -16,7 +16,6 @@ public class Memory {
     private ArrayList<Expression> mem;
     private int max;
     private final Printer p = new Printer(Notation.PREFIX);
-    private final Evaluator ev = new Evaluator();
     private boolean alreadySaved = false;
 
 
@@ -89,22 +88,18 @@ public class Memory {
     }
 
     public void print(){
-        System.out.println(getLog(true));
+        System.out.println(getLog());
     }
 
     /**
      * Sert à obtenir un log cohérent pour la sauvegarde
      * @return Un log de ce que contient la pile
      */
-    public String getLog(boolean res){
+    public String getLog(){
         StringBuilder log = new StringBuilder();
         for (Expression e : mem){
             e.accept(p);
-            e.accept(ev);
             log.append(p.getStr()).append("\n");
-            if (res){
-                log.append(String.format(" = %d\n",ev.getResult()));
-            }
         }
         return log.toString();
     }
@@ -122,9 +117,7 @@ public class Memory {
             while(scan.hasNextLine()){
                 String data = scan.nextLine();
                 expressions.add(parse(data));
-
             }
-            System.out.println(Arrays.toString(expressions.toArray()));
             setMax(expressions.size());
             addAll(expressions);
             print();
@@ -142,9 +135,10 @@ public class Memory {
         ArrayList<ArrayList<String>> exps = getExps(expression);
         //System.out.println(Arrays.toString(exps.get(0).toArray()));
         for (ArrayList<String> exp:exps) {
-            total.add(parseRec(exp,new ArrayList<>()));
+            //System.out.println(exp);
+            Expression e = parseRec(exp,new ArrayList<>());
+            total.add(e);
         }
-        System.out.println(total);
         return getOp(op,total);
     }
 
@@ -161,12 +155,13 @@ public class Memory {
             }
             if (s.equals("("))
                 depth+=1;
-            str.add(s);
+            if (!s.equals(","))
+                str.add(s);
         }
         return str;
     }
 
-    private ArrayList<ArrayList<String>> getExps(ArrayList<String> expression) {
+    private ArrayList<ArrayList<String>> getExps(List<String> expression) {
         int depth = 0;
         ArrayList<ArrayList<String>> expressions = new ArrayList<>();
         for (int i = 0; i<expression.size();i++) {
@@ -187,23 +182,20 @@ public class Memory {
         return expressions;
     }
 
-    private Expression parseRec(List<String> data, ArrayList<Expression> list){
-        if (!isAlphaNum(data.get(0)) && !data.get(0).equals("(")){
-            parseRec(getExp(data.subList(1,data.size())),list);
-            return getOp(data.get(0),list);
-        }
-        else if (isAlphaNum(data.get(0)) && data.size()==1){
+    private Expression parseRec(List<String> data, ArrayList<Expression> list) {
+        if (!isAlphaNum(data.get(0)) && !data.get(0).equals("(")) {
+            ArrayList<Expression> newL = new ArrayList<>();
+            parseRec(getExp(data.subList(1, data.size())), newL);
+            return getOp(data.get(0), newL);
+        } else if (isAlphaNum(data.get(0)) && data.size() == 1) {
             return new MyNumber(Integer.parseInt(data.get(0)));
-        }else{
-            for (String s : data) {
-                if (isAlphaNum(s)){
-                    list.add(new MyNumber(Integer.parseInt(s)));
-                }else if (!s.equals(",") && !s.equals(")") && !s.equals("(")){
-                    list.add(parseRec(getExp(data.subList(data.indexOf(s),data.size())),list));
-                }
+        } else if (data.get(0).equals("(")){
+            ArrayList<ArrayList<String>> exps = getExps(data.subList(1, data.size()));
+            for (ArrayList<String> str :exps) {
+                list.add(parseRec(str,new ArrayList<>()));
             }
-            return null;
         }
+        return null;
     }
 
     private Expression getOp(String s, ArrayList<Expression> total) {
@@ -263,7 +255,7 @@ public class Memory {
             return;
         try{
             FileWriter writer = new FileWriter(path);
-            writer.write(getLog(false));
+            writer.write(getLog());
             writer.close();
             alreadySaved = true;
         } catch (IOException e) {
