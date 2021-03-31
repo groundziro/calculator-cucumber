@@ -11,7 +11,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestMemory {
-    private final Memory mem = new Memory();
+    private final Memory mem = new Memory(2);
     private Operation o;
     private Operation o2;
     @BeforeEach
@@ -19,11 +19,12 @@ public class TestMemory {
         List<Expression> params1 =
                 new ArrayList<>(Arrays.asList(new MyNumber(3), new MyNumber(4), new MyNumber(5)));
         List<Expression> params2 =
-                new ArrayList<>(Arrays.asList(new MyNumber(5), new MyNumber(4)));
+                new ArrayList<>(Arrays.asList(new Plus(params1), new Plus(params1)));
         List<Expression> params3 =
                 new ArrayList<>(Arrays.asList(new Plus(params1), new Minus(params2), new MyNumber(7)));
-        o = new Divides(params3);
-        o2 = new Divides(params2);
+        ArrayList<Expression> params4 = new ArrayList<>(Arrays.asList(new Implies(new ArrayList<>(Arrays.asList(new And(new ArrayList<>(Arrays.asList(new MyNumber(1), new MyNumber(1)))), new MyNumber(0)))),new MyNumber(1)));
+        o = new Times(params3);
+        o2 = new Or(params4);
         mem.setMax(2);
         mem.add(o);
         mem.add(o2);
@@ -57,9 +58,10 @@ public class TestMemory {
 
     @Test
     public void testLoad(){
+        testSave();
         Memory mem2 = new Memory();
         mem2.load("Save1.txt");
-        assertEquals(mem.getLog(false),mem2.getLog(false));
+        assertEquals(mem.getLog(),mem2.getLog());
     }
 
 
