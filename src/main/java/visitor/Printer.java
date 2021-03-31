@@ -1,9 +1,6 @@
 package visitor;
 
-import calculator.Expression;
-import calculator.MyNumber;
-import calculator.Notation;
-import calculator.Operation;
+import calculator.*;
 
 import java.util.ArrayList;
 
@@ -53,13 +50,13 @@ public class Printer extends Visitor{
         if (n == Notation.PREFIX){
             sol.append(o.getSymbol()).append(" ");
         }
-        sol.append("(");
+        sol.append("( ");
         sol.append(numbers.get(0));
         for (int i = 1; i < numbers.size(); i++) {
-            sol.append(", ");
+            sol.append(" , ");
             sol.append(numbers.get(i));
         }
-        sol.append(")");
+        sol.append(" )");
         if (n == Notation.POSTFIX){
             sol.append(" ").append(o.getSymbol());
         }

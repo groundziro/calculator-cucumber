@@ -14,7 +14,7 @@ public class TestOperation {
 
 	private Operation o;
 	private Operation o2;
-	private Calculator c = new Calculator();
+	private final Calculator c = new Calculator();
 
 	@BeforeEach
 	public void setUp() throws Exception {

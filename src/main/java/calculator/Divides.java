@@ -1,8 +1,9 @@
 package calculator;
 
+import java.io.Serializable;
 import java.util.List;
 
-final public class Divides extends Operation
+final public class Divides extends Operation implements Serializable
 {
 
   public /*constructor*/ Divides(List<Expression> elist) throws IllegalConstruction {
