@@ -44,10 +44,12 @@ public class TestMemory {
     @Test
     public void testMax(){
         assertEquals(2,mem.size());
+        Expression orig = mem.get(0);
         mem.print();
         mem.setMax(1);
         assertEquals(1,mem.size());
         System.out.println("------------");
+        assertEquals(orig,mem.get(0));
         mem.print();
     }
 

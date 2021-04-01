@@ -15,13 +15,13 @@ public class TestBooleanOperation {
 
     @BeforeEach
     public void setUp()throws Exception{
-        List<Expression> params1 = new ArrayList<>(Collections.singletonList(new MyNumber(0)));
-        List<Expression> params2 = new ArrayList<>(Collections.singletonList(new MyNumber(1)));
+        List<Expression> params1 = new ArrayList<>(Collections.singletonList(new MyBoolean(true)));
+        List<Expression> params2 = new ArrayList<>(Collections.singletonList(new MyBoolean(false)));
 
 
 
         b1 = new Not(params1);
-        List<Expression> params3 = new ArrayList<>(Arrays.asList(b1,new MyNumber(0)));
+        List<Expression> params3 = new ArrayList<>(Arrays.asList(b1,new MyBoolean(true)));
         b2 = new And(params3);
         List<Expression> params4 = new ArrayList<>(Collections.singletonList(b2));
         b1 = new Not(params4);

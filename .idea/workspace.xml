@@ -5,10 +5,70 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1614edb7-d7aa-49c2-92cf-5ddf20ef5122" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/calculator/MyBoolean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Save1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Save1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Divides.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Divides.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Memory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Plus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Plus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestBooleanOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestBooleanOperation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestDivides.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestDivides.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestMemory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestMinus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestMinus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestPlus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestPlus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestTimes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestTimes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GUI/test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GUI/test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/calculator/And.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/And.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/calculator/BooleanOperation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/BooleanOperation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Calculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Calculator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Divides.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Divides.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Equivalence.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Equivalence.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Expression.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Expression.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/calculator/IllegalConstruction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/IllegalConstruction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Implies.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Implies.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Memory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Memory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Minus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Minus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/calculator/MyNumber.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/MyNumber.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Not.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Not.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Notation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Notation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Operation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Operation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Or.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Or.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Plus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Plus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Times.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Times.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Xor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Xor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/visitor/Counter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/visitor/Counter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/visitor/Evaluator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/visitor/Evaluator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/visitor/Printer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/visitor/Printer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/visitor/Visitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/visitor/Visitor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/cucumber-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/cucumber-report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/JUnit Vintage.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/JUnit Vintage.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-JUnit Vintage.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-JUnit Vintage.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestDivides.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestDivides.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestEvaluator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestEvaluator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestMinus.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestMinus.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestMyNumber.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestMyNumber.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestOperation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestOperation.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestPlus.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestPlus.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestTimes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestTimes.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestDivides.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestDivides.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestEvaluator.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestEvaluator.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestMyNumber.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestMyNumber.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestOperation.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestOperation.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestPlus.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestPlus.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestTimes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestTimes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/cucumbertests/CalculatorSteps.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/cucumbertests/CalculatorSteps.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/cucumbertests/RunCucumberTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/cucumbertests/RunCucumberTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/junit5tests/TestBooleanOperation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/junit5tests/TestBooleanOperation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/junit5tests/TestDivides.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/junit5tests/TestDivides.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/junit5tests/TestEvaluator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/junit5tests/TestEvaluator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/junit5tests/TestMemory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/junit5tests/TestMemory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/junit5tests/TestMinus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/junit5tests/TestMinus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/junit5tests/TestMyNumber.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/junit5tests/TestMyNumber.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/junit5tests/TestOperation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/junit5tests/TestOperation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/junit5tests/TestPlus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/junit5tests/TestPlus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/junit5tests/TestTimes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/junit5tests/TestTimes.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +85,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="devel" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1oFcof8kabDOP7sRYzIarJkz8h0" />
@@ -42,9 +107,9 @@
     <property name="last_opened_file_path" value="$USER_HOME$/Devoirs/tyrant" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
@@ -56,13 +121,30 @@
       <command value="mvn compile" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.TestMemory.testMax">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.RunCucumberTest">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RunCucumberTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="calculator-cucumber" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cucumbertests.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="cucumbertests" />
+      <option name="MAIN_CLASS_NAME" value="cucumbertests.RunCucumberTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -132,22 +214,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestMemory.testSave" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="calculator-cucumber" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="junit5tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="junit5tests" />
-      <option name="MAIN_CLASS_NAME" value="junit5tests.TestMemory" />
-      <option name="METHOD_NAME" value="testSave" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="calculator-cucumber [site:run]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -175,11 +241,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TestMemory.testMax" />
-        <item itemvalue="JUnit.TestMemory.testLoad" />
-        <item itemvalue="JUnit.TestMemory.testSave" />
-        <item itemvalue="JUnit.TestMemory.test" />
+        <item itemvalue="JUnit.RunCucumberTest" />
         <item itemvalue="JUnit.TestBooleanOperation.test" />
+        <item itemvalue="JUnit.TestMemory.testMax" />
+        <item itemvalue="JUnit.TestMemory.test" />
+        <item itemvalue="JUnit.TestMemory.testLoad" />
       </list>
     </recent_temporary>
   </component>
@@ -208,11 +274,40 @@
       <workItem from="1617204658949" duration="30000" />
       <workItem from="1617204721274" duration="51000" />
       <workItem from="1617204781572" duration="4911000" />
+      <workItem from="1617281511878" duration="2714000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/release" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Load of the Memory Finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="Load of the Memory Finished" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

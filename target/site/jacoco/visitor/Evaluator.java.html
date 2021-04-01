@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Evaluator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Calculator with Cucumber tests</a> &gt; <a href="index.source.html" class="el_package">visitor</a> &gt; <span class="el_source">Evaluator.java</span></div><h1>Evaluator.java</h1><pre class="source lang-java linenums">package visitor;
+
+import calculator.BooleanOperation;
+import calculator.Expression;
+import calculator.MyNumber;
+import calculator.Operation;
+
+import java.util.ArrayList;
+
+<span class="fc" id="L10">public class Evaluator extends Visitor {</span>
+
+    private int computedValue;
+
+<span class="fc" id="L14">    public Integer getResult() { return computedValue; }</span>
+
+    public void visit(MyNumber n) {
+<span class="fc" id="L17">        computedValue = n.getValue();</span>
+<span class="fc" id="L18">    }</span>
+
+
+    public void visit(Operation o){
+<span class="fc" id="L22">        ArrayList&lt;Integer&gt; evaluatedArgs = new ArrayList&lt;&gt;();</span>
+        //first loop to recursively evaluate each subexpression
+<span class="fc" id="L24">        getArgs(evaluatedArgs,o);</span>
+        //second loop to accumulate all the evaluated sub-results
+<span class="fc" id="L26">        int temp = evaluatedArgs.get(0);</span>
+<span class="fc" id="L27">        int max = evaluatedArgs.size();</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        for (int counter = 1; counter &lt; max; counter++) {</span>
+<span class="fc" id="L29">            temp = o.op(temp, evaluatedArgs.get(counter));</span>
+        }
+<span class="fc bfc" id="L31" title="All 2 branches covered.">        if (max == 1){</span>
+<span class="fc" id="L32">            BooleanOperation b = (BooleanOperation) o;</span>
+<span class="fc" id="L33">            temp = b.op(temp);</span>
+        }
+        // store the accumulated result
+<span class="fc" id="L36">        computedValue = temp;</span>
+<span class="fc" id="L37">    }</span>
+
+    private void getArgs(ArrayList&lt;Integer&gt; evaluatedArgs, Operation o){
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        for(Expression a: o.args){</span>
+<span class="fc" id="L41">            a.accept(this);</span>
+<span class="fc" id="L42">            evaluatedArgs.add(computedValue);</span>
+<span class="fc" id="L43">        }</span>
+<span class="fc" id="L44">    }</span>
+
+    /*public void visit(BooleanOperation b) {
+        ArrayList&lt;Integer&gt; evaluatedArgs = new ArrayList&lt;&gt;();
+        getArgs(evaluatedArgs,b);
+
+        int temp = evaluatedArgs.get(0);
+        int max = evaluatedArgs.size();
+        System.out.println(max);
+        if (max == 1)
+            computedValue = b.op(temp);
+        else{
+            for (int i = 1; i &lt; max; i++) {
+                temp = b.op(temp,evaluatedArgs.get(i));
+            }
+            computedValue = temp;
+        }
+    }*/
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

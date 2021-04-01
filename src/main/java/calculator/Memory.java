@@ -118,6 +118,7 @@ public class Memory {
                 String data = scan.nextLine();
                 expressions.add(parse(data));
             }
+            scan.close();
             setMax(expressions.size());
             addAll(expressions);
             print();
@@ -232,7 +233,7 @@ public class Memory {
             }
             return exp;
         }catch (Exception e){
-            e.printStackTrace();
+            System.err.println(e.getMessage());
             return null;
         }
     }
@@ -259,7 +260,7 @@ public class Memory {
             writer.close();
             alreadySaved = true;
         } catch (IOException e) {
-            e.printStackTrace();
+            System.err.println(e.getMessage());
         }
     }
 
