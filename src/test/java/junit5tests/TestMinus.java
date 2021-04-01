@@ -93,7 +93,7 @@ public class TestMinus {
 
 	@Test
 	public void testPrefix() {
-		String prefix = "- (" + value1 + ", " + value2 + ")";
+		String prefix = "- ( " + value1 + " , " + value2 + " )";
 		assertEquals(prefix, c.formatPrint(op,Notation.PREFIX));
 	}
 
@@ -105,7 +105,7 @@ public class TestMinus {
 
 	@Test
 	public void testPostfix() {
-		String postfix = "(" + value1 + ", " + value2 + ") -";
+		String postfix = "( " + value1 + " , " + value2 + " ) -";
 		assertEquals(postfix, c.formatPrint(op,Notation.POSTFIX));
 	}
 

@@ -17,6 +17,10 @@ final public class Plus extends Operation
 		neutral = 0;
   }
 
+  public int op(MyBoolean l, MyBoolean r){
+  	return 0;
+  }
+
   public int op(int l, int r) {
   	return (l+r);
   }

@@ -18,6 +18,6 @@ final public class Divides extends Operation implements Serializable
 	neutral = 1;
     }
   
-  public int op(int l, int r)
+  public int op(int l, int r) throws ArithmeticException
     { return (l/r); }
 }
