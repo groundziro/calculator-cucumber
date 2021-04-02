@@ -18,12 +18,31 @@ public class Time {
         return dtf.format(now);
     }
 
+    public static String to24(String hour){
+        String[] hourMinFormat = hour.split(" ");
+        String[] hourMin = hourMinFormat[0].split(":");
+        int hours = Integer.parseInt(hourMin[0]);
+        int min = Integer.parseInt(hourMin[1]);
+        String format = hourMinFormat[1];
+        if (format.equals("PM")){
+            hours += 12;
+        }
+        return hours + ":" + min;
+    }
+
     public String since(){
         String format = this.format;
+        int currentInMinutes;
+        int timeInMinutes;
+        if (format.equals("12")){
+            timeInMinutes = toMinutes(to24(this.time));
+        }
+        else {
+            timeInMinutes = toMinutes(this.time);
+        }
         String current = Time.now();
-        int timeInMinutes = toMinutes(this.time);
-        int currentInMinutes = toMinutes(current);
-        if (timeInMinutes > currentInMinutes){
+        currentInMinutes = toMinutes(current);
+        if (timeInMinutes > currentInMinutes) {
             currentInMinutes += 1440;
         }
         return toHours(String.valueOf(currentInMinutes - timeInMinutes));
