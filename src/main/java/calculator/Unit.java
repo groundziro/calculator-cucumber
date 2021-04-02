@@ -16,7 +16,7 @@ public class Unit {
         this.type = type;
         this.kind = kind;
         this.value = value;
-        this.strength = getStrength(this.kind);
+        this.strength = getLengthStrength(this.kind);
     }
 
     public static boolean isLengthSI(String value){
