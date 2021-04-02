@@ -35,6 +35,7 @@ public class Unit {
             case "atmos":
             case "cm per sec":
             case "celsius":
+            case "sec":
                 output = 1.0;
                 break;
             case "dm":
@@ -146,6 +147,27 @@ public class Unit {
                 break;
             case "kelvin":
                 output = 274.15;
+                break;
+            case "microsec":
+                output = 1000000.0;
+                break;
+            case "millisec":
+                output = 1000.0;
+                break;
+            case "min":
+                output = 0.016667;
+                break;
+            case "hours":
+                output = 0.000278;
+                break;
+            case "days":
+                output = 0.000012;
+                break;
+            case "weeks":
+                output = 0.000002;
+                break;
+            case "years":
+                output = 0.000000031688088;
                 break;
             default:
                 System.out.println("Invalid kind");

@@ -23,8 +23,8 @@ public class Main {
 
 	try{
 		// Here is an example of how to use the calculator:
-		u = new Unit("temperature", "kelvin", 1.0);
-		Unit nouvelle = uC.convert(u, "fahrenheit");
+		u = new Unit("time", "days", 1.0);
+		Unit nouvelle = uC.convert(u, "years");
 		System.out.println(nouvelle.value);
 		System.out.println("------------------------------------");
 
