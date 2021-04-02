@@ -2,6 +2,7 @@ package visitor;
 
 import calculator.MyNumber;
 import calculator.Operation;
+import calculator.Time;
 
 /* Visitor design pattern
  */

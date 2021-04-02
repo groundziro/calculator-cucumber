@@ -21,10 +21,10 @@ public class Main {
 
 	try{
 		// Here is an example of how to use the calculator:
+		Time t1 = new Time("22:10", "24");
+		Time t2 = new Time("23:11", "24");
+		System.out.println(t1.minus(t2));
 
-		Time t = new Time("23:21", "24");
-		System.out.println(t.since());
-		System.out.println("-------------------------------");
 
 		e = new MyNumber(8);
 		c.formatPrint(e, Notation.PREFIX);

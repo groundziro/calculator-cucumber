@@ -1,5 +1,7 @@
 package calculator;
 
+import visitor.Visitor;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -10,6 +12,23 @@ public class Time {
     public Time (String time, String format){
         this.time = time;
         this.format = format;
+    }
+
+    public String minus(Time t){
+        int hours1 = Integer.parseInt(this.time.split(":")[0]);
+        int minutes1 = Integer.parseInt(this.time.split(":")[1]);
+        int hours2 = Integer.parseInt(t.time.split(":")[0]);
+        int minutes2 = Integer.parseInt(t.time.split(":")[1]);
+        int hours = hours1-hours2;
+        int minutes = minutes1 - minutes2;
+        if (hours <= 0){
+            hours = 24 + hours;
+        }
+        if (minutes < 0){
+            hours -= 1;
+            minutes = 60 + minutes;
+        }
+        return hours + ":" + minutes;
     }
 
     public static String now(){
