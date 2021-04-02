@@ -22,7 +22,12 @@ public class Main {
 	try{
 		// Here is an example of how to use the calculator:
 
+		Time t = new Time("23:21", "24");
+		System.out.println(t.since());
+		System.out.println("-------------------------------");
+
 		e = new MyNumber(8);
+		c.formatPrint(e, Notation.PREFIX);
 		c.print(e);
 		c.eval(e);
 
