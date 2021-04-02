@@ -5,36 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1614edb7-d7aa-49c2-92cf-5ddf20ef5122" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GUI/test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GUI/test.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Calculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Calculator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Divides.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Divides.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Expression.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Expression.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/calculator/IllegalConstruction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/IllegalConstruction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Unit.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/UnitsConvertor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/UnitsConvertor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/calculator/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Minus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Minus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/calculator/MyNumber.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/MyNumber.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Notation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Notation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Operation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Operation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Plus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Plus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/calculator/Times.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Times.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/visitor/Counter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/visitor/Counter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/visitor/Evaluator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/visitor/Evaluator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/visitor/Printer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/visitor/Printer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/visitor/Visitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/visitor/Visitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/cucumbertests/CalculatorSteps.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/cucumbertests/CalculatorSteps.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/cucumbertests/RunCucumberTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/cucumbertests/RunCucumberTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/junit5tests/TestDivides.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/junit5tests/TestDivides.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/junit5tests/TestEvaluator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/junit5tests/TestEvaluator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/junit5tests/TestMinus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/junit5tests/TestMinus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/junit5tests/TestMyNumber.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/junit5tests/TestMyNumber.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/junit5tests/TestOperation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/junit5tests/TestOperation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/junit5tests/TestPlus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/junit5tests/TestPlus.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/junit5tests/TestTimes.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/junit5tests/TestTimes.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +105,7 @@
       <updated>1612885958399</updated>
       <workItem from="1612885961440" duration="2183000" />
       <workItem from="1612941616114" duration="2248000" />
-      <workItem from="1617344885755" duration="16857000" />
+      <workItem from="1617344885755" duration="20330000" />
     </task>
     <servers />
   </component>

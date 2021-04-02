@@ -23,10 +23,9 @@ public class Main {
 
 	try{
 		// Here is an example of how to use the calculator:
-
-		u = new Unit("length", "ft", 1.0);
-		Unit nouvelle = uC.convert(u, "m");
-		System.out.format("%.5f\n", nouvelle.value);
+		u = new Unit("area", "sqrt_ft", 1.0);
+		Unit nouvelle = uC.convert(u, "sqrt_m");
+		System.out.println(nouvelle.value);
 		System.out.println("------------------------------------");
 
 		e = new MyNumber(8);
