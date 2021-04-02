@@ -1,5 +1,7 @@
 package calculator;
 
+import com.sun.source.doctree.UnknownInlineTagTree;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -7,49 +9,36 @@ public class UnitsConvertor {
 
     public Unit convert(Unit input, String goal){
         Double operation;
-        if (input.type.equals("length")){
-            if (Unit.isLengthSI(input.kind) && Unit.isLengthSI(goal)){
-                operation = input.strength / Unit.getStrength(goal);
-            }
-            else if (Unit.isLengthUS(input.kind) && Unit.isLengthUS(goal)){
-                operation = Unit.getStrength(goal) / input.strength;
-            }
-            else{
-                if (Unit.isLengthSI(input.kind)){
-                    operation = input.strength / Unit.getStrength("cm") / 2.54;
-                    operation /= 1.0 / Unit.getStrength(goal);
-                }
-                else{
-                    operation = Unit.getStrength("in") / input.strength;
-                    operation *= 2.54 / (Unit.getStrength(goal) / Unit.getStrength("cm"));
-                }
-            }
+        List<String> types = Arrays.asList("length", "area", "currency", "power", "pressure", "speed");
+        if (types.contains(input.type)){
+            operation = (1 / input.strength) * Unit.getStrength(goal);
             return new Unit(input.type, goal, input.value * operation);
         }
-
-        else if (input.type.equals("area")){
-            if (Unit.isAreaSI(input.kind) && Unit.isAreaSI(goal)){
-                operation = input.strength / Unit.getStrength(goal);
-            }
-            else if (Unit.isAreaUS(input.kind) && Unit.isAreaUS(goal)){
-                operation = Unit.getStrength(goal) / input.strength;
-            }
-            else{
-                if (Unit.isAreaSI(input.kind)){
-                    operation = input.strength / Unit.getStrength("sqrt_cm") / 6.4516;
-                    operation /= 1.0 / Unit.getStrength(goal);
+        else if (input.type.equals("temperature")){
+            if (input.kind.equals("celsius")){
+                if (goal.equals("fahrenheit")){
+                    return new Unit(input.type, goal, (input.value * 1.8) + 32.0);
                 }
-                else{
-                    operation = Unit.getStrength("sqrt_in") / input.strength;
-                    operation *= 6.4516 / (Unit.getStrength(goal) / Unit.getStrength("sqrt_cm"));
+                else if (goal.equals("kelvin")){
+                    return new Unit(input.type, goal, input.value + 273.15);
                 }
             }
-            return new Unit(input.type, goal, input.value * operation);
-        }
-
-        else if (input.type.equals("currency")){
-            operation = 1 / input.strength * Unit.getStrength(goal);
-            return new Unit(input.type, goal, input.value * operation);
+            else if (input.kind.equals("fahrenheit")){
+                if (goal.equals("celsius")){
+                    return new Unit(input.type, goal, (input.value - 32.0) / 1.8);
+                }
+                else if (goal.equals("kelvin")){
+                    return new Unit(input.type, goal, (input.value - 32.0) / 1.8 + 273.15);
+                }
+            }
+            else if (input.kind.equals("kelvin")){
+                if (goal.equals("celsius")){
+                    return new Unit(input.type, goal, (input.value - 273.15));
+                }
+                else if (goal.equals("fahrenheit")){
+                    return new Unit(input.type, goal, 1.8 * (input.value - 273.15) + 32.0);
+                }
+            }
         }
         return input;
     }

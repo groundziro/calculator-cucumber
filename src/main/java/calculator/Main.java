@@ -23,8 +23,8 @@ public class Main {
 
 	try{
 		// Here is an example of how to use the calculator:
-		u = new Unit("currency", "japan_yen", 1.0);
-		Unit nouvelle = uC.convert(u, "china_yuan");
+		u = new Unit("temperature", "kelvin", 1.0);
+		Unit nouvelle = uC.convert(u, "fahrenheit");
 		System.out.println(nouvelle.value);
 		System.out.println("------------------------------------");
 
