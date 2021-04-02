@@ -20,6 +20,9 @@ public class Unit {
         double output;
         switch (value){
             case "km":
+            case "ml":
+            case "cubic cm":
+            case "millisec":
                 output = 1000.0;
                 break;
             case "hm":
@@ -36,6 +39,7 @@ public class Unit {
             case "cm per sec":
             case "celsius":
             case "sec":
+            case "l":
                 output = 1.0;
                 break;
             case "dm":
@@ -47,6 +51,7 @@ public class Unit {
                 break;
             case "mm":
             case "kilowatts":
+            case "cubic m":
                 output = 0.001;
                 break;
             case "in":
@@ -151,9 +156,6 @@ public class Unit {
             case "microsec":
                 output = 1000000.0;
                 break;
-            case "millisec":
-                output = 1000.0;
-                break;
             case "min":
                 output = 0.016667;
                 break;
@@ -168,6 +170,54 @@ public class Unit {
                 break;
             case "years":
                 output = 0.000000031688088;
+                break;
+            case "teaspoons US":
+                output = 202.8841;
+                break;
+            case "tablespoons US":
+                output = 67.62805;
+                break;
+            case "fluid ounces US":
+                output = 33.81402;
+                break;
+            case "cups US":
+                output = 4.226753;
+                break;
+            case "pints US":
+                output = 2.113376;
+                break;
+            case "quarts US":
+                output = 1.056688;
+                break;
+            case "gallons US":
+                output = 0.264172;
+                break;
+            case "cubic in":
+                output = 61.02374;
+                break;
+            case "cubic ft":
+                output = 0.035315;
+                break;
+            case "cubic yd":
+                output = 0.001308;
+                break;
+            case "teaspoons UK":
+                output = 168.9364;
+                break;
+            case "tablespoons UK":
+                output = 56.31213;
+                break;
+            case "fluid ounces UK":
+                output = 35.19508;
+                break;
+            case "pints UK":
+                output = 1.759754;
+                break;
+            case "quarts UK":
+                output = 0.879877;
+                break;
+            case "gallons UK":
+                output = 0.219969;
                 break;
             default:
                 System.out.println("Invalid kind");

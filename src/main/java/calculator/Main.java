@@ -23,8 +23,8 @@ public class Main {
 
 	try{
 		// Here is an example of how to use the calculator:
-		u = new Unit("time", "days", 1.0);
-		Unit nouvelle = uC.convert(u, "years");
+		u = new Unit("volume", "teaspoons US", 1.0);
+		Unit nouvelle = uC.convert(u, "cubic yd");
 		System.out.println(nouvelle.value);
 		System.out.println("------------------------------------");
 
