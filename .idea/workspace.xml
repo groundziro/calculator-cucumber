@@ -5,19 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1614edb7-d7aa-49c2-92cf-5ddf20ef5122" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/calculator/MyBoolean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Divides.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Divides.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Memory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Memory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/calculator/Plus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/calculator/Plus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestBooleanOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestBooleanOperation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestDivides.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestDivides.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestMemory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestMinus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestMinus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestPlus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestPlus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/junit5tests/TestTimes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/junit5tests/TestTimes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GUI/test.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GUI/test.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/calculator-cucumber-0.2.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/calculator-cucumber-0.2.0.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/calculator/And.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/And.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/calculator/BooleanOperation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/BooleanOperation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/calculator/Calculator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Calculator.class" afterDir="false" />
@@ -29,6 +21,7 @@
       <change beforePath="$PROJECT_DIR$/target/classes/calculator/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/calculator/Memory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Memory.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/calculator/Minus.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Minus.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/calculator/MyBoolean.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/MyBoolean.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/calculator/MyNumber.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/MyNumber.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/calculator/Not.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Not.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/calculator/Notation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/calculator/Notation.class" afterDir="false" />
@@ -42,18 +35,122 @@
       <change beforePath="$PROJECT_DIR$/target/classes/visitor/Printer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/visitor/Printer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/visitor/Visitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/visitor/Visitor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/cucumber-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/cucumber-report.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/jacoco.exec" beforeDir="false" afterPath="$PROJECT_DIR$/target/jacoco.exec" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/allclasses-frame.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/allclasses-noframe.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/And.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/BooleanOperation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/Calculator.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/Divides.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/Equivalence.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/Expression.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/IllegalConstruction.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/Implies.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/Main.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/Memory.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/Minus.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/MyBoolean.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/MyNumber.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/Not.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/Notation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/Operation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/Or.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/Plus.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/Times.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/Xor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/class-use/And.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/class-use/BooleanOperation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/class-use/Calculator.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/class-use/Divides.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/class-use/Equivalence.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/class-use/Expression.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/class-use/IllegalConstruction.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/class-use/Implies.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/class-use/Main.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/class-use/Memory.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/class-use/Minus.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/class-use/MyBoolean.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/class-use/MyNumber.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/class-use/Not.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/class-use/Notation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/class-use/Operation.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/class-use/Or.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/class-use/Plus.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/class-use/Times.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/class-use/Xor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/package-frame.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/calculator/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/constant-values.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/deprecated-list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/help-doc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/index-all.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/overview-frame.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/overview-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/overview-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/package-list" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/serialized-form.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/stylesheet.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/visitor/Counter.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/visitor/Evaluator.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/visitor/Printer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/visitor/Visitor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/visitor/class-use/Counter.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/visitor/class-use/Evaluator.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/visitor/class-use/Printer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/visitor/class-use/Visitor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/visitor/package-frame.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/visitor/package-summary.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/visitor/package-tree.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/apidocs/visitor/package-use.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/calculator/And.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/calculator/And.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/calculator/BooleanOperation.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/calculator/BooleanOperation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/calculator/Calculator.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/calculator/Calculator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/calculator/Divides.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/calculator/Divides.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/calculator/Equivalence.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/calculator/Equivalence.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/calculator/IllegalConstruction.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/calculator/IllegalConstruction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/calculator/Implies.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/calculator/Implies.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/calculator/Memory.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/calculator/Memory.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/calculator/Minus.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/calculator/Minus.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/calculator/MyBoolean.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/calculator/MyBoolean.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/calculator/MyNumber.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/calculator/MyNumber.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/calculator/Not.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/calculator/Not.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/calculator/Notation.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/calculator/Notation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/calculator/Operation.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/calculator/Operation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/calculator/Or.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/calculator/Or.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/calculator/Plus.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/calculator/Plus.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/calculator/Times.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/calculator/Times.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/calculator/Xor.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/calculator/Xor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/calculator/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/calculator/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/calculator/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/calculator/index.source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/visitor/Counter.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/visitor/Counter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/visitor/Evaluator.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/visitor/Evaluator.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/visitor/Printer.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/visitor/Printer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/visitor/Visitor.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/visitor/Visitor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/visitor/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/visitor/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/site/jacoco/visitor/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/visitor/index.source.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/JUnit Vintage.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/JUnit Vintage.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-JUnit Vintage.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-JUnit Vintage.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestBooleanOperation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestBooleanOperation.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestDivides.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestDivides.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestEvaluator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestEvaluator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestMemory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestMemory.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestMinus.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestMinus.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestMyNumber.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestMyNumber.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestOperation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestOperation.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestPlus.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestPlus.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestTimes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-junit5tests.TestTimes.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestDivides.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestDivides.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestEvaluator.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestEvaluator.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestMemory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestMemory.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestMinus.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestMinus.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestMyNumber.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestMyNumber.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestOperation.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestOperation.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestPlus.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/junit5tests.TestPlus.txt" afterDir="false" />
@@ -122,15 +219,13 @@
     </option>
   </component>
   <component name="RunManager" selected="JUnit.RunCucumberTest">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -275,6 +370,7 @@
       <workItem from="1617204721274" duration="51000" />
       <workItem from="1617204781572" duration="4911000" />
       <workItem from="1617281511878" duration="2714000" />
+      <workItem from="1617376615778" duration="1289000" />
     </task>
     <servers />
   </component>
