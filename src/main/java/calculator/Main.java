@@ -18,9 +18,15 @@ public class Main {
 
   	Expression e;
   	Calculator c = new Calculator();
+  	UnitsConvertor uC = new UnitsConvertor();
+  	Unit u;
 
 	try{
 		// Here is an example of how to use the calculator:
+		u = new Unit("temperature", "kelvin", 1.0);
+		Unit nouvelle = uC.convert(u, "fahrenheit");
+		System.out.println(nouvelle.value);
+		System.out.println("------------------------------------");
 
 		e = new MyNumber(8);
 		c.print(e);
