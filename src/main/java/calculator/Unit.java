@@ -23,12 +23,15 @@ public class Unit {
             case "ml":
             case "cubic cm":
             case "millisec":
+            case "mg":
                 output = 1000.0;
                 break;
             case "hm":
+            case "cg":
                 output = 100.0;
                 break;
             case "dam":
+            case "decigrams":
                 output = 10.0;
                 break;
             case "m":
@@ -40,18 +43,22 @@ public class Unit {
             case "celsius":
             case "sec":
             case "l":
+            case "g":
                 output = 1.0;
                 break;
             case "dm":
+            case "decagrams":
                 output = 0.1;
                 break;
             case "cm":
             case "m per sec":
+            case "hectograms":
                 output = 0.01;
                 break;
             case "mm":
             case "kilowatts":
             case "cubic m":
+            case "kilograms":
                 output = 0.001;
                 break;
             case "in":
@@ -79,6 +86,7 @@ public class Unit {
                 output = 0.0001;
                 break;
             case "sqrt_km":
+            case "metric tonnes":
                 output = 0.000001;
                 break;
             case "sqrt_in":
@@ -218,6 +226,24 @@ public class Unit {
                 break;
             case "gallons UK":
                 output = 0.219969;
+                break;
+            case "carats":
+                output = 5.0;
+                break;
+            case "ounces":
+                output = 0.035274;
+                break;
+            case "pounds":
+                output = 0.002205;
+                break;
+            case "stone":
+                output = 0.000157;
+                break;
+            case "short tons US":
+                output = 0.000001;
+                break;
+            case "long tons UK":
+                output = 0.000000984206528;
                 break;
             default:
                 System.out.println("Invalid kind");

@@ -23,8 +23,8 @@ public class Main {
 
 	try{
 		// Here is an example of how to use the calculator:
-		u = new Unit("volume", "teaspoons US", 1.0);
-		Unit nouvelle = uC.convert(u, "cubic yd");
+		u = new Unit("weight and mass", "kilograms", 1.0);
+		Unit nouvelle = uC.convert(u, "stone");
 		System.out.println(nouvelle.value);
 		System.out.println("------------------------------------");
 

@@ -9,7 +9,7 @@ public class UnitsConvertor {
 
     public Unit convert(Unit input, String goal){
         Double operation;
-        List<String> types = Arrays.asList("length", "area", "currency", "power", "pressure", "speed", "time", "volume");
+        List<String> types = Arrays.asList("length", "area", "currency", "power", "pressure", "speed", "time", "volume", "weight and mass");
         if (types.contains(input.type)){
             operation = (1 / input.strength) * Unit.getStrength(goal);
             return new Unit(input.type, goal, input.value * operation);
