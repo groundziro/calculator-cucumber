@@ -9,21 +9,21 @@ public class UnitsConvertor {
         Double operation;
         if (input.type.equals("length")) {
             if (Unit.isLengthSI(input.kind) && Unit.isLengthSI(goal)) {
-                operation = input.strength / Unit.getStrength(goal);
+                operation = input.strength / Unit.getLengthStrength(goal);
                 return new Unit(input.type, goal, input.value * operation);
             }
             else if (Unit.isLengthUS(input.kind) && Unit.isLengthUS(goal)) {
-                operation = Unit.getStrength(goal) / input.strength;
+                operation = Unit.getLengthStrength(goal) / input.strength;
                 return new Unit(input.type, goal, input.value * operation);
             }
             else{
                 if (Unit.isLengthSI(input.kind)) {
-                    operation = input.strength / Unit.getStrength("cm") / 2.54;
-                    operation /= 1.0 / Unit.getStrength(goal);
+                    operation = input.strength / Unit.getLengthStrength("cm") / 2.54;
+                    operation /= 1.0 / Unit.getLengthStrength(goal);
                     return new Unit(input.type, goal, input.value * operation);
                 } else {
-                    operation = Unit.getStrength("in") / input.strength;
-                    operation *= 2.54 / (Unit.getStrength(goal) / Unit.getStrength("cm"));
+                    operation = Unit.getLengthStrength("in") / input.strength;
+                    operation *= 2.54 / (Unit.getLengthStrength(goal) / Unit.getLengthStrength("cm"));
                     return new Unit(input.type, goal, input.value * operation);
                 }
             }

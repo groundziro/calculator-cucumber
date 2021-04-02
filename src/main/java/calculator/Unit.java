@@ -27,7 +27,7 @@ public class Unit {
         return lengthUS.contains(value);
     }
 
-    public static Double getStrength(String value){
+    public static Double getLengthStrength(String value){
         double output;
         switch (value){
             case "km":
