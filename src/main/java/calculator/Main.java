@@ -23,8 +23,8 @@ public class Main {
 
 	try{
 		// Here is an example of how to use the calculator:
-		u = new Unit("area", "sqrt_ft", 1.0);
-		Unit nouvelle = uC.convert(u, "sqrt_m");
+		u = new Unit("currency", "japan_yen", 1.0);
+		Unit nouvelle = uC.convert(u, "china_yuan");
 		System.out.println(nouvelle.value);
 		System.out.println("------------------------------------");
 

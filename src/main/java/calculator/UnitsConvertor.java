@@ -30,24 +30,26 @@ public class UnitsConvertor {
         else if (input.type.equals("area")){
             if (Unit.isAreaSI(input.kind) && Unit.isAreaSI(goal)){
                 operation = input.strength / Unit.getStrength(goal);
-                return new Unit(input.type, goal, input.value * operation);
             }
             else if (Unit.isAreaUS(input.kind) && Unit.isAreaUS(goal)){
                 operation = Unit.getStrength(goal) / input.strength;
-                return new Unit(input.type, goal, input.value * operation);
             }
             else{
                 if (Unit.isAreaSI(input.kind)){
                     operation = input.strength / Unit.getStrength("sqrt_cm") / 6.4516;
                     operation /= 1.0 / Unit.getStrength(goal);
-                    return new Unit(input.type, goal, input.value * operation);
                 }
                 else{
                     operation = Unit.getStrength("sqrt_in") / input.strength;
                     operation *= 6.4516 / (Unit.getStrength(goal) / Unit.getStrength("sqrt_cm"));
-                    return new Unit(input.type, goal, input.value * operation);
                 }
             }
+            return new Unit(input.type, goal, input.value * operation);
+        }
+
+        else if (input.type.equals("currency")){
+            operation = 1 / input.strength * Unit.getStrength(goal);
+            return new Unit(input.type, goal, input.value * operation);
         }
         return input;
     }

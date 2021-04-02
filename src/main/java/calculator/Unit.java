@@ -53,6 +53,7 @@ public class Unit {
             case "in":
             case "sqrt_m":
             case "sqrt_in":
+            case "eur":
                 output = 1.0;
                 break;
             case "dm":
@@ -99,6 +100,18 @@ public class Unit {
                 break;
             case "sqrt_mi":
                 output = 0.000000000249098;
+                break;
+            case "usd":
+                output = 1.18;
+                break;
+            case "pound":
+                output = 0.85;
+                break;
+            case "china_yuan":
+                output = 7.73;
+                break;
+            case "japan_yen":
+                output = 130.0;
                 break;
             default:
                 System.out.println("Invalid kind");
