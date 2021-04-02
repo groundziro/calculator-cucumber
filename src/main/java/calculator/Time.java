@@ -15,10 +15,28 @@ public class Time {
     }
 
     public String minus(Time t){
-        int hours1 = Integer.parseInt(this.time.split(":")[0]);
-        int minutes1 = Integer.parseInt(this.time.split(":")[1]);
-        int hours2 = Integer.parseInt(t.time.split(":")[0]);
-        int minutes2 = Integer.parseInt(t.time.split(":")[1]);
+        int hours1;
+        int minutes1;
+        int hours2;
+        int minutes2;
+        if (this.format.equals("24")) {
+            hours1 = Integer.parseInt(this.time.split(":")[0]);
+            minutes1 = Integer.parseInt(this.time.split(":")[1]);
+        }
+        else{
+            String hour = to24(this.time);
+            hours1 = Integer.parseInt(hour.split(":")[0]);
+            minutes1 = Integer.parseInt(hour.split(":")[1]);
+        }
+        if (t.format.equals("24")){
+            hours2 = Integer.parseInt(t.time.split(":")[0]);
+            minutes2 = Integer.parseInt(t.time.split(":")[1]);
+        }
+        else{
+            String hour = to24(t.time);
+            hours2 = Integer.parseInt(hour.split(":")[0]);
+            minutes2 = Integer.parseInt(hour.split(":")[1]);
+        }
         int hours = hours1-hours2;
         int minutes = minutes1 - minutes2;
         if (hours <= 0){

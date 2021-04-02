@@ -21,8 +21,8 @@ public class Main {
 
 	try{
 		// Here is an example of how to use the calculator:
-		Time t1 = new Time("22:10", "24");
-		Time t2 = new Time("23:11", "24");
+		Time t1 = new Time("10:10 PM", "12");
+		Time t2 = new Time("11:11 PM", "12");
 		System.out.println(t1.minus(t2));
 
 
