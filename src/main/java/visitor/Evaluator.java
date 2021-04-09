@@ -1,9 +1,8 @@
 package visitor;
 
-import calculator.BooleanOperation;
-import calculator.Expression;
-import calculator.MyNumber;
-import calculator.Operation;
+
+import calculator.*;
+
 
 import java.util.ArrayList;
 
@@ -16,7 +15,6 @@ public class Evaluator extends Visitor {
     public void visit(MyNumber n) {
         computedValue = n.getValue();
     }
-
 
     public void visit(Operation o){
         ArrayList<Integer> evaluatedArgs = new ArrayList<>();
