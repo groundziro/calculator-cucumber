@@ -33,7 +33,7 @@ public class TestEvaluator {
     @Test
     public void testEvaluatorDivides() {
         try { op = new Divides(Arrays.asList(new MyNumber(value1), new MyNumber(value2)));
-          assertEquals(calc.eval(op),value1 / value2);
+          assertEquals(value1 / value2, calc.eval(op));
           }
         catch(IllegalConstruction e) {
             fail();
