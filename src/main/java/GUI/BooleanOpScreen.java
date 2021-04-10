@@ -1,10 +1,11 @@
 package GUI;
 
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import calculator.Memory;
+import javafx.stage.Stage;
 
-public class BooleanOpScreen extends Scene {
-    public BooleanOpScreen(Parent parent) {
-        super(parent);
+public class BooleanOpScreen extends CalculatorScreen {
+
+    public BooleanOpScreen(Memory m, Stage stage) {
+        super(m, stage);
     }
 }
