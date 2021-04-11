@@ -1,15 +1,12 @@
 package GUI;
 
 import calculator.Calculator;
-import calculator.Memory;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 
 public class SizeDialog extends Dialog<Integer> {
-    private final Memory m;
 
-    public SizeDialog(Memory memory){
-        m = memory;
+    public SizeDialog(){
         build();
     }
 
@@ -21,7 +18,7 @@ public class SizeDialog extends Dialog<Integer> {
         Button ok = new Button("Choose");
         ok.setOnAction(actionEvent -> {
             if (Calculator.isAlphaNum(tf.getText())) {
-                m.setMax(Integer.parseInt(tf.getText()));
+                setResult(Integer.parseInt(tf.getText()));
                 close();
             }else{
                 Alert alert = new Alert(Alert.AlertType.ERROR,"The text you entered is not a number, please enter a Number !",ButtonType.OK);
