@@ -1,9 +1,11 @@
 package calculator;
 
-import visitor.Evaluator;
 import visitor.Printer;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -29,6 +31,13 @@ public class Memory {
         max = 1;
     }
 
+    /**
+     * Sert à vérifier si notre mémoire est vide
+     * @return true si la mémoire est vide
+     */
+    public boolean isEmpty(){
+        return mem.isEmpty();
+    }
 
     /**
      * Sert à ajouter une expression à la mémoire
@@ -121,7 +130,6 @@ public class Memory {
             scan.close();
             setMax(expressions.size());
             addAll(expressions);
-            print();
         }catch (FileNotFoundException | IllegalConstruction ignored){
 
         }
@@ -140,7 +148,7 @@ public class Memory {
             Expression e = parseRec(exp,new ArrayList<>());
             total.add(e);
         }
-        return getOp(op,total);
+        return Calculator.getOp(op,total);
     }
 
 
@@ -187,7 +195,7 @@ public class Memory {
         if (!isAlphaNum(data.get(0)) && !data.get(0).equals("(")) {
             ArrayList<Expression> newL = new ArrayList<>();
             parseRec(getExp(data.subList(1, data.size())), newL);
-            return getOp(data.get(0), newL);
+            return Calculator.getOp(data.get(0), newL);
         } else if (isAlphaNum(data.get(0)) && data.size() == 1) {
             return new MyNumber(Integer.parseInt(data.get(0)));
         } else if (data.get(0).equals("(")){
@@ -199,44 +207,7 @@ public class Memory {
         return null;
     }
 
-    private Expression getOp(String s, ArrayList<Expression> total) {
-        try {
-            Expression exp = null;
-            switch (s) {
-                case "+":
-                    exp = new Plus(total);
-                    break;
-                case "-":
-                    exp = new Minus(total);
-                    break;
-                case "/":
-                    exp = new Divides(total);
-                    break;
-                case "*":
-                    exp = new Times(total);
-                    break;
-                case "xor":
-                    exp = new Xor(total);
-                    break;
-                case "not":
-                    exp = new Not(total);
-                    break;
-                case "and":
-                    exp = new And(total);
-                    break;
-                case "or":
-                    exp = new Or(total);
-                    break;
-                case "implies":
-                    exp = new Implies(total);
-                    break;
-            }
-            return exp;
-        }catch (Exception e){
-            System.err.println(e.getMessage());
-            return null;
-        }
-    }
+
 
     private boolean isAlphaNum(String s) {
         try{

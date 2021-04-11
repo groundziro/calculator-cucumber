@@ -8,9 +8,11 @@ public class MyNumber implements Expression
 
   public Integer getValue() { return value; }
 
+
   public /*constructor*/ MyNumber(int v) {
 	  value=v;
 	  }
+
 
   public void accept(Visitor v) {
       v.visit(this);
