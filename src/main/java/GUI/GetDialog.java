@@ -12,8 +12,8 @@ import javafx.scene.layout.HBox;
 import javafx.util.Pair;
 import visitor.Printer;
 
-public class GetDialog extends Dialog<Operation> {
-    private final ChoiceBox<Pair<String,Operation>> choiceBox = new ChoiceBox<>();
+public class GetDialog extends Dialog<Expression> {
+    private final ChoiceBox<Pair<String,Expression>> choiceBox = new ChoiceBox<>();
     private final Button ok = new Button("Choose");
     private final Memory m;
     private final Printer p = new Printer(Notation.INFIX);
@@ -26,11 +26,11 @@ public class GetDialog extends Dialog<Operation> {
         for (int i = 0; i < m.size(); i++) {
             Expression e = m.get(i);
             e.accept(p);
-            choiceBox.getItems().add(new Pair<>(p.getStr(),(Operation) e));
+            choiceBox.getItems().add(new Pair<>(p.getStr(),e));
         }
         ok.setDefaultButton(true);
         ok.setOnAction(actionEvent -> {
-            if (!choiceBox.getItems().isEmpty()) {
+            if (!choiceBox.getItems().isEmpty() && choiceBox.getValue() != null) {
                 setResult(choiceBox.getValue().getValue());
             }
             close();

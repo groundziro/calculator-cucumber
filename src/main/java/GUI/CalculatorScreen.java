@@ -1,11 +1,13 @@
 package GUI;
 
 import calculator.*;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
@@ -23,8 +25,9 @@ public class CalculatorScreen extends VBox {
     private final Calculator c = new Calculator();
     private final Text current = new Text();
     private final Text before = new Text();
-    private String currentOp;
+    private String currentOp = "";
     private Expression currentExpr;
+    private Expression oldExpr;
     private final ArrayList<Expression> currentNum = new ArrayList<>();
     private boolean equalized = false;
 
@@ -63,24 +66,30 @@ public class CalculatorScreen extends VBox {
             fc.setTitle("Choose the Memory to Load");
             fc.setInitialDirectory(new File("."));
             File res = fc.showOpenDialog(stage);
-            mem.load(res.getPath());
-            mem.print();
+            if (res!=null) {
+                mem.load(res.getPath());
+                mem.print();
+            }
         });
         get.setOnAction(actionEvent -> {
             if (mem.isEmpty())
                 load.fire();
+            if (mem.isEmpty())
+                return;
             GetDialog dial = new GetDialog(mem);
             dial.showAndWait();
-            Operation e = dial.getResult();
+            Expression e = dial.getResult();
             Printer p = new Printer(Notation.INFIX);
             e.accept(p);
             before.setText(p.getStr());
             currentExpr = e;
-            currentOp = e.getSymbol();
+            equalized=true;
         });
         size.setOnAction(actionEvent -> {
-            SizeDialog dial = new SizeDialog(mem);
+            SizeDialog dial = new SizeDialog();
             dial.showAndWait();
+            Integer res = dial.getResult();
+            mem.setMax(res);
         });
         memory.getItems().addAll(load,size,get);
         modes.getItems().addAll(mode1,mode2,mode3);
@@ -98,6 +107,11 @@ public class CalculatorScreen extends VBox {
                 if (equalized){
                     equalized = false;
                     current.setText("");
+                    before.setText("");
+                    currentExpr = null;
+                    oldExpr = null;
+                    currentOp = "";
+                    currentNum.clear();
                 }
                 current.setText(current.getText()+ finalI);
             });
@@ -109,65 +123,101 @@ public class CalculatorScreen extends VBox {
             Button op = new Button(operations[i]);
             int finalI = i;
             op.setOnAction(actionEvent -> {
-                if (current.getText().isEmpty())
+                if (current.getText().isEmpty()&&!equalized) {
+                    before.setText(c.eval(currentExpr)+operations[finalI]);
+                    currentOp = op.getText();
                     return;
-                if (before.getText().isEmpty()) {
-                    before.setText(before.getText() + Integer.parseInt(current.getText()) + operations[finalI]);
-                    currentNum.add(new MyNumber(Integer.parseInt(current.getText())));
+                }
+                MyNumber x = new MyNumber((equalized?0:Integer.parseInt(current.getText())));
+                if (before.getText().isEmpty() && !equalized) {
+                    before.setText(before.getText() + x.getValue() + operations[finalI]);
+                    currentNum.add(x);
+                    currentExpr = x;
                     currentOp=op.getText();
                 }else {
+                    if (equalized){
+                        equalized = false;
+                        currentOp = op.getText();
+                        before.setText(c.eval(currentExpr) + operations[finalI]);
+                        current.setText("");
+                        return;
+                    }
                     if (op.getText().equals(currentOp)) {
-                        currentNum.add(new MyNumber(Integer.parseInt(current.getText())));
+                        oldExpr = currentExpr;
+                        currentNum.add(x);
+                        currentExpr = Calculator.getOp(currentOp,currentNum);
                     }else{
-                        Expression oldExp = Calculator.getOp(currentOp, currentNum);
-                        currentNum.add(oldExp);
-
-                        if (currentExpr!=null)
-                            currentNum.add(0,currentExpr);
-                        currentExpr = Calculator.getOp(op.getText(),currentNum);
+                        oldExpr = Calculator.getOp(currentOp,currentNum);
                         currentNum.clear();
-                        currentNum.add(new MyNumber(Integer.parseInt(current.getText())));
+                        currentNum.add(oldExpr);
+                        currentNum.add(x);
+                        currentExpr = Calculator.getOp(currentOp,currentNum);
                         currentOp = op.getText();
                     }
-                    before.setText(before.getText() + Integer.parseInt(current.getText())+operations[finalI] );
+                    before.setText(c.eval(currentExpr)+operations[finalI]);
+                    currentNum.clear();
+                    currentNum.add(currentExpr);
+                    mem.add(currentExpr);
                 }
                 current.setText("");
             });
             ops.add(op);
         }
-        grid.setGridLinesVisible(true);
-        setOnKeyTyped(keyEvent -> {
-            switch(keyEvent.getCode()){
-                case NUMPAD0: ops.get(0).fire();break;
-                case NUMPAD1: ops.get(1).fire();break;
-                case NUMPAD2: ops.get(2).fire();break;
-                case NUMPAD3: ops.get(3).fire();break;
-                case NUMPAD4: ops.get(4).fire();break;
-                case NUMPAD5: ops.get(5).fire();break;
-                case NUMPAD6: ops.get(6).fire();break;
-                case NUMPAD7: ops.get(7).fire();break;
-                case NUMPAD8: ops.get(8).fire();break;
-                case NUMPAD9: ops.get(9).fire();break;
-            }
-        });
+
         Button eq = new Button("=");
         eq.setOnAction(actionEvent -> {
+            oldExpr = currentExpr;
             if (!current.getText().isEmpty()) {
-                currentNum.add(new MyNumber(Integer.parseInt(current.getText())));
+                if (!equalized || !currentOp.isEmpty())
+                    currentNum.add(new MyNumber(Integer.parseInt(current.getText())));
             }
             assert !currentNum.isEmpty();
-            currentExpr = Calculator.getOp(currentOp,currentNum);
+            if (!currentOp.isEmpty()) {
+                currentExpr = Calculator.getOp(currentOp, currentNum);
+                currentNum.clear();
+                currentNum.add(currentExpr);
+            }
+            else {
+                currentExpr = currentNum.get(0);
+                oldExpr = currentExpr;
+            }
             if (currentExpr == null)
                 return;
-            System.out.println(currentExpr);
-            before.setText(c.eval(currentExpr) + currentOp);
+            before.setText(c.eval(oldExpr) + (current.getText().isEmpty()?"":currentOp) + (currentOp.isEmpty()?"":current.getText())+ " = "+ c.eval(currentExpr));
             mem.add(currentExpr);
             equalized = true;
         });
-        ops.add(eq);
-        grid.addColumn(0,numbers.toArray(new Button[0]));
-        grid.addColumn(1,ops.toArray(new Button[0]));
-        grid.addColumn(2,before,current);
-    }
+        eq.setDefaultButton(true);
 
+        ArrayList<Node> row1 = new ArrayList<>(numbers.subList(7,10));
+        row1.add(ops.get(0));
+        ArrayList<Node> row2 = new ArrayList<>(numbers.subList(4,7));
+        row2.add(ops.get(1));
+        ArrayList<Node> row3 = new ArrayList<>(numbers.subList(1,4));
+        row3.add(ops.get(2));
+        grid.addRow(0,row1.toArray(new Node[0]));
+        grid.addRow(1,row2.toArray(new Node[0]));
+        grid.addRow(2,row3.toArray(new Node[0]));
+        grid.addRow(3,numbers.get(0),new Region(),eq,ops.get(3));
+        grid.addColumn(5,before,current);
+        setOnKeyPressed(keyEvent -> {
+            switch(keyEvent.getCode()){
+                case NUMPAD0: numbers.get(0).fire();break;
+                case NUMPAD1: numbers.get(1).fire();break;
+                case NUMPAD2: numbers.get(2).fire();break;
+                case NUMPAD3: numbers.get(3).fire();break;
+                case NUMPAD4: numbers.get(4).fire();break;
+                case NUMPAD5: numbers.get(5).fire();break;
+                case NUMPAD6: numbers.get(6).fire();break;
+                case NUMPAD7: numbers.get(7).fire();break;
+                case NUMPAD8: numbers.get(8).fire();break;
+                case NUMPAD9: numbers.get(9).fire();break;
+                case ENTER: eq.fire();break;
+                case PLUS: ops.get(0).fire();break;
+                case MINUS: ops.get(1).fire();break;
+                case MULTIPLY: ops.get(2).fire();break;
+                case DIVIDE: ops.get(3).fire();break;
+            }
+        });
+    }
 }

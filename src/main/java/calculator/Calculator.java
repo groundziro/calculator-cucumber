@@ -51,7 +51,7 @@ public class Calculator {
             return exp;
         }catch (Exception e){
             System.err.println(e.getMessage());
-            return null;
+            return new MyNumber(Integer.MIN_VALUE);
         }
     }
 
