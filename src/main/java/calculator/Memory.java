@@ -72,7 +72,7 @@ public class Memory {
     /**
      * Cette fonction sert à récupérer une expression dans la mémoire
      * @param index Indice de la profondeur où on doit aller rechercher l'expression
-     *              => size-1 c'est le dessus de la pile et 0 c'est la base de la pile
+     *               size-1 c'est le dessus de la pile et 0 c'est la base de la pile
      * @return L'expression recherchée
      */
     public Expression get(int index){

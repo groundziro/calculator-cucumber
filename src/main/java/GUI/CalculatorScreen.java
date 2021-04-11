@@ -82,7 +82,7 @@ public class CalculatorScreen extends VBox {
             Printer p = new Printer(Notation.INFIX);
             e.accept(p);
             before.setText(p.getStr());
-            currentExpr = e;
+            currentNum.add(e);
             equalized=true;
         });
         size.setOnAction(actionEvent -> {
