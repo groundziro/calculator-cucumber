@@ -124,6 +124,8 @@ public class CalculatorScreen extends VBox {
             int finalI = i;
             op.setOnAction(actionEvent -> {
                 if (current.getText().isEmpty()&&!equalized) {
+                    if (before.getText().isEmpty())
+                        return;
                     before.setText(c.eval(currentExpr)+operations[finalI]);
                     currentOp = op.getText();
                     return;
