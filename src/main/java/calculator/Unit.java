@@ -1,11 +1,9 @@
 package calculator;
 
-import java.util.Arrays;
-import java.util.List;
 
 public class Unit {
-    public final String type; // support: length
-    public final String kind; // support: km, m
+    public final String type;
+    public final String kind;
     public final Double value;
     public final Double strength;
 
@@ -13,13 +11,13 @@ public class Unit {
         this.type = type;
         this.kind = kind;
         this.value = value;
-        this.strength = getStrength(this.kind);
+        this.strength = get_strength(this.kind);
     }
 
-    public static Double getStrength(String value){
+    public static Double get_strength(String value){
         double output;
         switch (value){
-            case "km":
+            case "Kilometres":
             case "ml":
             case "cubic cm":
             case "millisec":
@@ -34,12 +32,12 @@ public class Unit {
             case "decigrams":
                 output = 10.0;
                 break;
-            case "m":
-            case "sqrt_m":
-            case "eur":
-            case "watts":
-            case "atmos":
-            case "cm per sec":
+            case "Metres":
+            case "Square metres":
+            case "Europe - Euro":
+            case "Watts":
+            case "Atmospheres":
+            case "Centimetres per second":
             case "celsius":
             case "sec":
             case "l":
@@ -50,103 +48,103 @@ public class Unit {
             case "decagrams":
                 output = 0.1;
                 break;
-            case "cm":
-            case "m per sec":
+            case "Centimetres":
+            case "Metres per second":
             case "hectograms":
                 output = 0.01;
                 break;
-            case "mm":
-            case "kilowatts":
+            case "Millimetres":
+            case "Kilowatts":
             case "cubic m":
             case "kilograms":
                 output = 0.001;
                 break;
-            case "in":
+            case "Inches":
                 output = 39.37008;
                 break;
-            case "ft":
+            case "Feet":
                 output = 3.28084;
                 break;
-            case "yd":
+            case "Yards":
                 output = 1.093613;
                 break;
-            case "mi":
+            case "Miles":
                 output = 0.000621;
                 break;
-            case "nm":
+            case "Nautical Miles":
                 output = 0.00054;
                 break;
-            case "sqrt_mm":
+            case "Square millimetres":
                 output = 1000000;
                 break;
-            case "sqrt_cm":
+            case "Square centimetres":
                 output = 10000;
                 break;
-            case "ha":
+            case "Hectares":
                 output = 0.0001;
                 break;
-            case "sqrt_km":
+            case "Square kilometres":
             case "metric tonnes":
                 output = 0.000001;
                 break;
-            case "sqrt_in":
+            case "Square inches":
                 output = 1550.003;
                 break;
-            case "sqrt_ft":
+            case "Square feet":
                 output = 10.76391;
                 break;
-            case "sqrt_yd":
+            case "Square yards":
                 output = 1.19599;
                 break;
-            case "ac":
+            case "Acres":
                 output = 0.000247;
                 break;
-            case "sqrt_mi":
+            case "Square miles":
                 output = 0.000000386102159;
                 break;
-            case "usd":
+            case "United States - Dollar":
                 output = 1.18;
                 break;
-            case "pound":
+            case "United Kingdom - Pound":
                 output = 0.85;
                 break;
-            case "china_yuan":
+            case "China - Yuan":
                 output = 7.73;
                 break;
-            case "japan_yen":
+            case "Japan - Yen":
                 output = 130.0;
                 break;
-            case "horsepower":
+            case "Horsepower (US)":
                 output = 0.001341;
                 break;
-            case "foot-pounds/minute":
+            case "Foot-pounds/minute":
                 output = 44.25373;
                 break;
             case "BTUs/minute":
                 output = 0.056869;
                 break;
-            case "bars":
+            case "Bars":
                 output = 1.01325;
                 break;
-            case "kilopascals":
+            case "Kilopascals":
                 output = 101.325;
                 break;
-            case "millimetres of mercury":
+            case "Millimetres of mercury":
                 output = 760.1275;
                 break;
-            case "pascals":
+            case "Pascals":
                 output = 101325.0;
                 break;
-            case "pounds per square inch":
+            case "Pounds per square inch":
                 output = 14.69595;
                 break;
-            case "km per hour":
+            case "Kilometres per hour":
                 output = 0.036;
                 break;
-            case "ft per sec":
+            case "Feet per second":
                 output = 0.032808;
                 break;
-            case "mi per hour":
+            case "Miles per hour":
                 output = 0.022371;
                 break;
             case "knots":

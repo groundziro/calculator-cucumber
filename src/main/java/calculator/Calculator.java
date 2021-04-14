@@ -47,6 +47,8 @@ public class Calculator {
                 case "implies":
                     exp = new Implies(total);
                     break;
+                case "==":
+                    exp = new Equivalence(total);
             }
             return exp;
         }catch (Exception e){

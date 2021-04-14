@@ -11,8 +11,11 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 public class MainScreen extends CalculatorScreen{
+
     public MainScreen(Memory m, Stage stage) {
         super(m, stage,0);
+        buildGrid();
+        this.getChildren().addAll(bar,grid);
     }
 
     protected void buildGrid() {
@@ -134,7 +137,13 @@ public class MainScreen extends CalculatorScreen{
                 case MINUS: ops.get(1).fire();break;
                 case MULTIPLY: ops.get(2).fire();break;
                 case DIVIDE: ops.get(3).fire();break;
+                case BACK_SPACE:
+                case DELETE:back();break;
             }
         });
+    }
+    public void back(){
+        String cur = current.getText();
+        current.setText(cur.substring(0,cur.length()-1));
     }
 }

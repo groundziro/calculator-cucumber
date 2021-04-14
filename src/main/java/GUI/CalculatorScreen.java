@@ -37,12 +37,25 @@ public abstract class CalculatorScreen extends VBox {
         build(mode);
     }
 
+
+
     private void build(int mode){
         FileChooser fc = new FileChooser();
         Menu modes = new Menu("Modes");
         Menu memory = new Menu("Memory");
         MenuItem mode0 = new MenuItem("Classic Calculator");
-        MenuItem mode1 = new MenuItem("Converter");
+        Menu mode1 = new Menu("Converter");
+        String[] types = {"Length", "Area", "Currency", "Power", "Pressure", "Speed", "Time", "Volume",
+                          "Weight and mass"};
+        for (String type:types) {
+            MenuItem t = new MenuItem(type);
+            t.setOnAction(actionEvent -> {
+                System.out.println("Goes to the Converter");
+                ConverterScreen conv = new ConverterScreen(mem, stage, t.getText());
+                stage.getScene().setRoot(conv);
+            });
+            mode1.getItems().add(t);
+        }
         MenuItem mode2 = new MenuItem("Time Computation");
         MenuItem mode3 = new MenuItem("Boolean Operations");
 
@@ -57,13 +70,13 @@ public abstract class CalculatorScreen extends VBox {
             }
 
         });
-        mode1.setOnAction(actionEvent -> {
-            System.out.println("Goes to the Converter");
-            if (mode!=1) {
-                ConverterScreen conv = new ConverterScreen(mem, stage);
-                stage.getScene().setRoot(conv);
-            }
-        });
+//        mode1.setOnAction(actionEvent -> {
+//            System.out.println("Goes to the Converter");
+//            if (mode!=1) {
+//                ConverterScreen conv = new ConverterScreen(mem, stage);
+//                stage.getScene().setRoot(conv);
+//            }
+//        });
         mode2.setOnAction(actionEvent -> {
             System.out.println("Goes to time Computation");
             if (mode!=2) {
@@ -110,8 +123,7 @@ public abstract class CalculatorScreen extends VBox {
         memory.getItems().addAll(load,size,get);
         modes.getItems().addAll(mode0,mode1,mode2,mode3);
         bar.getMenus().addAll(modes,memory);
-        buildGrid();
-        this.getChildren().addAll(bar,grid);
+
     }
 
     protected abstract void buildGrid();
