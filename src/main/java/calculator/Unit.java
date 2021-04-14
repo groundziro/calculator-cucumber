@@ -18,18 +18,18 @@ public class Unit {
         double output;
         switch (value){
             case "Kilometres":
-            case "ml":
-            case "cubic cm":
-            case "millisec":
-            case "mg":
+            case "Millilitres":
+            case "Cubic centimetres":
+            case "Milliseconds":
+            case "Milligrams":
                 output = 1000.0;
                 break;
             case "hm":
-            case "cg":
+            case "Centigrams":
                 output = 100.0;
                 break;
             case "dam":
-            case "decigrams":
+            case "Decigrams":
                 output = 10.0;
                 break;
             case "Metres":
@@ -39,24 +39,24 @@ public class Unit {
             case "Atmospheres":
             case "Centimetres per second":
             case "celsius":
-            case "sec":
-            case "l":
-            case "g":
+            case "Seconds":
+            case "Litres":
+            case "Grams":
                 output = 1.0;
                 break;
             case "dm":
-            case "decagrams":
+            case "Decagrams":
                 output = 0.1;
                 break;
             case "Centimetres":
             case "Metres per second":
-            case "hectograms":
+            case "Hectograms":
                 output = 0.01;
                 break;
             case "Millimetres":
             case "Kilowatts":
-            case "cubic m":
-            case "kilograms":
+            case "Cubic metres":
+            case "Kilograms":
                 output = 0.001;
                 break;
             case "Inches":
@@ -84,7 +84,7 @@ public class Unit {
                 output = 0.0001;
                 break;
             case "Square kilometres":
-            case "metric tonnes":
+            case "Metric tonnes":
                 output = 0.000001;
                 break;
             case "Square inches":
@@ -147,10 +147,10 @@ public class Unit {
             case "Miles per hour":
                 output = 0.022371;
                 break;
-            case "knots":
+            case "Knots":
                 output = 0.01944;
                 break;
-            case "mach":
+            case "Mach":
                 output = 0.000029;
                 break;
             case "fahrenheit":
@@ -159,88 +159,88 @@ public class Unit {
             case "kelvin":
                 output = 274.15;
                 break;
-            case "microsec":
+            case "Microseconds":
                 output = 1000000.0;
                 break;
             case "min":
                 output = 0.016667;
                 break;
-            case "hours":
+            case "Hours":
                 output = 0.000278;
                 break;
-            case "days":
+            case "Days":
                 output = 0.000012;
                 break;
-            case "weeks":
+            case "Weeks":
                 output = 0.000002;
                 break;
-            case "years":
+            case "Years":
                 output = 0.000000031688088;
                 break;
-            case "teaspoons US":
+            case "Teaspoons (US)":
                 output = 202.8841;
                 break;
-            case "tablespoons US":
+            case "Tablespoons (US)":
                 output = 67.62805;
                 break;
-            case "fluid ounces US":
+            case "Fluid ounces (US)":
                 output = 33.81402;
                 break;
-            case "cups US":
+            case "Cups (US)":
                 output = 4.226753;
                 break;
-            case "pints US":
+            case "Pints (US)":
                 output = 2.113376;
                 break;
-            case "quarts US":
+            case "Quarts (US)":
                 output = 1.056688;
                 break;
-            case "gallons US":
+            case "Gallons (US)":
                 output = 0.264172;
                 break;
-            case "cubic in":
+            case "Cubic inches":
                 output = 61.02374;
                 break;
-            case "cubic ft":
+            case "Cubic feet":
                 output = 0.035315;
                 break;
-            case "cubic yd":
+            case "Cubic yards":
                 output = 0.001308;
                 break;
-            case "teaspoons UK":
+            case "Teaspoons (UK)":
                 output = 168.9364;
                 break;
-            case "tablespoons UK":
+            case "Tablespoons (UK)":
                 output = 56.31213;
                 break;
-            case "fluid ounces UK":
+            case "Fluid ounces (UK)":
                 output = 35.19508;
                 break;
-            case "pints UK":
+            case "Pints (UK)":
                 output = 1.759754;
                 break;
-            case "quarts UK":
+            case "Quarts (UK)":
                 output = 0.879877;
                 break;
-            case "gallons UK":
+            case "Gallons (UK)":
                 output = 0.219969;
                 break;
-            case "carats":
+            case "Carats":
                 output = 5.0;
                 break;
-            case "ounces":
+            case "Ounces":
                 output = 0.035274;
                 break;
-            case "pounds":
+            case "Pounds":
                 output = 0.002205;
                 break;
-            case "stone":
+            case "Stone":
                 output = 0.000157;
                 break;
-            case "short tons US":
+            case "Short tons (US)":
                 output = 0.000001;
                 break;
-            case "long tons UK":
+            case "Long tons (UK)":
                 output = 0.000000984206528;
                 break;
             default:

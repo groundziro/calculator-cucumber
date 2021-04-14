@@ -46,7 +46,7 @@ public abstract class CalculatorScreen extends VBox {
         MenuItem mode0 = new MenuItem("Classic Calculator");
         Menu mode1 = new Menu("Converter");
         String[] types = {"Length", "Area", "Currency", "Power", "Pressure", "Speed", "Time", "Volume",
-                          "Weight and mass"};
+                          "Weight and mass", "Temperature"};
         for (String type:types) {
             MenuItem t = new MenuItem(type);
             t.setOnAction(actionEvent -> {
