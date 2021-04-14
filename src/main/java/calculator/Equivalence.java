@@ -5,6 +5,7 @@ import java.util.List;
 public class Equivalence extends BooleanOperation{
     public Equivalence(List<Expression> elist) throws IllegalConstruction {
         super(elist);
+        symbol="==";
     }
 
     @Override

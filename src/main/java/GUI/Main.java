@@ -18,7 +18,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        Scene scene = new Scene(new CalculatorScreen(m,primaryStage));
+        Scene scene = new Scene(new MainScreen(m,primaryStage));
         scene.addEventHandler(KeyEvent.KEY_PRESSED, keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ESCAPE){
                 Stage sb = (Stage)scene.getWindow();
