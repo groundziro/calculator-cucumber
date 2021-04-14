@@ -8,6 +8,11 @@ import javafx.stage.Stage;
 public class ConverterScreen extends CalculatorScreen {
 
     public ConverterScreen(Memory m, Stage stage) {
-        super(m, stage);
+        super(m, stage,1);
+    }
+
+    @Override
+    protected void buildGrid() {
+
     }
 }

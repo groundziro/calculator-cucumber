@@ -5,6 +5,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import visitor.Printer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +46,23 @@ public class CalculatorSteps {
 			fail();
 		}
 	}
-
+	@Given("a boolean operation {string}")
+	public void givenABoolOperation(String s){
+		// Write code here that turns the phrase above into concrete actions
+		params = new ArrayList<>(); // create an empty set of parameters to be filled in
+		try {
+			switch (s) {
+				case "and": { op = new And(params);break;}
+				case "not": { op = new Not(params);break;}
+				case "or": { op = new Or(params);break;}
+				case "implies": {op = new Implies(params);break;}
+				case "==": {op= new Equivalence(params);break;}
+				default: { fail(); }
+			}
+		} catch (IllegalConstruction e) {
+			fail();
+		}
+	}
 	// The following example shows how to use a DataTable provided as input.
 	// (The example looks slightly complex, since DataTables can take as input
 	//  tables in two dimensions, i.e. rows and lines. This is why the input
@@ -77,8 +94,10 @@ public class CalculatorSteps {
 	@Then("^its (.*) notation is (.*)$")
 	public void thenItsNotationIs(String notation, String s) {
 		if (notation.equals("PREFIX")||notation.equals("POSTFIX")||notation.equals("INFIX")) {
-			op.notation = Notation.valueOf(notation);
-			assertEquals(s, op.toString());
+			Printer p = new Printer(Notation.valueOf(notation));
+			op.accept(p);
+			//op.notation = Notation.valueOf(notation);
+			assertEquals(s, p.getStr());
 		}
 		else fail(notation + " is not a correct notation! ");
 	}
@@ -86,6 +105,11 @@ public class CalculatorSteps {
 	@When("^I provide a (.*) number (\\d+)$")
 	public void whenIProvideANumber(String s, int val) {
 		params.add(new MyNumber(val));
+	}
+
+	@When("^I provide a (.*) bool (true|false)$")
+	public void whenIProvideABool(String s, boolean val){
+		params.add(new MyBoolean(val));
 	}
 
 	@Then("^the (.*) is (\\d+)$")
@@ -112,5 +136,12 @@ public class CalculatorSteps {
 		assertEquals(val, c.eval(op));
 
 	}
+
+	@Then("the boolean operation evaluates to (true|false)$")
+	public void thenTheBoolOperationEvaluatesTo(boolean val){
+		op.addMoreParams(params);
+		assertEquals((val?0:1),c.eval(op));
+	}
+
 
 }
