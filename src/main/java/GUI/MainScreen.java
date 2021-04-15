@@ -1,13 +1,16 @@
 package GUI;
 
-import calculator.Calculator;
-import calculator.Memory;
-import calculator.MyNumber;
+import calculator.*;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.Region;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import visitor.Printer;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class MainScreen extends CalculatorScreen{
@@ -19,6 +22,12 @@ public class MainScreen extends CalculatorScreen{
     }
 
     protected void buildGrid() {
+        FileChooser fc = new FileChooser();
+        Menu memory = new Menu("Memory");
+        MenuItem load = new MenuItem("Load...");
+        MenuItem size = new MenuItem("Memory Size");
+        MenuItem get = new MenuItem("Get Computation");
+        MenuItem save = new MenuItem("Save Memory");
         ArrayList<Button> numbers = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             Button number = new Button(Integer.toString(i));
@@ -132,18 +141,56 @@ public class MainScreen extends CalculatorScreen{
                 case NUMPAD7: numbers.get(7).fire();break;
                 case NUMPAD8: numbers.get(8).fire();break;
                 case NUMPAD9: numbers.get(9).fire();break;
-                case ENTER: eq.fire();break;
+                case ENTER:
+                case C:
+                    eq.fire();break;
                 case PLUS: ops.get(0).fire();break;
                 case MINUS: ops.get(1).fire();break;
                 case MULTIPLY: ops.get(2).fire();break;
                 case DIVIDE: ops.get(3).fire();break;
                 case BACK_SPACE:
-                case DELETE:back();break;
+                case DELETE:back(1);break;
             }
         });
+        load.setOnAction(actionEvent -> {
+            fc.setTitle("Choose the Memory to Load");
+            fc.setInitialDirectory(new File("."));
+            fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Memory Files","*.mem"),
+                    new FileChooser.ExtensionFilter("All Files","*"));
+            File res = fc.showOpenDialog(stage);
+            if (res!=null) {
+                mem.load(res.getPath());
+                mem.print();
+            }
+        });
+        get.setOnAction(actionEvent -> {
+            if (mem.isEmpty())
+                load.fire();
+            if (mem.isEmpty())
+                return;
+            GetDialog dial = new GetDialog(mem);
+            dial.showAndWait();
+            Expression e = dial.getResult();
+            Printer p = new Printer(Notation.INFIX);
+            e.accept(p);
+            before.setText(p.getStr());
+            currentNum.add(e);
+            equalized=true;
+        });
+
+        size.setOnAction(actionEvent -> {
+            SizeDialog dial = new SizeDialog();
+            dial.showAndWait();
+            Integer res = dial.getResult();
+            mem.setMax(res);
+        });
+        save.setOnAction(actionEvent -> {
+            File file = fc.showSaveDialog(stage);
+            if (file!=null)
+                mem.save(file.getAbsolutePath());
+        });
+        memory.getItems().addAll(load,size,get,save);
+        bar.getMenus().add(memory);
     }
-    public void back(){
-        String cur = current.getText();
-        current.setText(cur.substring(0,cur.length()-1));
-    }
+
 }

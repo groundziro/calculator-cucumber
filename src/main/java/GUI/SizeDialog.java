@@ -17,7 +17,14 @@ public class SizeDialog extends Dialog<Integer> {
         tf.setEditable(true);
         Button ok = new Button("Choose");
         ok.setOnAction(actionEvent -> {
-            if (Calculator.isAlphaNum(tf.getText())) {
+            if (tf.getText().isEmpty()) {
+                setResult(1);
+                Alert alert = new Alert(Alert.AlertType.WARNING,"Since you didin't enter value, the memory has " +
+                        "a default size of 1");
+                alert.showAndWait();
+                close();
+            }
+            else if (Calculator.isAlphaNum(tf.getText())) {
                 setResult(Integer.parseInt(tf.getText()));
                 close();
             }else{

@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 public class BooleanOpScreen extends CalculatorScreen {
     boolean first = true;
+    boolean notOp = false;
     boolean equalized = false;
 
     public BooleanOpScreen(Memory m, Stage stage) {
@@ -33,28 +34,33 @@ public class BooleanOpScreen extends CalculatorScreen {
             Button operation = new Button(op);
             operation.setOnAction(actionEvent -> {
                 if (equalized) {
-                    before.setText("");
+                    current.setText("");
                     equalized = false;
                 }
-                before.setText(before.getText() + (!first?" , ":"") +op +" ( ");
+                notOp = operation.getText().equals(ops[2]);
+                current.setText(current.getText() + (!first?" , ":"") +op +" ( ");
                 first = true;
             });
             operations.add(operation);
         }
         Button parenthesis = new Button(")");
-        parenthesis.setOnAction(actionEvent -> before.setText(before.getText()+" )"));
+        parenthesis.setOnAction(actionEvent -> current.setText(current.getText()+" )"));
         operations.add(parenthesis);
         setOnKeyPressed(keyEvent-> {
+            if (keyEvent.getCode()==KeyCode.NUMPAD0)
+                t.fire();
+            if (keyEvent.getCode() == KeyCode.NUMPAD1)
+                f.fire();
             if (keyEvent.getCode()== KeyCode.ENTER || keyEvent.getCode() == KeyCode.C){
-                int depth = goodString(before.getText());
+                int depth = goodString(current.getText());
                 if (depth==0) {
                     try {
-                        String s = before.getText().substring(0,1);
+                        String s = current.getText().substring(0,1);
                         if (Calculator.isAlphaNum(s))
                             currentExpr = new MyBoolean((Integer.parseInt(s) != 1));
                         else
-                            currentExpr = mem.parse(before.getText());
-                        current.setText(String.valueOf((c.eval(currentExpr) == 0)));
+                            currentExpr = mem.parse(current.getText());
+                        before.setText(String.valueOf((c.eval(currentExpr) == 0)));
                     } catch (IllegalConstruction illegalConstruction) {
                         illegalConstruction.printStackTrace();
                     }
@@ -62,29 +68,32 @@ public class BooleanOpScreen extends CalculatorScreen {
                     equalized = true;
 
                 }else {
-                    Alert alert = new Alert(Alert.AlertType.WARNING,"There are missing "+ depth +" parenthesis in your operation,"
+                    Alert alert = new Alert(Alert.AlertType.WARNING,"There are " + depth+" missing parenthesis in your operation,"
                                             + "\n please verify your operations");
                     alert.showAndWait();
                 }
             }
         });
         grid.addColumn(0,t,f);
-        grid.addColumn(1,operations.toArray(new Button[0]));
-        grid.addColumn(2,before,current);
+        grid.addColumn(1,operations.subList(0,2).toArray(new Button[0]));
+        grid.addColumn(2,operations.subList(2,4).toArray(new Button[0]));
+        grid.addColumn(3,operations.subList(4,6).toArray(new Button[0]));
+        grid.addColumn(4,before,current);
+        grid.addRow(3,parenthesis);
     }
 
     private void action(Button f) {
         f.setOnAction(actionEvent -> {
             if (equalized) {
-                before.setText("");
+                current.setText("");
                 equalized = false;
             }
             if (first) {
-                before.setText(before.getText() + f.getText());
+                current.setText(current.getText() + f.getText());
                 first = false;
             }
             else
-                before.setText(before.getText() + " , " + f.getText());
+                current.setText(current.getText() + " , " + f.getText() + (notOp?" ) ":""));
         });
     }
 

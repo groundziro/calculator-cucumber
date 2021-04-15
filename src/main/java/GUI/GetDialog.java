@@ -3,7 +3,6 @@ package GUI;
 import calculator.Expression;
 import calculator.Memory;
 import calculator.Notation;
-import calculator.Operation;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Dialog;

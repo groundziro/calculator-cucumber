@@ -37,12 +37,15 @@ public abstract class CalculatorScreen extends VBox {
         build(mode);
     }
 
-
+    public void back(int size){
+        String cur = current.getText();
+        current.setText(cur.substring(0,cur.length()-size));
+    }
 
     private void build(int mode){
-        FileChooser fc = new FileChooser();
+
         Menu modes = new Menu("Modes");
-        Menu memory = new Menu("Memory");
+
         MenuItem mode0 = new MenuItem("Classic Calculator");
         Menu mode1 = new Menu("Converter");
         String[] types = {"Length", "Area", "Currency", "Power", "Pressure", "Speed", "Time", "Volume",
@@ -59,9 +62,7 @@ public abstract class CalculatorScreen extends VBox {
         MenuItem mode2 = new MenuItem("Time Computation");
         MenuItem mode3 = new MenuItem("Boolean Operations");
 
-        MenuItem load = new MenuItem("Load...");
-        MenuItem size = new MenuItem("Memory Size");
-        MenuItem get = new MenuItem("Get Computation");
+
         mode0.setOnAction(actionEvent -> {
             System.out.println("Goes to the Classic Mode");
             if (mode!=0) {
@@ -70,13 +71,6 @@ public abstract class CalculatorScreen extends VBox {
             }
 
         });
-//        mode1.setOnAction(actionEvent -> {
-//            System.out.println("Goes to the Converter");
-//            if (mode!=1) {
-//                ConverterScreen conv = new ConverterScreen(mem, stage);
-//                stage.getScene().setRoot(conv);
-//            }
-//        });
         mode2.setOnAction(actionEvent -> {
             System.out.println("Goes to time Computation");
             if (mode!=2) {
@@ -91,39 +85,8 @@ public abstract class CalculatorScreen extends VBox {
                 stage.getScene().setRoot(bool);
             }
         });
-        load.setOnAction(actionEvent -> {
-            fc.setTitle("Choose the Memory to Load");
-            fc.setInitialDirectory(new File("."));
-            File res = fc.showOpenDialog(stage);
-            if (res!=null) {
-                mem.load(res.getPath());
-                mem.print();
-            }
-        });
-        get.setOnAction(actionEvent -> {
-            if (mem.isEmpty())
-                load.fire();
-            if (mem.isEmpty())
-                return;
-            GetDialog dial = new GetDialog(mem);
-            dial.showAndWait();
-            Expression e = dial.getResult();
-            Printer p = new Printer(Notation.INFIX);
-            e.accept(p);
-            before.setText(p.getStr());
-            currentNum.add(e);
-            equalized=true;
-        });
-        size.setOnAction(actionEvent -> {
-            SizeDialog dial = new SizeDialog();
-            dial.showAndWait();
-            Integer res = dial.getResult();
-            mem.setMax(res);
-        });
-        memory.getItems().addAll(load,size,get);
         modes.getItems().addAll(mode0,mode1,mode2,mode3);
-        bar.getMenus().addAll(modes,memory);
-
+        bar.getMenus().add(modes);
     }
 
     protected abstract void buildGrid();
