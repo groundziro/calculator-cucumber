@@ -38,7 +38,7 @@ public class Unit {
             case "Watts":
             case "Atmospheres":
             case "Centimetres per second":
-            case "celsius":
+            case "Celsius":
             case "Seconds":
             case "Litres":
             case "Grams":
@@ -153,10 +153,10 @@ public class Unit {
             case "Mach":
                 output = 0.000029;
                 break;
-            case "fahrenheit":
+            case "Fahrenheit":
                 output = 33.8;
                 break;
-            case "kelvin":
+            case "Kelvin":
                 output = 274.15;
                 break;
             case "Microseconds":
