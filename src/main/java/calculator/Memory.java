@@ -135,7 +135,7 @@ public class Memory {
         }
     }
 
-    private Expression parse(String data) throws IllegalConstruction {
+    public Expression parse(String data) throws IllegalConstruction {
         ArrayList<String> str = new ArrayList<>(Arrays.asList(data.split(" | , ")));
         String op = str.get(0);
         ArrayList<String> expression = getExp(str.subList(1,str.size()));

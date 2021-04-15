@@ -1,13 +1,80 @@
 package calculator;
 
-import visitor.Visitor;
-
+import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
 
-public class Time {
-    public final String time;
-    public final String format;
+public class Time{
+
+    public static String now(){
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+        return dtf.format(now);
+    }
+
+    public static boolean hoursWellFormated(String checking) {
+        return checking.matches("^(0?[1-9]|1[0-9]|2[0-3]):[0-5]?[0-9](:[0-5]?[0-9])?$");
+    }
+
+    private String secString(String hour){
+        boolean format = hour.matches("^(0?[1-9]|1[0-9]|2[0-3]):[0-5]?[0-9]:[0-5]?[0-9]$");
+        String output;
+        if (! format){
+            output = hour + ":00";
+        }
+        else{
+            output = hour;
+        }
+        return output;
+    }
+
+    public String minus(LocalDate first_date, LocalDate second_date, String first_hour, String second_hour){
+        LocalTime first_time = LocalTime.parse(first_hour,DateTimeFormatter.ofPattern("HH:mm:ss"));
+        LocalTime second_time = LocalTime.parse(second_hour,DateTimeFormatter.ofPattern("HH:mm:ss"));
+        LocalDateTime first_time_updated = first_date.atTime(first_time);
+        LocalDateTime second_time_updated = second_date.atTime(second_time);
+        String time1 = first_time_updated.toString().replace('T', ' ');
+        String time2 = second_time_updated.toString().replace('T', ' ');
+        String[] date_and_hours1 = time1.split(" ");
+        String[] date_and_hours2 = time2.split(" ");
+        String[] date1 = date_and_hours1[0].split("-");
+        String[] date2 = date_and_hours2[0].split("-");
+        String[] hours1 = secString(date_and_hours1[1]).split(":");
+        String[] hours2 = secString(date_and_hours2[1]).split(":");
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Integer.parseInt(date1[0]), Integer.parseInt(date1[1]), Integer.parseInt(date1[2]),
+                     Integer.parseInt(hours1[0]), Integer.parseInt(hours1[1]), Integer.parseInt(hours1[2]));
+        calendar.add(Calendar.YEAR, -Integer.parseInt(date2[0]));
+        calendar.add(Calendar.MONTH, -Integer.parseInt(date2[1]));
+        calendar.add(Calendar.DATE, -Integer.parseInt(date2[2]));
+        calendar.add(Calendar.HOUR, -Integer.parseInt(hours2[0]));
+        calendar.add(Calendar.MINUTE, -Integer.parseInt(hours2[1]));
+        calendar.add(Calendar.SECOND, -Integer.parseInt(hours2[2]));
+        return calendar.getTime().toString();
+    }
+
+    public void plus(LocalDate l, LocalDate r, String hourL, String hourR){
+        LocalTime timeL = LocalTime.parse(hourL,DateTimeFormatter.ofPattern("HH:mm:ss"));
+        LocalTime timeR = LocalTime.parse(hourR,DateTimeFormatter.ofPattern("HH:mm:ss"));
+        LocalDateTime updatedL = l.atTime(timeL);
+        LocalDateTime updatedR = r.atTime(timeR);
+    }
+
+    public Duration elapsed(LocalDate l, LocalDate r, String hourL, String hourR){
+        LocalTime timeL = LocalTime.parse(hourL,DateTimeFormatter.ofPattern("HH:mm:ss"));
+        LocalTime timeR = LocalTime.parse(hourR,DateTimeFormatter.ofPattern("HH:mm:ss"));
+        LocalDateTime updatedL = l.atTime(timeL);
+        LocalDateTime updatedR = r.atTime(timeR);
+        return Duration.between(updatedL,updatedR);
+    }
+}
+
+/*
+public class Time{
 
     public Time (String time, String format){
         this.time = time;
@@ -104,3 +171,4 @@ public class Time {
         return hours + ":" + min;
     }
 }
+*/
