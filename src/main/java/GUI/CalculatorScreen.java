@@ -61,7 +61,8 @@ public abstract class CalculatorScreen extends VBox {
         }
 //        MenuItem mode2 = new MenuItem("Time Computation");
 
-        // TODO when selecting Elapsed since, should 
+        // TODO when selecting Elapsed since, should open a new window
+        // TODO when clicking on Elapsed since button, if date is empty use current date
         Menu mode2 = new Menu("Time computation");
         String[] types_time_computation = {"Elapsed since"};
         for (String type:types_time_computation) {

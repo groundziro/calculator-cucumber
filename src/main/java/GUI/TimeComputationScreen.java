@@ -61,65 +61,59 @@ public class TimeComputationScreen extends CalculatorScreen{
         String hourNow = Time.now();
 
         elapsedS.setOnAction(actionEvent -> {
-            // juste les heures
             String hourLTfS = hourLTf.getText();
-            if (!Time.hoursWellFormated(hourLTfS)) {
+            if (!Time.hours_well_formatted(hourLTfS)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.", ButtonType.OK);
                 alert.showAndWait();
                 return;
             }
 
-            // juste la date
             LocalDate localDateL = (dateL.getValue()!=null?dateL.getValue():dateNow.toLocalDate());
             LocalDate localDateNow = dateNow.toLocalDate();
             t.elapsed(localDateNow,localDateL,hourNow,hourLTfS);
             current.setText("");
         });
         elapsedB.setOnAction(actionEvent -> {
-            // juste les heures
             String hourLTfS = hourLTf.getText();
             String hourRTfS = hourRTf.getText();
-            if (!Time.hoursWellFormated(hourLTfS)||!Time.hoursWellFormated(hourRTfS)) {
+            if (!Time.hours_well_formatted(hourLTfS)||!Time.hours_well_formatted(hourRTfS)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.", ButtonType.OK);
                 alert.showAndWait();
                 return;
             }
 
-            // juste la date
             LocalDate localDateL = (dateL.getValue()!=null?dateL.getValue():dateNow.toLocalDate());
             LocalDate localDateR = (dateR.getValue()!=null?dateR.getValue():dateNow.toLocalDate());
             t.elapsed(localDateL,localDateR,hourLTfS,hourRTfS);
-            current.setText("");// Mettre la réponse
+            current.setText("");
         });
         minus.setOnAction(actionEvent -> {
             String hourLTfS = hourLTf.getText();
             String hourRTfS = hourRTf.getText();
-            if (!Time.hoursWellFormated(hourLTfS)||!Time.hoursWellFormated(hourRTfS)) {
+            if (!Time.hours_well_formatted(hourLTfS)||!Time.hours_well_formatted(hourRTfS)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.", ButtonType.OK);
                 alert.showAndWait();
                 return;
             }
 
-            // juste la date
             LocalDate localDateL = (dateL.getValue()!=null?dateL.getValue():dateNow.toLocalDate());
             LocalDate localDateR = (dateR.getValue()!=null?dateR.getValue():dateNow.toLocalDate());
 
-            current.setText(t.minus(localDateL,localDateR,hourLTfS,hourRTfS));// Mettre la réponse
+            current.setText(t.minus(localDateL,localDateR,hourLTfS,hourRTfS));
         });
         plus.setOnAction(actionEvent -> {
             String hourLTfS = hourLTf.getText();
             String hourRTfS = hourRTf.getText();
-            if (!Time.hoursWellFormated(hourLTfS)||!Time.hoursWellFormated(hourRTfS)) {
+            if (!Time.hours_well_formatted(hourLTfS)||!Time.hours_well_formatted(hourRTfS)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.", ButtonType.OK);
                 alert.showAndWait();
                 return;
             }
 
-            // juste la date
             LocalDate localDateL = (dateL.getValue()!=null?dateL.getValue():dateNow.toLocalDate());
             LocalDate localDateR = (dateR.getValue()!=null?dateR.getValue():dateNow.toLocalDate());
             t.plus(localDateL,localDateR,hourLTfS,hourRTfS);
-            current.setText(""); //Mettre la réponse
+            current.setText("");
         });
         grid.addRow(0,dateL,dateR);
         grid.addRow(1,hourLTf,hourRTf);
