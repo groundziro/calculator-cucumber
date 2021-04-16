@@ -7,7 +7,6 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
-import java.util.Date;
 
 public class Time{
 
@@ -68,42 +67,57 @@ public class Time{
         LocalDateTime updatedR = r.atTime(timeR);
     }
 
+    public String choices(LocalDateTime first_date_time, LocalDateTime second_date_time, String user_result){
+        switch (user_result){
+            case "Complete":
+                return ChronoUnit.DAYS.between(first_date_time, second_date_time) + " days and " +
+                       ChronoUnit.HOURS.between(first_date_time, second_date_time) + " hours and " +
+                       ChronoUnit.MINUTES.between(first_date_time, second_date_time) + " minutes and " +
+                        ChronoUnit.SECONDS.between(first_date_time, second_date_time) + " seconds.";
+            case "Centuries":
+                return String.valueOf(ChronoUnit.CENTURIES.between(first_date_time, second_date_time));
+            case "Decades":
+                return String.valueOf(ChronoUnit.DECADES.between(first_date_time, second_date_time));
+            case "Years":
+                return String.valueOf(ChronoUnit.YEARS.between(first_date_time, second_date_time));
+            case "Months":
+                return String.valueOf(ChronoUnit.MONTHS.between(first_date_time, second_date_time));
+            case "Days":
+                return String.valueOf(ChronoUnit.DAYS.between(first_date_time, second_date_time));
+            case "Hours":
+                return String.valueOf(ChronoUnit.HOURS.between(first_date_time, second_date_time));
+            case "Minutes":
+                return String.valueOf(ChronoUnit.MINUTES.between(first_date_time, second_date_time));
+            case "Seconds":
+                return String.valueOf(ChronoUnit.SECONDS.between(first_date_time, second_date_time));
+            default:
+                return "Invalid output type";
+        }
+    }
+    
     public String elapsed_since(LocalDate user_date, String user_hours, String user_result){
-        user_hours = check_seconds(user_hours);
-        LocalTime hours = LocalTime.parse(user_hours, DateTimeFormatter.ofPattern("HH:mm:ss"));
+        String new_user_hours = check_seconds(user_hours);
+        LocalTime hours = LocalTime.parse(new_user_hours, DateTimeFormatter.ofPattern("HH:mm:ss"));
         LocalDateTime user_date_and_hours = user_date.atTime(hours);
         LocalDateTime current_date_and_hours = LocalDateTime.now();
         if (current_date_and_hours.isBefore(user_date_and_hours) || current_date_and_hours.isEqual(user_date_and_hours)){
             return "No time elapsed since this time.";
         }
-        switch (user_result){
-            case "Centuries":
-                return String.valueOf(ChronoUnit.CENTURIES.between(user_date_and_hours, current_date_and_hours));
-            case "Decades":
-                return String.valueOf(ChronoUnit.DECADES.between(user_date_and_hours, current_date_and_hours));
-            case "Years":
-                return String.valueOf(ChronoUnit.YEARS.between(user_date_and_hours, current_date_and_hours));
-            case "Months":
-                return String.valueOf(ChronoUnit.MONTHS.between(user_date_and_hours, current_date_and_hours));
-            case "Days":
-                return String.valueOf(ChronoUnit.DAYS.between(user_date_and_hours, current_date_and_hours));
-            case "Hours":
-                return String.valueOf(ChronoUnit.HOURS.between(user_date_and_hours, current_date_and_hours));
-            case "Minutes":
-                return String.valueOf(ChronoUnit.MINUTES.between(user_date_and_hours, current_date_and_hours));
-            case "Seconds":
-                return String.valueOf(ChronoUnit.SECONDS.between(user_date_and_hours, current_date_and_hours));
-            default:
-                return "Invalid output type";
-        }
+        return choices(user_date_and_hours, current_date_and_hours, user_result);
     }
 
-    public Duration elapsed(LocalDate l, LocalDate r, String hourL, String hourR){
-        LocalTime timeL = LocalTime.parse(hourL,DateTimeFormatter.ofPattern("HH:mm:ss"));
-        LocalTime timeR = LocalTime.parse(hourR,DateTimeFormatter.ofPattern("HH:mm:ss"));
-        LocalDateTime updatedL = l.atTime(timeL);
-        LocalDateTime updatedR = r.atTime(timeR);
-        return Duration.between(updatedL,updatedR);
+    public String elapsed_between(LocalDate first_user_date, String first_user_hours, String user_result,
+                                    LocalDate second_user_date, String second_user_hours){
+        String new_first_user_hours = check_seconds(first_user_hours);
+        String new_second_user_hours = check_seconds(second_user_hours);
+        LocalTime first_hours = LocalTime.parse(new_first_user_hours, DateTimeFormatter.ofPattern("HH:mm:ss"));
+        LocalTime second_hours = LocalTime.parse(new_second_user_hours, DateTimeFormatter.ofPattern("HH:mm:ss"));
+        LocalDateTime first_user_date_and_hours = first_user_date.atTime(first_hours);
+        LocalDateTime second_user_date_and_hours = second_user_date.atTime(second_hours);
+        if (second_user_date_and_hours.isBefore(first_user_date_and_hours) || second_user_date_and_hours.isEqual(first_user_date_and_hours)){
+            return "No time elapsed between those two dates";
+        }
+        return choices(first_user_date_and_hours, second_user_date_and_hours, user_result);
     }
 }
 
