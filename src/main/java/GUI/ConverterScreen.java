@@ -10,12 +10,13 @@ import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
 
-public class ConverterScreen extends CalculatorScreen {
+public class ConverterScreen extends CalculatorScreen{
     String type="";
     UnitsConvertor convertor = new UnitsConvertor();
     ChoiceBox<String> input = new ChoiceBox<>();
     ChoiceBox<String> output = new ChoiceBox<>();
-    public ConverterScreen(Memory m, Stage stage, String type) {
+
+    public ConverterScreen(Memory m, Stage stage, String type){
         super(m, stage,1);
         this.type = type.toLowerCase();
         convertor.buildMap();

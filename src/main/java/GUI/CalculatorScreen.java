@@ -59,7 +59,21 @@ public abstract class CalculatorScreen extends VBox {
             });
             mode1.getItems().add(t);
         }
-        MenuItem mode2 = new MenuItem("Time Computation");
+//        MenuItem mode2 = new MenuItem("Time Computation");
+
+        // TODO when selecting Elapsed since, should 
+        Menu mode2 = new Menu("Time computation");
+        String[] types_time_computation = {"Elapsed since"};
+        for (String type:types_time_computation) {
+            MenuItem t = new MenuItem(type);
+            t.setOnAction(actionEvent -> {
+                System.out.println("Goes to time computation");
+                ConverterScreen conv = new ConverterScreen(mem, stage, t.getText());
+                stage.getScene().setRoot(conv);
+            });
+            mode2.getItems().add(t);
+        }
+
         MenuItem mode3 = new MenuItem("Boolean Operations");
 
 
@@ -71,13 +85,15 @@ public abstract class CalculatorScreen extends VBox {
             }
 
         });
-        mode2.setOnAction(actionEvent -> {
-            System.out.println("Goes to time Computation");
-            if (mode!=2) {
-                TimeComputationScreen time = new TimeComputationScreen(mem, stage);
-                stage.getScene().setRoot(time);
-            }
-        });
+
+//        mode2.setOnAction(actionEvent -> {
+//            System.out.println("Goes to time Computation");
+//            if (mode!=2) {
+//                TimeComputationScreen time = new TimeComputationScreen(mem, stage);
+//                stage.getScene().setRoot(time);
+//            }
+//        });
+
         mode3.setOnAction(actionEvent -> {
             System.out.println("Goes to Boolean Operation");
             if (mode!=3) {
