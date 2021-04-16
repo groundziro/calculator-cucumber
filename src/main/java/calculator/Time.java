@@ -94,7 +94,7 @@ public class Time{
                 return "Invalid output type";
         }
     }
-    
+
     public String elapsed_since(LocalDate user_date, String user_hours, String user_result){
         String new_user_hours = check_seconds(user_hours);
         LocalTime hours = LocalTime.parse(new_user_hours, DateTimeFormatter.ofPattern("HH:mm:ss"));
