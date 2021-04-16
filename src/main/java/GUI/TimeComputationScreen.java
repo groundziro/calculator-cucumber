@@ -7,14 +7,13 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class TimeComputationScreen extends CalculatorScreen{
     private final Text conversionCurrent = new Text("Complete");
-    private boolean isElapsedSince;
+    private final boolean isElapsedSince;
     public TimeComputationScreen(Memory m, Stage stage, boolean isElapsedSince) {
         super(m, stage,2);
         this.isElapsedSince = isElapsedSince;
@@ -119,9 +118,7 @@ public class TimeComputationScreen extends CalculatorScreen{
         String[] conversions = {"Complete","Centuries","Decades","Years","Months","Days","Hours","Minutes","Seconds"};
         for (String s:conversions) {
             MenuItem conversionCur = new MenuItem(s);
-            conversionCur.setOnAction(actionEvent -> {
-                conversionCurrent.setText(conversionCur.getText());
-            });
+            conversionCur.setOnAction(actionEvent -> conversionCurrent.setText(conversionCur.getText()));
             conversion.getItems().add(conversionCur);
         }
         bar.getMenus().add(conversion);
