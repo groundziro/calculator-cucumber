@@ -57,25 +57,25 @@ public class TimeComputationScreen extends CalculatorScreen{
 
         Button minus = new Button("-");
         Button plus = new Button("+");
-        Button elapsedS = new Button("elapsed since");
-        Button elapsedB = new Button("elapsed between");
+        Button elapsedS = new Button("Elapsed since");
+        Button elapsedB = new Button("Elapsed between");
         LocalDateTime dateNow = LocalDateTime.now();
 
         elapsedS.setOnAction(actionEvent -> {
-            String hourLTfS = hourLTf.getText();
+            String hourLTfS = hourLTf.getText().equals("") ? Time.current_time() : hourLTf.getText();
             if (!Time.hours_well_formatted(hourLTfS)) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.", ButtonType.OK);
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.\n Use format HH:mm[:ss]", ButtonType.OK);
                 alert.showAndWait();
                 return;
             }
-
-            LocalDate localDateL = (dateL.getValue()!=null?dateL.getValue():dateNow.toLocalDate());
+            LocalDate localDateL = (dateL.getValue() != null ? dateL.getValue() : dateNow.toLocalDate());
             current.setText(t.elapsed_since(localDateL,hourLTfS,conversionCurrent.getText()));
         });
+
         elapsedB.setOnAction(actionEvent -> {
             String hourLTfS = hourLTf.getText();
             String hourRTfS = hourRTf.getText();
-            if (!Time.hours_well_formatted(hourLTfS)||!Time.hours_well_formatted(hourRTfS)) {
+            if (Time.hours_well_formatted(hourLTfS) || Time.hours_well_formatted(hourRTfS)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.", ButtonType.OK);
                 alert.showAndWait();
                 return;
@@ -89,7 +89,7 @@ public class TimeComputationScreen extends CalculatorScreen{
         minus.setOnAction(actionEvent -> {
             String hourLTfS = hourLTf.getText();
             String hourRTfS = hourRTf.getText();
-            if (!Time.hours_well_formatted(hourLTfS)||!Time.hours_well_formatted(hourRTfS)) {
+            if (Time.hours_well_formatted(hourLTfS) || Time.hours_well_formatted(hourRTfS)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.", ButtonType.OK);
                 alert.showAndWait();
                 return;
@@ -103,7 +103,7 @@ public class TimeComputationScreen extends CalculatorScreen{
         plus.setOnAction(actionEvent -> {
             String hourLTfS = hourLTf.getText();
             String hourRTfS = hourRTf.getText();
-            if (!Time.hours_well_formatted(hourLTfS)||!Time.hours_well_formatted(hourRTfS)) {
+            if (Time.hours_well_formatted(hourLTfS) || Time.hours_well_formatted(hourRTfS)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.", ButtonType.OK);
                 alert.showAndWait();
                 return;
