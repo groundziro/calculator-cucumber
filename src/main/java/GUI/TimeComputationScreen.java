@@ -3,18 +3,20 @@ package GUI;
 import calculator.Memory;
 import calculator.Time;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
-import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class TimeComputationScreen extends CalculatorScreen{
-    Duration between;
-    public TimeComputationScreen(Memory m, Stage stage) {
+    private final Text conversionCurrent = new Text("Complete");
+    private final boolean isElapsedSince;
+    public TimeComputationScreen(Memory m, Stage stage, boolean isElapsedSince) {
         super(m, stage,2);
+        this.isElapsedSince = isElapsedSince;
         buildGrid();
         getChildren().addAll(bar,grid);
     }
@@ -58,7 +60,6 @@ public class TimeComputationScreen extends CalculatorScreen{
         Button elapsedS = new Button("elapsed since");
         Button elapsedB = new Button("elapsed between");
         LocalDateTime dateNow = LocalDateTime.now();
-        String hourNow = Time.now();
 
         elapsedS.setOnAction(actionEvent -> {
             String hourLTfS = hourLTf.getText();
@@ -69,9 +70,7 @@ public class TimeComputationScreen extends CalculatorScreen{
             }
 
             LocalDate localDateL = (dateL.getValue()!=null?dateL.getValue():dateNow.toLocalDate());
-            LocalDate localDateNow = dateNow.toLocalDate();
-            t.elapsed(localDateNow,localDateL,hourNow,hourLTfS);
-            current.setText("");
+            current.setText(t.elapsed_since(localDateL,hourLTfS,conversionCurrent.getText()));
         });
         elapsedB.setOnAction(actionEvent -> {
             String hourLTfS = hourLTf.getText();
@@ -84,7 +83,7 @@ public class TimeComputationScreen extends CalculatorScreen{
 
             LocalDate localDateL = (dateL.getValue()!=null?dateL.getValue():dateNow.toLocalDate());
             LocalDate localDateR = (dateR.getValue()!=null?dateR.getValue():dateNow.toLocalDate());
-            t.elapsed(localDateL,localDateR,hourLTfS,hourRTfS);
+            t.elapsed_between(localDateL,hourLTfS,conversionCurrent.getText(),localDateR,hourRTfS);
             current.setText("");
         });
         minus.setOnAction(actionEvent -> {
@@ -115,11 +114,27 @@ public class TimeComputationScreen extends CalculatorScreen{
             t.plus(localDateL,localDateR,hourLTfS,hourRTfS);
             current.setText("");
         });
-        grid.addRow(0,dateL,dateR);
-        grid.addRow(1,hourLTf,hourRTf);
-        grid.addRow(2,plus,minus);
-        grid.addRow(3,elapsedS,elapsedB);
-        grid.addRow(4,current);
+        Menu conversion = new Menu("Conversion");
+        String[] conversions = {"Complete","Centuries","Decades","Years","Months","Days","Hours","Minutes","Seconds"};
+        for (String s:conversions) {
+            MenuItem conversionCur = new MenuItem(s);
+            conversionCur.setOnAction(actionEvent -> conversionCurrent.setText(conversionCur.getText()));
+            conversion.getItems().add(conversionCur);
+        }
+        bar.getMenus().add(conversion);
+        grid.addRow(0,conversionCurrent);
+        if (!isElapsedSince) {
+            grid.addRow(1, dateL, dateR);
+            grid.addRow(2,hourLTf,hourRTf);
+            grid.addRow(3, plus, minus);
+            grid.addRow(4, elapsedB);
+            grid.addRow(5, current);
+        }else{
+            grid.addRow(1,dateL);
+            grid.addRow(2,hourLTf);
+            grid.addRow(3,elapsedS);
+            grid.addRow(4,current);
+        }
     }
 
 }

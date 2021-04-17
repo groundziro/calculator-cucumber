@@ -59,22 +59,21 @@ public abstract class CalculatorScreen extends VBox {
             });
             mode1.getItems().add(t);
         }
-//        MenuItem mode2 = new MenuItem("Time Computation");
 
         // TODO when selecting Elapsed since, should open a new window
         // TODO when clicking on Elapsed since button, if date is empty use current date
         Menu mode2 = new Menu("Time computation");
-        String[] types_time_computation = {"Elapsed since"};
-        for (String type:types_time_computation) {
-            MenuItem t = new MenuItem(type);
-            t.setOnAction(actionEvent -> {
-                System.out.println("Goes to time computation");
-                ConverterScreen conv = new ConverterScreen(mem, stage, t.getText());
-                stage.getScene().setRoot(conv);
-            });
-            mode2.getItems().add(t);
-        }
-
+        MenuItem elapsedSince = new MenuItem("Elapsed Since");
+        MenuItem otherTC = new MenuItem("Other Time Computations");
+        elapsedSince.setOnAction(actionEvent -> {
+            TimeComputationScreen time = new TimeComputationScreen(mem,stage,true);
+            stage.getScene().setRoot(time);
+        });
+        otherTC.setOnAction(actionEvent -> {
+            TimeComputationScreen time = new TimeComputationScreen(mem,stage,false);
+            stage.getScene().setRoot(time);
+        });
+        mode2.getItems().addAll(elapsedSince,otherTC);
         MenuItem mode3 = new MenuItem("Boolean Operations");
 
 
