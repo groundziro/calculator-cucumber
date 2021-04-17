@@ -22,14 +22,6 @@ public class TimeComputationScreen extends CalculatorScreen{
         getChildren().addAll(bar,grid);
     }
 
-    protected void alert(String p_hourLTfS, String p_hourRTfS){
-        if (!Time.hours_well_formatted(p_hourLTfS) || !Time.hours_well_formatted(p_hourRTfS)) {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.\n Use format HH:mm[:ss]", ButtonType.OK);
-            alert.showAndWait();
-            return;
-        }
-    }
-
     @Override
     protected void buildGrid() {
         Time t = new Time();
@@ -84,40 +76,43 @@ public class TimeComputationScreen extends CalculatorScreen{
         elapsedB.setOnAction(actionEvent -> {
             String hourLTfS = hourLTf.getText().equals("") ? Time.current_time() : hourLTf.getText();
             String hourRTfS = hourRTf.getText().equals("") ? Time.current_time() : hourRTf.getText();
-            System.out.println(hourLTfS);
-            System.out.println(hourRTfS);
-            alert(hourLTfS, hourRTfS);
+            if (!Time.hours_well_formatted(hourLTfS) || !Time.hours_well_formatted(hourRTfS)) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.\nUse format HH:mm[:ss]", ButtonType.OK);
+                alert.showAndWait();
+                return;
+            }
             LocalDate localDateL = dateL.getValue() !=null ? dateL.getValue() : dateNow.toLocalDate();
             LocalDate localDateR = dateR.getValue() != null ? dateR.getValue() : dateNow.toLocalDate();
-//            t.elapsed_between(localDateL, hourLTfS, conversionCurrent.getText(), localDateR, hourRTfS);
-//            current.setText();
             current.setText(t.elapsed_between(localDateL, hourLTfS, conversionCurrent.getText(), localDateR, hourRTfS));
         });
 
         minus.setOnAction(actionEvent -> {
             String hourLTfS = hourLTf.getText();
             String hourRTfS = hourRTf.getText();
-            alert(hourLTfS, hourRTfS);
-
-            LocalDate localDateL = (dateL.getValue()!=null?dateL.getValue():dateNow.toLocalDate());
-            LocalDate localDateR = (dateR.getValue()!=null?dateR.getValue():dateNow.toLocalDate());
-
-            current.setText(t.minus(localDateL,localDateR,hourLTfS,hourRTfS));
-        });
-        plus.setOnAction(actionEvent -> {
-            String hourLTfS = hourLTf.getText();
-            String hourRTfS = hourRTf.getText();
-            if (Time.hours_well_formatted(hourLTfS) || Time.hours_well_formatted(hourRTfS)) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.", ButtonType.OK);
+            if (!Time.hours_well_formatted(hourLTfS) || !Time.hours_well_formatted(hourRTfS)) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.\nUse format HH:mm[:ss]", ButtonType.OK);
                 alert.showAndWait();
                 return;
             }
+            LocalDate localDateL = (dateL.getValue()!=null?dateL.getValue():dateNow.toLocalDate());
+            LocalDate localDateR = (dateR.getValue()!=null?dateR.getValue():dateNow.toLocalDate());
+            current.setText(t.minus(localDateL,localDateR,hourLTfS,hourRTfS));
+        });
 
+        plus.setOnAction(actionEvent -> {
+            String hourLTfS = hourLTf.getText();
+            String hourRTfS = hourRTf.getText();
+            if (!Time.hours_well_formatted(hourLTfS) || !Time.hours_well_formatted(hourRTfS)) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.\nUse format HH:mm[:ss]", ButtonType.OK);
+                alert.showAndWait();
+                return;
+            }
             LocalDate localDateL = (dateL.getValue()!=null?dateL.getValue():dateNow.toLocalDate());
             LocalDate localDateR = (dateR.getValue()!=null?dateR.getValue():dateNow.toLocalDate());
             t.plus(localDateL,localDateR,hourLTfS,hourRTfS);
             current.setText("");
         });
+
         Menu conversion = new Menu("Conversion");
         String[] conversions = {"Complete","Centuries","Decades","Years","Months","Days","Hours","Minutes","Seconds"};
         for (String s:conversions) {

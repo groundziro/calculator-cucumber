@@ -15,33 +15,72 @@ public class Time{
     }
 
     public static boolean hours_well_formatted(String checking) {
-        return checking.matches("^(0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$");
+        return checking.matches("^(0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$") ||
+               checking.matches("^(0?[0-9]|1[0-9]|2[0-3])(:[0-5][0-9])?(:[0-5][0-9])? (AM|PM)$");
     }
 
-    private String check_format(String hour){
-        boolean format = hour.matches("^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$");
+    //  midnight as 12 am and noon as 12 pm
+    private String check_format(String p_hour){
+        boolean format = p_hour.matches("^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$");
+        boolean format_AM_PM = p_hour.matches("^([1-9]|1[0-2])(:[0-5][0-9])?(:[0-5][0-9])? (AM|PM)$");
         String output1;
         String output2;
-        if (!format){
-            boolean test_hours = hour.matches("^[0-9]:[0-5][0-9](:[0-5][0-9])?$");
+        if (format_AM_PM){
+            output2 = check_format_AM_PM(p_hour);
+        }
+        else if (!format){
+            boolean test_hours = p_hour.matches("^[0-9]:[0-5][0-9](:[0-5][0-9])?$");
             if (test_hours){
-                output1 = "0" + hour;
+                output1 = "0" + p_hour;
             }
             else{
-                output1 = hour;
+                output1 = p_hour;
             }
             boolean test_seconds = output1.matches("^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$");
             if (test_seconds){
                     output2 = output1 + ":00";
             }
             else{
-                output2 = output1;
+                output2 =output1;
             }
         }
         else{
-            output2 = hour;
+            output2 = p_hour;
         }
         return output2;
+    }
+
+    private String check_format_AM_PM(String p_hour){
+        String time_format = p_hour.split(" ")[1];
+        String time = p_hour.split(" ")[0];
+        String[] time_list = time.split(":");
+        int hour = Integer.parseInt(time_list[0]);
+        StringBuilder output;
+        if (time_format.equals("PM")){
+            if (hour != 12){
+                hour += 12;
+            }
+            time_list[0] = String.valueOf(hour);
+            output = new StringBuilder(time_list[0]);
+            for (int i = 1; i < time_list.length; i++){
+                output.append(":").append(time_list[i]);
+            }
+        }
+        else{
+            if (hour == 12){
+                hour -= 12;
+            }
+            time_list[0] = String.valueOf(hour);
+            output = new StringBuilder(time_list[0]);
+            for (int i = 1; i < time_list.length; i++){
+                output.append(":").append(time_list[i]);
+            }
+        }
+        String[] test_format = output.toString().split(":");
+        if (test_format.length == 1){
+            output.append(":00");
+        }
+        return check_format(output.toString());
     }
 
     public String minus(LocalDate first_date, LocalDate second_date, String first_hour, String second_hour){
