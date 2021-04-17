@@ -3,13 +3,9 @@ package GUI;
 import calculator.Memory;
 import calculator.Time;
 import javafx.scene.control.*;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import javafx.util.StringConverter;
-
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -17,11 +13,21 @@ import java.time.format.DateTimeFormatter;
 public class TimeComputationScreen extends CalculatorScreen{
     private final Text conversionCurrent = new Text("Complete");
     private final boolean isElapsedSince;
-    public TimeComputationScreen(Memory m, Stage stage, boolean isElapsedSince) {
+    private final boolean isElapsedBetween;
+    public TimeComputationScreen(Memory m, Stage stage, boolean isElapsedSince, boolean isElapsedBetween) {
         super(m, stage,2);
         this.isElapsedSince = isElapsedSince;
+        this.isElapsedBetween = isElapsedBetween;
         buildGrid();
         getChildren().addAll(bar,grid);
+    }
+
+    protected void alert(String p_hourLTfS, String p_hourRTfS){
+        if (!Time.hours_well_formatted(p_hourLTfS) || !Time.hours_well_formatted(p_hourRTfS)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.\n Use format HH:mm[:ss]", ButtonType.OK);
+            alert.showAndWait();
+            return;
+        }
     }
 
     @Override
@@ -71,32 +77,27 @@ public class TimeComputationScreen extends CalculatorScreen{
                 alert.showAndWait();
                 return;
             }
-            LocalDate localDateL = (dateL.getValue() != null ? dateL.getValue() : dateNow.toLocalDate());
+            LocalDate localDateL = dateL.getValue() != null ? dateL.getValue() : dateNow.toLocalDate();
             current.setText(t.elapsed_since(localDateL,hourLTfS,conversionCurrent.getText()));
         });
 
         elapsedB.setOnAction(actionEvent -> {
-            String hourLTfS = hourLTf.getText();
-            String hourRTfS = hourRTf.getText();
-            if (Time.hours_well_formatted(hourLTfS) || Time.hours_well_formatted(hourRTfS)) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.", ButtonType.OK);
-                alert.showAndWait();
-                return;
-            }
-
-            LocalDate localDateL = (dateL.getValue()!=null?dateL.getValue():dateNow.toLocalDate());
-            LocalDate localDateR = (dateR.getValue()!=null?dateR.getValue():dateNow.toLocalDate());
-            t.elapsed_between(localDateL,hourLTfS,conversionCurrent.getText(),localDateR,hourRTfS);
-            current.setText("");
+            String hourLTfS = hourLTf.getText().equals("") ? Time.current_time() : hourLTf.getText();
+            String hourRTfS = hourRTf.getText().equals("") ? Time.current_time() : hourRTf.getText();
+            System.out.println(hourLTfS);
+            System.out.println(hourRTfS);
+            alert(hourLTfS, hourRTfS);
+            LocalDate localDateL = dateL.getValue() !=null ? dateL.getValue() : dateNow.toLocalDate();
+            LocalDate localDateR = dateR.getValue() != null ? dateR.getValue() : dateNow.toLocalDate();
+//            t.elapsed_between(localDateL, hourLTfS, conversionCurrent.getText(), localDateR, hourRTfS);
+//            current.setText();
+            current.setText(t.elapsed_between(localDateL, hourLTfS, conversionCurrent.getText(), localDateR, hourRTfS));
         });
+
         minus.setOnAction(actionEvent -> {
             String hourLTfS = hourLTf.getText();
             String hourRTfS = hourRTf.getText();
-            if (Time.hours_well_formatted(hourLTfS) || Time.hours_well_formatted(hourRTfS)) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.", ButtonType.OK);
-                alert.showAndWait();
-                return;
-            }
+            alert(hourLTfS, hourRTfS);
 
             LocalDate localDateL = (dateL.getValue()!=null?dateL.getValue():dateNow.toLocalDate());
             LocalDate localDateR = (dateR.getValue()!=null?dateR.getValue():dateNow.toLocalDate());
@@ -126,13 +127,19 @@ public class TimeComputationScreen extends CalculatorScreen{
         }
         bar.getMenus().add(conversion);
         grid.addRow(0,conversionCurrent);
-        if (!isElapsedSince) {
+        if (!isElapsedSince && !isElapsedBetween) {
             grid.addRow(1, dateL, dateR);
             grid.addRow(2,hourLTf,hourRTf);
             grid.addRow(3, plus, minus);
-            grid.addRow(4, elapsedB);
-            grid.addRow(5, current);
-        }else{
+            grid.addRow(4, current);
+        }
+        else if (isElapsedBetween){
+            grid.addRow(1, dateL, dateR);
+            grid.addRow(2, hourLTf, hourRTf);
+            grid.addRow(3, elapsedB);
+            grid.addRow(4, current);
+        }
+        else{
             grid.addRow(1,dateL);
             grid.addRow(2,hourLTf);
             grid.addRow(3,elapsedS);
