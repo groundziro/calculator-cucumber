@@ -1,8 +1,6 @@
 package calculator;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
@@ -15,7 +13,7 @@ public class Time{
     }
 
     public static boolean hours_well_formatted(String checking) {
-        return checking.matches("^(0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$") ||
+        return checking.matches("^(0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9]) ?$") ||
                checking.matches("^(0?[0-9]|1[0-9]|2[0-3])(:[0-5][0-9])?(:[0-5][0-9])? (AM|PM)$");
     }
 
@@ -154,6 +152,7 @@ public class Time{
         LocalTime hours = LocalTime.parse(new_user_hours, DateTimeFormatter.ofPattern("HH:mm:ss"));
         LocalDateTime user_date_and_hours = user_date.atTime(hours);
         LocalDateTime current_date_and_hours = LocalDateTime.now().withNano(0);
+        ZonedDateTime current_zoned_date_and_hours = current_date_and_hours.atZone(ZoneId.systemDefault());
         if (current_date_and_hours.isBefore(user_date_and_hours) || current_date_and_hours.isEqual(user_date_and_hours)){
             return "No time elapsed since this time.";
         }
