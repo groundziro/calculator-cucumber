@@ -36,7 +36,7 @@ public class Time {
                                     TimeZones.getTimeZones().contains(checking.split("-")[0].split(" ")[2])
                             : checking.split("-")[0].split(" ").length == 2 ?
                             TimeZones.getTimeZones().contains(checking.split("-")[0].split(" ")[1]) : false;
-            hh_am_zone = hh_am_zone && known_zone_id;
+            hh_am_zone = known_zone_id;
         }
         return checking.matches("^(0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$") ||
                checking.matches("^([1-9]|1[0-2])(:[0-5][0-9])?(:[0-5][0-9])? (AM|PM)$") || hh_am_zone;
