@@ -25,6 +25,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Calculator");
+        m.load("tmp.mem");
         Scene scene = new Scene(new MainScreen(m,primaryStage));
         scene.addEventHandler(KeyEvent.KEY_PRESSED, keyEvent -> {
             if (keyEvent.getCode() == KeyCode.ESCAPE){
@@ -49,14 +50,7 @@ public class Main extends Application {
             tutoDialog.showAndWait();
         primaryStage.setScene(scene);
         primaryStage.setOnCloseRequest(actionEvent ->{
-            FileChooser fc = new FileChooser();
-            fc.setTitle("Saving Memory");
-            fc.setInitialDirectory(new File("."));
-            fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Memory Files","*.mem"),
-                    new FileChooser.ExtensionFilter("All Files","*"));
-            File file = fc.showSaveDialog(primaryStage);
-            if (file!=null)
-                m.save(file.getAbsolutePath());
+            m.save("tmp.mem");
         });
         primaryStage.show();
     }
