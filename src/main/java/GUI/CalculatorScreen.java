@@ -53,7 +53,6 @@ public abstract class CalculatorScreen extends VBox {
         for (String type:types) {
             MenuItem t = new MenuItem(type);
             t.setOnAction(actionEvent -> {
-                System.out.println("Goes to the Converter");
                 ConverterScreen conv = new ConverterScreen(mem, stage, t.getText());
                 stage.getScene().setRoot(conv);
             });
@@ -81,7 +80,6 @@ public abstract class CalculatorScreen extends VBox {
 
 
         mode0.setOnAction(actionEvent -> {
-            System.out.println("Goes to the Classic Mode");
             if (mode!=0) {
                 MainScreen main = new MainScreen(mem, stage);
                 stage.getScene().setRoot(main);
@@ -90,7 +88,6 @@ public abstract class CalculatorScreen extends VBox {
         });
 
         mode3.setOnAction(actionEvent -> {
-            System.out.println("Goes to Boolean Operation");
             if (mode!=3) {
                 BooleanOpScreen bool = new BooleanOpScreen(mem, stage);
                 stage.getScene().setRoot(bool);

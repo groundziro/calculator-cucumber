@@ -29,8 +29,10 @@ public class TimeComputationScreen extends CalculatorScreen {
         DatePicker dateL = new DatePicker();
         ChoiceBox<String> mode = new ChoiceBox<>();
         mode.getItems().addAll("Complete", "Centuries", "Decades", "Years", "Months", "Days", "Hours", "Minutes", "Seconds");
+        mode.setValue("Complete");
         ChoiceBox<String> input = new ChoiceBox<>();
         input.getItems().addAll("Years", "Months", "Weeks", "Days", "Hours", "Minutes", "Seconds", "Mixe");
+        input.setValue("Mixe");
         DatePicker dateR = new DatePicker();
 
         StringConverter<LocalDate> converter = new StringConverter<>() {
@@ -68,7 +70,7 @@ public class TimeComputationScreen extends CalculatorScreen {
 
         elapsedS.setOnAction(actionEvent -> {
             String hourLTfS = hourLTf.getText().equals("") ? Time.current_time() : hourLTf.getText();
-            String how_to_show = mode.getValue() == null ? "Complete" : mode.getValue();
+            String how_to_show = mode.getValue();
             if (!Time.hours_well_formatted(hourLTfS)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.\n Use format HH:mm[:ss] [AM|PM] [TimeZone ID+X]\nList of time zones can be find in the help section.", ButtonType.OK);
                 alert.showAndWait();
@@ -81,7 +83,7 @@ public class TimeComputationScreen extends CalculatorScreen {
         elapsedB.setOnAction(actionEvent -> {
             String hourLTfS = hourLTf.getText().equals("") ? Time.current_time() : hourLTf.getText();
             String hourRTfS = hourRTf.getText().equals("") ? Time.current_time() : hourRTf.getText();
-            String how_to_show = mode.getValue() == null ? "Complete" : mode.getValue();
+            String how_to_show = mode.getValue();
             if (!Time.hours_well_formatted(hourLTfS) || !Time.hours_well_formatted(hourRTfS)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.\nUse format HH:mm[:ss] [AM|PM] [TimeZone ID+X]\nList of time zones can be find in the help section.", ButtonType.OK);
                 alert.showAndWait();
@@ -94,7 +96,7 @@ public class TimeComputationScreen extends CalculatorScreen {
 
         minus.setOnAction(actionEvent -> {
             String hourLTfS = hourLTf.getText();
-            String what_to_add_remove = input.getValue() == null ? "Mixe" : input.getValue();
+            String what_to_add_remove = input.getValue();
             if (!Time.add_remove_well_formatted(hourLTfS, what_to_add_remove)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Please, check the help section to know how to use this function. [RTFM]", ButtonType.OK);
                 alert.showAndWait();
