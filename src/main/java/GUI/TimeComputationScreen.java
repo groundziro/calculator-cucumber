@@ -30,7 +30,7 @@ public class TimeComputationScreen extends CalculatorScreen {
         ChoiceBox<String> mode = new ChoiceBox<>();
         mode.getItems().addAll("Complete", "Centuries", "Decades", "Years", "Months", "Days", "Hours", "Minutes", "Seconds");
         ChoiceBox<String> input = new ChoiceBox<>();
-        input.getItems().addAll("Years", "Months", "Days", "Minutes", "Seconds", "Mixe");
+        input.getItems().addAll("Years", "Months", "Weeks", "Days", "Hours", "Minutes", "Seconds", "Mixe");
         DatePicker dateR = new DatePicker();
 
         StringConverter<LocalDate> converter = new StringConverter<>() {
@@ -93,30 +93,25 @@ public class TimeComputationScreen extends CalculatorScreen {
         });
 
         minus.setOnAction(actionEvent -> {
-            String hourLTfS = hourLTf.getText().equals("") ? Time.current_time() : hourLTf.getText();
-            String what_to_add_remove = input.getValue().equals("") ? "Minutes" : input.getValue();
-            if (!Time.hours_well_formatted(hourLTfS)) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.\nUse format HH:mm[:ss] [AM|PM] [TimeZone ID+X]\nList of time zones can be find in the help section.", ButtonType.OK);
+            String hourLTfS = hourLTf.getText();
+            String what_to_add_remove = input.getValue() == null ? "Mixe" : input.getValue();
+            if (!Time.add_remove_well_formatted(hourLTfS, what_to_add_remove)) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Please, check the to know how to use this function. [RTFM]", ButtonType.OK);
                 alert.showAndWait();
                 return;
             }
-            LocalDate localDateL = (dateL.getValue()!=null?dateL.getValue():dateNow.toLocalDate());
-            LocalDate localDateR = (dateR.getValue()!=null?dateR.getValue():dateNow.toLocalDate());
-            current.setText(t.minus(localDateL,localDateR,hourLTfS,what_to_add_remove));
+            current.setText(t.minus(hourLTfS, what_to_add_remove));
         });
 
         plus.setOnAction(actionEvent -> {
             String hourLTfS = hourLTf.getText();
-            String hourRTfS = hourRTf.getText();
-            if (!Time.hours_well_formatted(hourLTfS) || !Time.hours_well_formatted(hourRTfS)) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.\nUse format HH:mm[:ss] [AM|PM] [TimeZone ID+X]\nList of time zones can be find in the help section.", ButtonType.OK);
+            String what_to_add_remove = input.getValue() == null ? "Mixe" : input.getValue();
+            if (!Time.add_remove_well_formatted(hourLTfS, what_to_add_remove)) {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Please, check the to know how to use this function. [RTFM]", ButtonType.OK);
                 alert.showAndWait();
                 return;
             }
-            LocalDate localDateL = (dateL.getValue()!=null?dateL.getValue():dateNow.toLocalDate());
-            LocalDate localDateR = (dateR.getValue()!=null?dateR.getValue():dateNow.toLocalDate());
-            t.plus(localDateL,localDateR,hourLTfS,hourRTfS);
-            current.setText("");
+            current.setText(t.plus(hourLTfS, what_to_add_remove));
         });
 
         Menu conversion = new Menu("Conversion");
@@ -129,8 +124,8 @@ public class TimeComputationScreen extends CalculatorScreen {
         // bar.getMenus().add(conversion);
         // grid.addRow(0,conversionCurrent);
         if (!isElapsedSince && !isElapsedBetween) {
-            grid.addRow(1, dateL, input);
-            grid.addRow(2, hourLTf, hourRTf, plus, minus);
+            grid.addRow(1, input);
+            grid.addRow(2, hourLTf, plus, minus);
             grid.addRow(3, current);
         }
         else if (isElapsedBetween) {
