@@ -220,21 +220,46 @@ public class Time {
     }
 
     public String elapsed_between(LocalDate first_user_date, String first_user_hours, String user_result, LocalDate second_user_date, String second_user_hours) {
-        boolean using_first_time_zone = first_user_hours.split(" ").length == 3;
-        boolean using_second_time_zone = second_user_hours.split(" ").length == 3;
+        boolean using_first_time_zone = first_user_hours.matches("^(((0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?)|(([1-9]|1[0-2])(:[0-5][0-9])?(:[0-5][0-9])? (AM|PM))) [A-Z]{1,4}((\\+([0-9]|1[1-4]))|(-([0-9]|1[1-2])))$");
+        boolean using_second_time_zone = second_user_hours.matches("^(((0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?)|(([1-9]|1[0-2])(:[0-5][0-9])?(:[0-5][0-9])? (AM|PM))) [A-Z]{1,4}((\\+([0-9]|1[1-4]))|(-([0-9]|1[1-2])))$");
         String first_time_zone;
         String second_time_zone;
+        logger.info("should be true and false: " + using_first_time_zone + " and " + using_second_time_zone);
         if (using_first_time_zone && using_second_time_zone) {
-            first_time_zone = first_user_hours.contains("+") ? first_user_hours.split(" ")[2].split("\\+")[0] : first_user_hours.split(" ")[2].split("-")[0];
-            second_time_zone = second_user_hours.contains("+") ? second_user_hours.split(" ")[2].split("\\+")[0] : second_user_hours.split(" ")[2].split("-")[0];
+            if (first_user_hours.split(" ").length == 2 && second_user_hours.split(" ").length == 2){
+                first_time_zone = first_user_hours.contains("+") ? first_user_hours.split(" ")[1].split("\\+")[0] : first_user_hours.split(" ")[1].split("-")[0];
+                second_time_zone = second_user_hours.contains("+") ? second_user_hours.split(" ")[1].split("\\+")[0] : second_user_hours.split(" ")[1].split("-")[0];
+            }
+            else if (first_user_hours.split(" ").length == 2) {
+                first_time_zone = first_user_hours.contains("+") ? first_user_hours.split(" ")[1].split("\\+")[0] : first_user_hours.split(" ")[1].split("-")[0];
+                second_time_zone = second_user_hours.contains("+") ? second_user_hours.split(" ")[2].split("\\+")[0] : second_user_hours.split(" ")[2].split("-")[0];
+            }
+            else if (second_user_hours.split(" ").length == 2) {
+                first_time_zone = first_user_hours.contains("+") ? first_user_hours.split(" ")[2].split("\\+")[0] : first_user_hours.split(" ")[2].split("-")[0];
+                second_time_zone = second_user_hours.contains("+") ? second_user_hours.split(" ")[1].split("\\+")[0] : second_user_hours.split(" ")[1].split("-")[0];
+            }
+            else {
+                first_time_zone = first_user_hours.contains("+") ? first_user_hours.split(" ")[2].split("\\+")[0] : first_user_hours.split(" ")[2].split("-")[0];
+                second_time_zone = second_user_hours.contains("+") ? second_user_hours.split(" ")[2].split("\\+")[0] : second_user_hours.split(" ")[2].split("-")[0];
+            }
         }
         else if (using_first_time_zone) {
-            first_time_zone = first_user_hours.contains("+") ? first_user_hours.split(" ")[2].split("\\+")[0] : first_user_hours.split(" ")[2].split("-")[0];
+            if (first_user_hours.split(" ").length == 2) {
+                first_time_zone = first_user_hours.contains("+") ? first_user_hours.split(" ")[1].split("\\+")[0] : first_user_hours.split(" ")[1].split("-")[0];
+            }
+            else {
+                first_time_zone = first_user_hours.contains("+") ? first_user_hours.split(" ")[2].split("\\+")[0] : first_user_hours.split(" ")[2].split("-")[0];
+            }
             second_time_zone = "CET";
         }
         else if (using_second_time_zone) {
+            if (second_user_hours.split(" ").length == 2) {
+                second_time_zone = second_user_hours.contains("+") ? second_user_hours.split(" ")[1].split("\\+")[0] : second_user_hours.split(" ")[1].split("-")[0];
+            }
+            else {
+                second_time_zone = second_user_hours.contains("+") ? second_user_hours.split(" ")[2].split("\\+")[0] : second_user_hours.split(" ")[2].split("-")[0];
+            }
             first_time_zone = "CET";
-            second_time_zone = second_user_hours.contains("+") ? second_user_hours.split(" ")[2].split("\\+")[0] : second_user_hours.split(" ")[2].split("-")[0];
         }
         else {
             first_time_zone = "CET";
@@ -250,6 +275,7 @@ public class Time {
         ZonedDateTime second_zoned_date_and_hours;
         first_zoned_date_and_hours = first_user_date_and_hours.atZone(ZoneId.of(TimeZones.valueOf(first_time_zone).label));
         second_zoned_date_and_hours = second_user_date_and_hours.atZone(ZoneId.of(TimeZones.valueOf(second_time_zone).label));
+        logger.info("two dates: " + first_zoned_date_and_hours + " and " + second_zoned_date_and_hours);
         if (second_zoned_date_and_hours.isBefore(first_zoned_date_and_hours) || second_zoned_date_and_hours.isEqual(first_zoned_date_and_hours)) {
             return "No time elapsed between those two dates";
         }

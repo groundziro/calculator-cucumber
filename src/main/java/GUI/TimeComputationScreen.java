@@ -28,7 +28,7 @@ public class TimeComputationScreen extends CalculatorScreen {
         Time t = new Time();
         DatePicker dateL = new DatePicker();
         ChoiceBox<String> mode = new ChoiceBox<>();
-        mode.getItems().addAll("Complete", "Centuries", "Decades", "Years", "Months", "Days", "Minutes", "Seconds");
+        mode.getItems().addAll("Complete", "Centuries", "Decades", "Years", "Months", "Days", "Hours", "Minutes", "Seconds");
         ChoiceBox<String> input = new ChoiceBox<>();
         input.getItems().addAll("Years", "Months", "Days", "Minutes", "Seconds", "Mixe");
         DatePicker dateR = new DatePicker();
@@ -81,6 +81,7 @@ public class TimeComputationScreen extends CalculatorScreen {
         elapsedB.setOnAction(actionEvent -> {
             String hourLTfS = hourLTf.getText().equals("") ? Time.current_time() : hourLTf.getText();
             String hourRTfS = hourRTf.getText().equals("") ? Time.current_time() : hourRTf.getText();
+            String how_to_show = mode.getValue() == null ? "Complete" : mode.getValue();
             if (!Time.hours_well_formatted(hourLTfS) || !Time.hours_well_formatted(hourRTfS)) {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.\nUse format HH:mm[:ss] [AM|PM] [TimeZone ID+X]\nList of time zones can be find in the help section.", ButtonType.OK);
                 alert.showAndWait();
@@ -88,7 +89,7 @@ public class TimeComputationScreen extends CalculatorScreen {
             }
             LocalDate localDateL = dateL.getValue() !=null ? dateL.getValue() : dateNow.toLocalDate();
             LocalDate localDateR = dateR.getValue() != null ? dateR.getValue() : dateNow.toLocalDate();
-            current.setText(t.elapsed_between(localDateL, hourLTfS, conversionCurrent.getText(), localDateR, hourRTfS));
+            current.setText(t.elapsed_between(localDateL, hourLTfS, how_to_show, localDateR, hourRTfS));
         });
 
         minus.setOnAction(actionEvent -> {
@@ -133,10 +134,11 @@ public class TimeComputationScreen extends CalculatorScreen {
             grid.addRow(3, current);
         }
         else if (isElapsedBetween) {
-            grid.addRow(1, dateL, dateR);
-            grid.addRow(2, hourLTf, hourRTf);
-            grid.addRow(3, elapsedB);
-            grid.addRow(4, current);
+            grid.addRow(1, mode);
+            grid.addRow(2, dateL, dateR);
+            grid.addRow(3, hourLTf, hourRTf);
+            grid.addRow(4, elapsedB);
+            grid.addRow(5, current);
         }
         else{
             grid.addRow(1, mode);
