@@ -174,7 +174,9 @@ public class MainScreen extends CalculatorScreen{
             Printer p = new Printer(Notation.INFIX);
             e.accept(p);
             before.setText(p.getStr());
+            currentNum.clear();
             currentNum.add(e);
+            currentOp="";
             equalized=true;
         });
 

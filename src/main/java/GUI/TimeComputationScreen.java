@@ -96,7 +96,7 @@ public class TimeComputationScreen extends CalculatorScreen {
             String hourLTfS = hourLTf.getText();
             String what_to_add_remove = input.getValue() == null ? "Mixe" : input.getValue();
             if (!Time.add_remove_well_formatted(hourLTfS, what_to_add_remove)) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Please, check the to know how to use this function. [RTFM]", ButtonType.OK);
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Please, check the help section to know how to use this function. [RTFM]", ButtonType.OK);
                 alert.showAndWait();
                 return;
             }
