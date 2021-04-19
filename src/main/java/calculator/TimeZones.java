@@ -2,8 +2,8 @@ package calculator;
 
 import java.util.HashSet;
 
+// https://en.wikipedia.org/wiki/List_of_UTC_time_offsets
 public enum TimeZones {
-    // TODO only use most common
     Y("UTC-1200"),
     X("UTC-1100"),
     SST("UTC-1100"),

@@ -14,6 +14,7 @@ public class TimeComputationScreen extends CalculatorScreen {
     private final Text conversionCurrent = new Text("Complete");
     private final boolean isElapsedSince;
     private final boolean isElapsedBetween;
+
     public TimeComputationScreen(Memory m, Stage stage, boolean isElapsedSince, boolean isElapsedBetween) {
         super(m, stage,2);
         this.isElapsedSince = isElapsedSince;

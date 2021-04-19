@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 public class Time {
 
-    private final Logger logger = Logger.getLogger(Time.class.getName());
+    private static final Logger logger = Logger.getLogger(Time.class.getName());
 
     public static String current_time() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
@@ -16,13 +16,22 @@ public class Time {
     }
 
     public static boolean hours_well_formatted(String checking) {
+        boolean hh_am_zone = checking.matches("^(((0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?)|(([1-9]|1[0-2])(:[0-5][0-9])?(:[0-5][0-9])? (AM|PM))) [A-Z]{1,4}((\\+([0-9]|1[1-4]))|(-([1-9]|1[1-2])))$");
+        if (hh_am_zone) {
+            boolean known_zone_id =
+                    checking.contains("+") ?
+                            checking.split("\\+")[0].split(" ").length == 3 ?
+                                    TimeZones.getTimeZones().contains(checking.split("\\+")[0].split(" ")[2])
+                                    : checking.split("\\+")[0].split(" ").length == 2 ?
+                                    TimeZones.getTimeZones().contains(checking.split("\\+")[0].split(" ")[1]) : false
+                            : checking.split("-")[0].split(" ").length == 3 ?
+                                    TimeZones.getTimeZones().contains(checking.split("-")[0].split(" ")[2])
+                            : checking.split("-")[0].split(" ").length == 2 ?
+                            TimeZones.getTimeZones().contains(checking.split("-")[0].split(" ")[1]) : false;
+            hh_am_zone = hh_am_zone && known_zone_id;
+        }
         return checking.matches("^(0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$") ||
-               checking.matches("^([1-9]|1[0-2])(:[0-5][0-9])?(:[0-5][0-9])? (AM|PM)$") ||
-               (checking.matches("^(((0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?)|(([1-9]|1[0-2])(:[0-5][0-9])?(:[0-5][0-9])? (AM|PM))) [A-Z]{1,4}((\\+([0-9]|1[1-4]))|(-([1-9]|1[1-2])))$") &&
-                       checking.contains("+") ? checking.split("\\+")[0].split(" ").length == 3 ? TimeZones.getTimeZones().contains(checking.split("\\+")[0].split(" ")[2])
-                       : checking.split("\\+")[0].split(" ").length == 2 && TimeZones.getTimeZones().contains(checking.split("\\+")[0].split(" ")[1])
-                       : checking.split("-")[0].split(" ").length == 3 ? TimeZones.getTimeZones().contains(checking.split("-")[0].split(" ")[2])
-                       : checking.split("-")[0].split(" ").length == 2 && TimeZones.getTimeZones().contains(checking.split("-")[0].split(" ")[1]));
+               checking.matches("^([1-9]|1[0-2])(:[0-5][0-9])?(:[0-5][0-9])? (AM|PM)$") || hh_am_zone;
 
     }
 
@@ -71,10 +80,15 @@ public class Time {
             hours_int = (Integer.parseInt(hours.split(":")[0]) + Integer.parseInt(p_hour_list[2].contains("+") ? p_hour_list[2].split("\\+")[1] : p_hour_list[2].split("-")[1])) % 24;
         }
         else {
-            hours = p_hour;
-            hours_int = (Integer.parseInt(hours.split(":")[0]) + Integer.parseInt(p_hour_list[2].contains("+") ? p_hour_list[1].split("\\+")[1] : p_hour_list[1].split("-")[1])) % 24;
+            hours = check_format(p_hour.split(" ")[0]);
+            hours_int = (Integer.parseInt(hours.split(":")[0]) + Integer.parseInt(p_hour_list[1].contains("+") ? p_hour_list[1].split("\\+")[1] : p_hour_list[1].split("-")[1])) % 24;
         }
-        hours = hours_int + ":" + hours.split(":")[1] + ":" + hours.split(":")[2];
+        if (hours.split(":").length == 3) {
+            hours = hours_int + ":" + hours.split(":")[1] + ":" + hours.split(":")[2];
+        }
+        else {
+            hours = hours_int + ":" + hours.split(":")[1] + ":00";
+        }
         return check_format(hours);
     }
 
@@ -178,13 +192,15 @@ public class Time {
     }
 
     public String elapsed_since(LocalDate user_date, String user_hours, String user_result) {
-        boolean using_time_zone = user_hours.split(" ").length == 3;
+        boolean using_time_zone = user_hours.matches("^(((0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?)|(([1-9]|1[0-2])(:[0-5][0-9])?(:[0-5][0-9])? (AM|PM))) [A-Z]{1,4}((\\+([0-9]|1[1-4]))|(-([0-9]|1[1-2])))$");
         String time_zone;
         if (using_time_zone) {
-            time_zone = user_hours.contains("+") ? user_hours.split(" ")[2].split("\\+")[0] : user_hours.split(" ")[2].split("-")[0];
-            // =========================================================================================================
-            logger.info("user time zone: " + time_zone);
-            // =========================================================================================================
+            if (user_hours.split(" ").length == 2) {
+                time_zone = user_hours.contains("+") ? user_hours.split(" ")[1].split("\\+")[0] : user_hours.split(" ")[1].split("-")[0];
+            }
+            else {
+                time_zone = user_hours.contains("+") ? user_hours.split(" ")[2].split("\\+")[0] : user_hours.split(" ")[2].split("-")[0];
+            }
         }
         else {
             time_zone = "CET";
@@ -193,37 +209,50 @@ public class Time {
         LocalTime hours = LocalTime.parse(new_user_hours, DateTimeFormatter.ofPattern("HH:mm:ss"));
         LocalDateTime user_date_and_hours = user_date.atTime(hours);
         LocalDateTime current_date_and_hours = LocalDateTime.now().withNano(0);
-
         ZonedDateTime current_zoned_date_and_hours;
         ZonedDateTime user_zoned_date_and_hours;
         current_zoned_date_and_hours = current_date_and_hours.atZone(ZoneId.of(TimeZones.valueOf("CET").label));
         user_zoned_date_and_hours = user_date_and_hours.atZone(ZoneId.of(TimeZones.valueOf(time_zone).label));
-
-        // =============================================================================================================
-        logger.info("european time zone: " + current_zoned_date_and_hours);
-        logger.info("user time zone : " + user_zoned_date_and_hours);
-        // =============================================================================================================
-
-        // return choices(user_zoned_date_and_hours, current_zoned_date_and_hours, user_result);
-
         if (current_zoned_date_and_hours.isBefore(user_zoned_date_and_hours) || current_zoned_date_and_hours.isEqual(user_zoned_date_and_hours)) {
             return "No time elapsed since this time.";
         }
         return choices(user_zoned_date_and_hours, current_zoned_date_and_hours, user_result);
     }
 
-    public String elapsed_between(LocalDate first_user_date, String first_user_hours, String user_result,
-                                    LocalDate second_user_date, String second_user_hours) {
+    public String elapsed_between(LocalDate first_user_date, String first_user_hours, String user_result, LocalDate second_user_date, String second_user_hours) {
+        boolean using_first_time_zone = first_user_hours.split(" ").length == 3;
+        boolean using_second_time_zone = second_user_hours.split(" ").length == 3;
+        String first_time_zone;
+        String second_time_zone;
+        if (using_first_time_zone && using_second_time_zone) {
+            first_time_zone = first_user_hours.contains("+") ? first_user_hours.split(" ")[2].split("\\+")[0] : first_user_hours.split(" ")[2].split("-")[0];
+            second_time_zone = second_user_hours.contains("+") ? second_user_hours.split(" ")[2].split("\\+")[0] : second_user_hours.split(" ")[2].split("-")[0];
+        }
+        else if (using_first_time_zone) {
+            first_time_zone = first_user_hours.contains("+") ? first_user_hours.split(" ")[2].split("\\+")[0] : first_user_hours.split(" ")[2].split("-")[0];
+            second_time_zone = "CET";
+        }
+        else if (using_second_time_zone) {
+            first_time_zone = "CET";
+            second_time_zone = second_user_hours.contains("+") ? second_user_hours.split(" ")[2].split("\\+")[0] : second_user_hours.split(" ")[2].split("-")[0];
+        }
+        else {
+            first_time_zone = "CET";
+            second_time_zone = "CET";
+        }
         String new_first_user_hours = check_format(first_user_hours);
         String new_second_user_hours = check_format(second_user_hours);
         LocalTime first_hours = LocalTime.parse(new_first_user_hours, DateTimeFormatter.ofPattern("HH:mm:ss"));
         LocalTime second_hours = LocalTime.parse(new_second_user_hours, DateTimeFormatter.ofPattern("HH:mm:ss"));
         LocalDateTime first_user_date_and_hours = first_user_date.atTime(first_hours);
         LocalDateTime second_user_date_and_hours = second_user_date.atTime(second_hours);
-        if (second_user_date_and_hours.isBefore(first_user_date_and_hours) || second_user_date_and_hours.isEqual(first_user_date_and_hours)) {
+        ZonedDateTime first_zoned_date_and_hours;
+        ZonedDateTime second_zoned_date_and_hours;
+        first_zoned_date_and_hours = first_user_date_and_hours.atZone(ZoneId.of(TimeZones.valueOf(first_time_zone).label));
+        second_zoned_date_and_hours = second_user_date_and_hours.atZone(ZoneId.of(TimeZones.valueOf(second_time_zone).label));
+        if (second_zoned_date_and_hours.isBefore(first_zoned_date_and_hours) || second_zoned_date_and_hours.isEqual(first_zoned_date_and_hours)) {
             return "No time elapsed between those two dates";
         }
-        return "not working yet";
-        // return choices(first_user_date_and_hours, second_user_date_and_hours, user_result);
+        return choices(first_zoned_date_and_hours, second_zoned_date_and_hours, user_result);
     }
 }
