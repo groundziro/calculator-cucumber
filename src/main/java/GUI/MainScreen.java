@@ -2,9 +2,7 @@ package GUI;
 
 import calculator.*;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -28,6 +26,7 @@ public class MainScreen extends CalculatorScreen{
         MenuItem size = new MenuItem("Memory Size");
         MenuItem get = new MenuItem("Get Computation");
         MenuItem save = new MenuItem("Save Memory");
+        MenuItem print = new MenuItem("Show Memory");
         ArrayList<Button> numbers = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             Button number = new Button(Integer.toString(i));
@@ -198,8 +197,13 @@ public class MainScreen extends CalculatorScreen{
             if (file!=null)
                 mem.save(file.getAbsolutePath());
         });
-
-        memory.getItems().addAll(load,size,get,save);
+        print.setOnAction(actionEvent -> {
+            Dialog<String> dialog = new Dialog<>();
+            dialog.setContentText(mem.getLog());
+            dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
+            dialog.showAndWait();
+        });
+        memory.getItems().addAll(load,size,get,save,print);
         bar.getMenus().add(memory);
     }
 

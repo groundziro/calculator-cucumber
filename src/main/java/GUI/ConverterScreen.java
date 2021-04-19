@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 
 public class ConverterScreen extends CalculatorScreen{
-    String type="";
+    String type;
     UnitsConvertor convertor = new UnitsConvertor();
     ChoiceBox<String> input = new ChoiceBox<>();
     ChoiceBox<String> output = new ChoiceBox<>();
@@ -46,7 +46,6 @@ public class ConverterScreen extends CalculatorScreen{
                 else {
                     Alert alert = new Alert(Alert.AlertType.ERROR, "Please, check the help section to know how to use this function. [RTFM]", ButtonType.OK);
                     alert.showAndWait();
-                    return;
                 }
             }
         });
