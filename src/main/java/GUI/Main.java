@@ -2,13 +2,16 @@ package GUI;
 
 import calculator.Memory;
 import javafx.application.Application;
+import javafx.event.Event;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.util.Optional;
 
 public class Main extends Application {
@@ -33,7 +36,7 @@ public class Main extends Application {
                 tutoDialog.showAndWait();
             }
         });
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Is this your first time using our calculator ?",ButtonType.YES,ButtonType.NO);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Is it your first time using our calculator?",ButtonType.YES,ButtonType.NO);
         Optional<ButtonType> opt = alert.showAndWait();
         boolean tuto = false;
         if (opt.isPresent()) {
@@ -45,6 +48,16 @@ public class Main extends Application {
         if (tuto)
             tutoDialog.showAndWait();
         primaryStage.setScene(scene);
+        primaryStage.setOnCloseRequest(actionEvent ->{
+            FileChooser fc = new FileChooser();
+            fc.setTitle("Saving Memory");
+            fc.setInitialDirectory(new File("."));
+            fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Memory Files","*.mem"),
+                    new FileChooser.ExtensionFilter("All Files","*"));
+            File file = fc.showSaveDialog(primaryStage);
+            if (file!=null)
+                m.save(file.getAbsolutePath());
+        });
         primaryStage.show();
     }
 }

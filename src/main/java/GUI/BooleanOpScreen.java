@@ -6,6 +6,7 @@ import calculator.Memory;
 import calculator.MyBoolean;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
@@ -46,7 +47,11 @@ public class BooleanOpScreen extends CalculatorScreen {
         Button parenthesis = new Button(")");
         parenthesis.setOnAction(actionEvent -> current.setText(current.getText()+" )"));
         operations.add(parenthesis);
-        setOnKeyPressed(keyEvent-> {
+        setOnKeyPressed(keyEvent->  {
+            if (keyEvent.getCode()==KeyCode.R) {
+                before.setText("");
+                current.setText("");
+            }
             if (keyEvent.getCode()==KeyCode.NUMPAD0)
                 t.fire();
             if (keyEvent.getCode() == KeyCode.NUMPAD1)
@@ -61,8 +66,10 @@ public class BooleanOpScreen extends CalculatorScreen {
                         else
                             currentExpr = mem.parse(current.getText());
                         before.setText(String.valueOf((c.eval(currentExpr) == 0)));
-                    } catch (IllegalConstruction illegalConstruction) {
-                        illegalConstruction.printStackTrace();
+                    } catch (Exception ex) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR,ex.getMessage(), ButtonType.OK);
+                        alert.showAndWait();
+                        return;
                     }
                     first = true;
                     equalized = true;

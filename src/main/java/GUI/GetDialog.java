@@ -28,10 +28,8 @@ public class GetDialog extends Dialog<Expression> {
             choiceBox.getItems().add(new Pair<>(p.getStr(),e));
         }
         ok.setDefaultButton(true);
-        ok.setOnAction(actionEvent -> {
-            if (!choiceBox.getItems().isEmpty() && choiceBox.getValue() != null) {
-                setResult(choiceBox.getValue().getValue());
-            }
+        ok.setOnAction(actionEvent->{
+            setResult(choiceBox.getValue().getValue());
             close();
         });
         HBox hBox = new HBox();

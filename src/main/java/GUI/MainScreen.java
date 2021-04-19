@@ -150,6 +150,7 @@ public class MainScreen extends CalculatorScreen{
                 case DIVIDE: ops.get(3).fire();break;
                 case BACK_SPACE:
                 case DELETE:back(1);break;
+                case ESCAPE:save.fire();break;
             }
         });
         load.setOnAction(actionEvent -> {
@@ -171,11 +172,13 @@ public class MainScreen extends CalculatorScreen{
             GetDialog dial = new GetDialog(mem);
             dial.showAndWait();
             Expression e = dial.getResult();
-            Printer p = new Printer(Notation.INFIX);
-            e.accept(p);
-            before.setText(p.getStr());
-            currentNum.clear();
-            currentNum.add(e);
+            if(e!=null) {
+                Printer p = new Printer(Notation.INFIX);
+                e.accept(p);
+                before.setText(p.getStr());
+                currentNum.clear();
+                currentNum.add(e);
+            }
             currentOp="";
             equalized=true;
         });
@@ -187,10 +190,15 @@ public class MainScreen extends CalculatorScreen{
             mem.setMax(res);
         });
         save.setOnAction(actionEvent -> {
+            fc.setTitle("Saving Memory");
+            fc.setInitialDirectory(new File("."));
+            fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Memory Files","*.mem"),
+                    new FileChooser.ExtensionFilter("All Files","*"));
             File file = fc.showSaveDialog(stage);
             if (file!=null)
                 mem.save(file.getAbsolutePath());
         });
+
         memory.getItems().addAll(load,size,get,save);
         bar.getMenus().add(memory);
     }
