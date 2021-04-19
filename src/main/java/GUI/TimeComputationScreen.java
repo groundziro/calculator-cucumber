@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class TimeComputationScreen extends CalculatorScreen{
+public class TimeComputationScreen extends CalculatorScreen {
     private final Text conversionCurrent = new Text("Complete");
     private final boolean isElapsedSince;
     private final boolean isElapsedBetween;
@@ -65,7 +65,7 @@ public class TimeComputationScreen extends CalculatorScreen{
         elapsedS.setOnAction(actionEvent -> {
             String hourLTfS = hourLTf.getText().equals("") ? Time.current_time() : hourLTf.getText();
             if (!Time.hours_well_formatted(hourLTfS)) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.\n Use format HH:mm[:ss] [AM|PM]", ButtonType.OK);
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.\n Use format HH:mm[:ss] [AM|PM] [TimeZone ID+X]\nList of time zones can be find in the help section.", ButtonType.OK);
                 alert.showAndWait();
                 return;
             }
@@ -77,7 +77,7 @@ public class TimeComputationScreen extends CalculatorScreen{
             String hourLTfS = hourLTf.getText().equals("") ? Time.current_time() : hourLTf.getText();
             String hourRTfS = hourRTf.getText().equals("") ? Time.current_time() : hourRTf.getText();
             if (!Time.hours_well_formatted(hourLTfS) || !Time.hours_well_formatted(hourRTfS)) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.\nUse format HH:mm[:ss] [AM|PM]", ButtonType.OK);
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.\nUse format HH:mm[:ss] [AM|PM] [TimeZone ID+X]\nList of time zones can be find in the help section.", ButtonType.OK);
                 alert.showAndWait();
                 return;
             }
@@ -90,7 +90,7 @@ public class TimeComputationScreen extends CalculatorScreen{
             String hourLTfS = hourLTf.getText();
             String hourRTfS = hourRTf.getText();
             if (!Time.hours_well_formatted(hourLTfS) || !Time.hours_well_formatted(hourRTfS)) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.\nUse format HH:mm[:ss] [AM|PM]", ButtonType.OK);
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.\nUse format HH:mm[:ss] [AM|PM] [TimeZone ID+X]\nList of time zones can be find in the help section.", ButtonType.OK);
                 alert.showAndWait();
                 return;
             }
@@ -103,7 +103,7 @@ public class TimeComputationScreen extends CalculatorScreen{
             String hourLTfS = hourLTf.getText();
             String hourRTfS = hourRTf.getText();
             if (!Time.hours_well_formatted(hourLTfS) || !Time.hours_well_formatted(hourRTfS)) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.\nUse format HH:mm[:ss] [AM|PM]", ButtonType.OK);
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.\nUse format HH:mm[:ss] [AM|PM] [TimeZone ID+X]\nList of time zones can be find in the help section.", ButtonType.OK);
                 alert.showAndWait();
                 return;
             }
@@ -128,7 +128,7 @@ public class TimeComputationScreen extends CalculatorScreen{
             grid.addRow(3, plus, minus);
             grid.addRow(4, current);
         }
-        else if (isElapsedBetween){
+        else if (isElapsedBetween) {
             grid.addRow(1, dateL, dateR);
             grid.addRow(2, hourLTf, hourRTf);
             grid.addRow(3, elapsedB);
