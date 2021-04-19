@@ -29,12 +29,15 @@ public class GetDialog extends Dialog<Expression> {
         }
         ok.setDefaultButton(true);
         ok.setOnAction(actionEvent->{
-            setResult(choiceBox.getValue().getValue());
+
+            if (choiceBox.getValue()!=null)
+                setResult(choiceBox.getValue().getValue());
             close();
         });
         HBox hBox = new HBox();
         hBox.getChildren().addAll(choiceBox,ok);
         dp.setHeaderText("Choice of Expression");
         dp.setContent(hBox);
+        this.setDialogPane(dp);
     }
 }

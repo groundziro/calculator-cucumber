@@ -35,6 +35,8 @@ public class SizeDialog extends Dialog<Integer> {
         HBox hbox = new HBox();
         hbox.getChildren().addAll(tf,ok);
         dp.setContent(hbox);
+        this.setDialogPane(dp);
+
     }
 
 
