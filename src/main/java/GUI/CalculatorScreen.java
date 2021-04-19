@@ -53,32 +53,33 @@ public abstract class CalculatorScreen extends VBox {
         for (String type:types) {
             MenuItem t = new MenuItem(type);
             t.setOnAction(actionEvent -> {
-                System.out.println("Goes to the Converter");
                 ConverterScreen conv = new ConverterScreen(mem, stage, t.getText());
                 stage.getScene().setRoot(conv);
             });
             mode1.getItems().add(t);
         }
 
-        // TODO when selecting Elapsed since, should open a new window
-        // TODO when clicking on Elapsed since button, if date is empty use current date
         Menu mode2 = new Menu("Time computation");
-        MenuItem elapsedSince = new MenuItem("Elapsed Since");
-        MenuItem otherTC = new MenuItem("Other Time Computations");
+        MenuItem elapsedSince = new MenuItem("Elapsed since");
+        MenuItem elapsedBetween = new MenuItem("Elapsed between");
+        MenuItem otherTC = new MenuItem("Addition and subtraction");
         elapsedSince.setOnAction(actionEvent -> {
-            TimeComputationScreen time = new TimeComputationScreen(mem,stage,true);
+            TimeComputationScreen time = new TimeComputationScreen(mem,stage,true, false);
+            stage.getScene().setRoot(time);
+        });
+        elapsedBetween.setOnAction(actionEvent -> {
+            TimeComputationScreen time = new TimeComputationScreen(mem, stage, false, true);
             stage.getScene().setRoot(time);
         });
         otherTC.setOnAction(actionEvent -> {
-            TimeComputationScreen time = new TimeComputationScreen(mem,stage,false);
+            TimeComputationScreen time = new TimeComputationScreen(mem,stage,false, false);
             stage.getScene().setRoot(time);
         });
-        mode2.getItems().addAll(elapsedSince,otherTC);
+        mode2.getItems().addAll(elapsedSince, elapsedBetween, otherTC);
         MenuItem mode3 = new MenuItem("Boolean Operations");
 
 
         mode0.setOnAction(actionEvent -> {
-            System.out.println("Goes to the Classic Mode");
             if (mode!=0) {
                 MainScreen main = new MainScreen(mem, stage);
                 stage.getScene().setRoot(main);
@@ -86,16 +87,7 @@ public abstract class CalculatorScreen extends VBox {
 
         });
 
-//        mode2.setOnAction(actionEvent -> {
-//            System.out.println("Goes to time Computation");
-//            if (mode!=2) {
-//                TimeComputationScreen time = new TimeComputationScreen(mem, stage);
-//                stage.getScene().setRoot(time);
-//            }
-//        });
-
         mode3.setOnAction(actionEvent -> {
-            System.out.println("Goes to Boolean Operation");
             if (mode!=3) {
                 BooleanOpScreen bool = new BooleanOpScreen(mem, stage);
                 stage.getScene().setRoot(bool);

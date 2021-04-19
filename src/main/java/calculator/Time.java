@@ -1,222 +1,343 @@
 package calculator;
 
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.Calendar;
+import java.util.logging.Logger;
 
-public class Time{
+public class Time {
 
-    public static String now(){
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
-        return dtf.format(now);
+    private static final Logger logger = Logger.getLogger(Time.class.getName());
+
+    public static String current_time() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        return formatter.format(LocalTime.now());
+    }
+
+    public static boolean add_remove_well_formatted(String checking, String what) {
+        if (what.equals("Mixe")) {
+            return checking.matches("^\\d+:\\d+(:\\d+)?$");
+        }
+        else {
+            return checking.matches("^\\d+$");
+        }
     }
 
     public static boolean hours_well_formatted(String checking) {
-        return checking.matches("^(0?[1-9]|1[0-9]|2[0-3]):[0-5]?[0-9](:[0-5]?[0-9])?$");
-    }
-
-    private String check_seconds(String hour){
-        boolean format = hour.matches("^(0?[1-9]|1[0-9]|2[0-3]):[0-5]?[0-9]:[0-5]?[0-9]$");
-        String output;
-        if (! format){
-            output = hour + ":00";
+        boolean hh_am_zone = checking.matches("^(((0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?)|(([1-9]|1[0-2])(:[0-5][0-9])?(:[0-5][0-9])? (AM|PM))) [A-Z]{1,4}((\\+([0-9]|1[1-4]))|(-([1-9]|1[1-2])))$");
+        if (hh_am_zone) {
+            boolean known_zone_id =
+                    checking.contains("+") ?
+                            checking.split("\\+")[0].split(" ").length == 3 ?
+                                    TimeZones.getTimeZones().contains(checking.split("\\+")[0].split(" ")[2])
+                                    : checking.split("\\+")[0].split(" ").length == 2 ?
+                                    TimeZones.getTimeZones().contains(checking.split("\\+")[0].split(" ")[1]) : false
+                            : checking.split("-")[0].split(" ").length == 3 ?
+                                    TimeZones.getTimeZones().contains(checking.split("-")[0].split(" ")[2])
+                            : checking.split("-")[0].split(" ").length == 2 ?
+                            TimeZones.getTimeZones().contains(checking.split("-")[0].split(" ")[1]) : false;
+            hh_am_zone = known_zone_id;
         }
-        else{
-            output = hour;
+        return checking.matches("^(0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?$") ||
+               checking.matches("^([1-9]|1[0-2])(:[0-5][0-9])?(:[0-5][0-9])? (AM|PM)$") || hh_am_zone;
+
+    }
+
+    //  midnight as 12 am and noon as 12 pm
+    private String check_format(String p_hour) {
+        boolean format = p_hour.matches("^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$");
+        boolean format_AM_PM = p_hour.matches("^([1-9]|1[0-2])(:[0-5][0-9])?(:[0-5][0-9])? (AM|PM)$");
+        boolean format_time_zone = p_hour.matches("^(((0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?)|(([1-9]|1[0-2])(:[0-5][0-9])?(:[0-5][0-9])? (AM|PM))) [A-Z]{1,4}((\\+([0-9]|1[1-4]))|(-([0-9]|1[1-2])))$");
+        String output1;
+        String output2;
+        if (format_AM_PM) {
+            output2 = check_format_AM_PM(p_hour);
         }
-        return output;
+        else if (format_time_zone){
+            output2 = check_format_time_zone(p_hour);
+        }
+        else if (!format) {
+            boolean test_hours = p_hour.matches("^[0-9]:[0-5][0-9](:[0-5][0-9])?$");
+            if (test_hours) {
+                output1 = "0" + p_hour;
+            }
+            else {
+                output1 = p_hour;
+            }
+            boolean test_seconds = output1.matches("^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$");
+            if (test_seconds) {
+                    output2 = output1 + ":00";
+            }
+            else {
+                output2 =output1;
+            }
+        }
+        else {
+            output2 = p_hour;
+        }
+        return output2;
     }
 
-    public String minus(LocalDate first_date, LocalDate second_date, String first_hour, String second_hour){
-        LocalTime first_time = LocalTime.parse(first_hour,DateTimeFormatter.ofPattern("HH:mm:ss"));
-        LocalTime second_time = LocalTime.parse(second_hour,DateTimeFormatter.ofPattern("HH:mm:ss"));
-        LocalDateTime first_time_updated = first_date.atTime(first_time);
-        LocalDateTime second_time_updated = second_date.atTime(second_time);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        String time1 = formatter.format(first_time_updated);
-        String time2 = formatter.format(second_time_updated);
-//        String time1 = first_time_updated.toString().replace('T', ' ');
-//        String time2 = second_time_updated.toString().replace('T', ' ');
-        String[] date_and_hours1 = time1.split(" ");
-        String[] date_and_hours2 = time2.split(" ");
-        String[] date1 = date_and_hours1[0].split("-");
-        String[] date2 = date_and_hours2[0].split("-");
-        String[] hours1 = check_seconds(date_and_hours1[1]).split(":");
-        String[] hours2 = check_seconds(date_and_hours2[1]).split(":");
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(Integer.parseInt(date1[0]), Integer.parseInt(date1[1]), Integer.parseInt(date1[2]),
-                     Integer.parseInt(hours1[0]), Integer.parseInt(hours1[1]), Integer.parseInt(hours1[2]));
-        calendar.add(Calendar.YEAR, -Integer.parseInt(date2[0]));
-        calendar.add(Calendar.MONTH, -Integer.parseInt(date2[1]));
-        calendar.add(Calendar.DATE, -Integer.parseInt(date2[2]));
-        calendar.add(Calendar.HOUR, -Integer.parseInt(hours2[0]));
-        calendar.add(Calendar.MINUTE, -Integer.parseInt(hours2[1]));
-        calendar.add(Calendar.SECOND, -Integer.parseInt(hours2[2]));
-        return calendar.getTime().toString();
+    private String check_format_time_zone(String p_hour) {
+        boolean is_AM_PM = p_hour.matches("^([1-9]|1[0-2])(:[0-5][0-9])?(:[0-5][0-9])? (AM|PM) [A-Z]{1,4}((\\+([0-9]|1[1-4]))|(-([0-9]|1[1-2])))$");
+        String[] p_hour_list = p_hour.split(" ");
+        String hours;
+        int hours_int;
+        if (is_AM_PM) {
+            hours = check_format_AM_PM(p_hour_list[0] + " " + p_hour_list[1]);
+            hours_int = (Integer.parseInt(hours.split(":")[0]) + Integer.parseInt(p_hour_list[2].contains("+") ? p_hour_list[2].split("\\+")[1] : p_hour_list[2].split("-")[1])) % 24;
+        }
+        else {
+            hours = check_format(p_hour.split(" ")[0]);
+            hours_int = (Integer.parseInt(hours.split(":")[0]) + Integer.parseInt(p_hour_list[1].contains("+") ? p_hour_list[1].split("\\+")[1] : p_hour_list[1].split("-")[1])) % 24;
+        }
+        if (hours.split(":").length == 3) {
+            hours = hours_int + ":" + hours.split(":")[1] + ":" + hours.split(":")[2];
+        }
+        else {
+            hours = hours_int + ":" + hours.split(":")[1] + ":00";
+        }
+        return check_format(hours);
     }
 
-    public void plus(LocalDate l, LocalDate r, String hourL, String hourR){
-        LocalTime timeL = LocalTime.parse(hourL,DateTimeFormatter.ofPattern("HH:mm:ss"));
-        LocalTime timeR = LocalTime.parse(hourR,DateTimeFormatter.ofPattern("HH:mm:ss"));
-        LocalDateTime updatedL = l.atTime(timeL);
-        LocalDateTime updatedR = r.atTime(timeR);
+    private String check_format_AM_PM(String p_hour) {
+        String time_format = p_hour.split(" ")[1];
+        String time = p_hour.split(" ")[0];
+        String[] time_list = time.split(":");
+        int hour = Integer.parseInt(time_list[0]);
+        StringBuilder output;
+        if (time_format.equals("PM")) {
+            if (hour != 12) {
+                hour += 12;
+            }
+            time_list[0] = String.valueOf(hour);
+            output = new StringBuilder(time_list[0]);
+            for (int i = 1; i < time_list.length; i++) {
+                output.append(":").append(time_list[i]);
+            }
+        }
+        else {
+            if (hour == 12) {
+                hour -= 12;
+            }
+            time_list[0] = String.valueOf(hour);
+            output = new StringBuilder(time_list[0]);
+            for (int i = 1; i < time_list.length; i++) {
+                output.append(":").append(time_list[i]);
+            }
+        }
+        String[] test_format = output.toString().split(":");
+        if (test_format.length == 1) {
+            output.append(":00");
+        }
+        return check_format(output.toString());
     }
 
-    public String choices(LocalDateTime first_date_time, LocalDateTime second_date_time, String user_result){
-        switch (user_result){
+    public String minus(String first_hour, String what_to_add_remove) {
+        LocalDateTime current_date_and_hours = LocalDateTime.now().withNano(0);
+        if (what_to_add_remove.equals("Mixe")) {
+            int hours_to_remove = Integer.parseInt(first_hour.split(":")[0]);
+            int minutes_to_remove = Integer.parseInt(first_hour.split(":")[1]);
+            int seconds_to_remove;
+            if (first_hour.split(":").length == 3) {
+                seconds_to_remove = Integer.parseInt(first_hour.split(":")[2]);
+            }
+            else {
+                seconds_to_remove = 0;
+            }
+            return current_date_and_hours.plusHours(-hours_to_remove).plusMinutes(-minutes_to_remove).plusSeconds(-seconds_to_remove).toString().replace('T', ' ');
+        }
+        else {
+            LocalDateTime new_current_date_and_hours;
+            switch (what_to_add_remove) {
+                case "Years":
+                    new_current_date_and_hours = current_date_and_hours.plusYears(-Integer.parseInt(first_hour));
+                    return new_current_date_and_hours.toString().replace('T', ' ');
+                case "Months":
+                    new_current_date_and_hours = current_date_and_hours.plusMonths(-Integer.parseInt(first_hour));
+                    return new_current_date_and_hours.toString().replace('T', ' ');
+                case "Weeks":
+                    new_current_date_and_hours = current_date_and_hours.plusWeeks(-Integer.parseInt(first_hour));
+                    return new_current_date_and_hours.toString().replace('T', ' ');
+                case "Days":
+                    new_current_date_and_hours = current_date_and_hours.plusDays(-Integer.parseInt(first_hour));
+                    return new_current_date_and_hours.toString().replace('T', ' ');
+                case "Hours":
+                    new_current_date_and_hours = current_date_and_hours.plusHours(-Integer.parseInt(first_hour));
+                    return new_current_date_and_hours.toString().replace('T', ' ');
+                case "Minutes":
+                    new_current_date_and_hours = current_date_and_hours.plusMinutes(-Integer.parseInt(first_hour));
+                    return new_current_date_and_hours.toString().replace('T', ' ');
+                case "Seconds":
+                    new_current_date_and_hours = current_date_and_hours.plusSeconds(-Integer.parseInt(first_hour));
+                    return new_current_date_and_hours.toString().replace('T', ' ');
+                default:
+                    return "Bad entry";
+            }
+        }
+    }
+
+    public String plus(String first_hour, String what_to_add_remove) {
+        LocalDateTime current_date_and_hours = LocalDateTime.now().withNano(0);
+        if (what_to_add_remove.equals("Mixe")) {
+            int hours_to_remove = Integer.parseInt(first_hour.split(":")[0]);
+            int minutes_to_remove = Integer.parseInt(first_hour.split(":")[1]);
+            int seconds_to_remove;
+            if (first_hour.split(":").length == 3) {
+                seconds_to_remove = Integer.parseInt(first_hour.split(":")[2]);
+            }
+            else {
+                seconds_to_remove = 0;
+            }
+            return current_date_and_hours.plusHours(hours_to_remove).plusMinutes(minutes_to_remove).plusSeconds(seconds_to_remove).toString().replace('T', ' ');
+        }
+        else {
+            LocalDateTime new_current_date_and_hours;
+            switch (what_to_add_remove) {
+                case "Years":
+                    new_current_date_and_hours = current_date_and_hours.plusYears(Integer.parseInt(first_hour));
+                    return new_current_date_and_hours.toString().replace('T', ' ');
+                case "Months":
+                    new_current_date_and_hours = current_date_and_hours.plusMonths(Integer.parseInt(first_hour));
+                    return new_current_date_and_hours.toString().replace('T', ' ');
+                case "Weeks":
+                    new_current_date_and_hours = current_date_and_hours.plusWeeks(Integer.parseInt(first_hour));
+                    return new_current_date_and_hours.toString().replace('T', ' ');
+                case "Days":
+                    new_current_date_and_hours = current_date_and_hours.plusDays(Integer.parseInt(first_hour));
+                    return new_current_date_and_hours.toString().replace('T', ' ');
+                case "Hours":
+                    new_current_date_and_hours = current_date_and_hours.plusHours(Integer.parseInt(first_hour));
+                    return new_current_date_and_hours.toString().replace('T', ' ');
+                case "Minutes":
+                    new_current_date_and_hours = current_date_and_hours.plusMinutes(Integer.parseInt(first_hour));
+                    return new_current_date_and_hours.toString().replace('T', ' ');
+                case "Seconds":
+                    new_current_date_and_hours = current_date_and_hours.plusSeconds(Integer.parseInt(first_hour));
+                    return new_current_date_and_hours.toString().replace('T', ' ');
+                default:
+                    return "Bad entry";
+            }
+        }
+    }
+
+    public String choices(ZonedDateTime first_date_time, ZonedDateTime second_date_time, String user_result) {
+        switch (user_result) {
             case "Complete":
-                return ChronoUnit.DAYS.between(first_date_time, second_date_time) + " days and " +
-                       ChronoUnit.HOURS.between(first_date_time, second_date_time) + " hours and " +
-                       ChronoUnit.MINUTES.between(first_date_time, second_date_time) + " minutes and " +
-                        ChronoUnit.SECONDS.between(first_date_time, second_date_time) + " seconds.";
+                long days = ChronoUnit.DAYS.between(first_date_time, second_date_time);
+                long hours = ChronoUnit.HOURS.between(first_date_time, second_date_time);
+                long minutes = ChronoUnit.MINUTES.between(first_date_time, second_date_time);
+                long seconds = ChronoUnit.SECONDS.between(first_date_time, second_date_time);
+
+                return days + " days, " + (hours % 24)  + " hours, " + (minutes % 60) + " minutes and " +
+                       (seconds % 60) + " seconds.";
             case "Centuries":
-                return String.valueOf(ChronoUnit.CENTURIES.between(first_date_time, second_date_time));
+                return ChronoUnit.CENTURIES.between(first_date_time, second_date_time) + " centuries";
             case "Decades":
-                return String.valueOf(ChronoUnit.DECADES.between(first_date_time, second_date_time));
+                return ChronoUnit.DECADES.between(first_date_time, second_date_time) + " decades";
             case "Years":
-                return String.valueOf(ChronoUnit.YEARS.between(first_date_time, second_date_time));
+                return ChronoUnit.YEARS.between(first_date_time, second_date_time) + " years";
             case "Months":
-                return String.valueOf(ChronoUnit.MONTHS.between(first_date_time, second_date_time));
+                return ChronoUnit.MONTHS.between(first_date_time, second_date_time) + " months";
             case "Days":
-                return String.valueOf(ChronoUnit.DAYS.between(first_date_time, second_date_time));
+                return ChronoUnit.DAYS.between(first_date_time, second_date_time) + " days";
             case "Hours":
-                return String.valueOf(ChronoUnit.HOURS.between(first_date_time, second_date_time));
+                return ChronoUnit.HOURS.between(first_date_time, second_date_time) + " hours";
             case "Minutes":
-                return String.valueOf(ChronoUnit.MINUTES.between(first_date_time, second_date_time));
+                return ChronoUnit.MINUTES.between(first_date_time, second_date_time) + " minutes";
             case "Seconds":
-                return String.valueOf(ChronoUnit.SECONDS.between(first_date_time, second_date_time));
+                return ChronoUnit.SECONDS.between(first_date_time, second_date_time) + " seconds";
             default:
                 return "Invalid output type";
         }
     }
 
-    public String elapsed_since(LocalDate user_date, String user_hours, String user_result){
-        String new_user_hours = check_seconds(user_hours);
+    public String elapsed_since(LocalDate user_date, String user_hours, String user_result) {
+        boolean using_time_zone = user_hours.matches("^(((0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?)|(([1-9]|1[0-2])(:[0-5][0-9])?(:[0-5][0-9])? (AM|PM))) [A-Z]{1,4}((\\+([0-9]|1[1-4]))|(-([0-9]|1[1-2])))$");
+        String time_zone;
+        if (using_time_zone) {
+            if (user_hours.split(" ").length == 2) {
+                time_zone = user_hours.contains("+") ? user_hours.split(" ")[1].split("\\+")[0] : user_hours.split(" ")[1].split("-")[0];
+            }
+            else {
+                time_zone = user_hours.contains("+") ? user_hours.split(" ")[2].split("\\+")[0] : user_hours.split(" ")[2].split("-")[0];
+            }
+        }
+        else {
+            time_zone = "CET";
+        }
+        String new_user_hours = check_format(user_hours);
         LocalTime hours = LocalTime.parse(new_user_hours, DateTimeFormatter.ofPattern("HH:mm:ss"));
         LocalDateTime user_date_and_hours = user_date.atTime(hours);
-        LocalDateTime current_date_and_hours = LocalDateTime.now();
-        if (current_date_and_hours.isBefore(user_date_and_hours) || current_date_and_hours.isEqual(user_date_and_hours)){
+        LocalDateTime current_date_and_hours = LocalDateTime.now().withNano(0);
+        ZonedDateTime current_zoned_date_and_hours;
+        ZonedDateTime user_zoned_date_and_hours;
+        current_zoned_date_and_hours = current_date_and_hours.atZone(ZoneId.of(TimeZones.valueOf("CET").label));
+        user_zoned_date_and_hours = user_date_and_hours.atZone(ZoneId.of(TimeZones.valueOf(time_zone).label));
+        if (current_zoned_date_and_hours.isBefore(user_zoned_date_and_hours) || current_zoned_date_and_hours.isEqual(user_zoned_date_and_hours)) {
             return "No time elapsed since this time.";
         }
-        return choices(user_date_and_hours, current_date_and_hours, user_result);
+        return choices(user_zoned_date_and_hours, current_zoned_date_and_hours, user_result);
     }
 
-    public String elapsed_between(LocalDate first_user_date, String first_user_hours, String user_result,
-                                    LocalDate second_user_date, String second_user_hours){
-        String new_first_user_hours = check_seconds(first_user_hours);
-        String new_second_user_hours = check_seconds(second_user_hours);
+    public String elapsed_between(LocalDate first_user_date, String first_user_hours, String user_result, LocalDate second_user_date, String second_user_hours) {
+        boolean using_first_time_zone = first_user_hours.matches("^(((0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?)|(([1-9]|1[0-2])(:[0-5][0-9])?(:[0-5][0-9])? (AM|PM))) [A-Z]{1,4}((\\+([0-9]|1[1-4]))|(-([0-9]|1[1-2])))$");
+        boolean using_second_time_zone = second_user_hours.matches("^(((0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?)|(([1-9]|1[0-2])(:[0-5][0-9])?(:[0-5][0-9])? (AM|PM))) [A-Z]{1,4}((\\+([0-9]|1[1-4]))|(-([0-9]|1[1-2])))$");
+        String first_time_zone;
+        String second_time_zone;
+        if (using_first_time_zone && using_second_time_zone) {
+            if (first_user_hours.split(" ").length == 2 && second_user_hours.split(" ").length == 2){
+                first_time_zone = first_user_hours.contains("+") ? first_user_hours.split(" ")[1].split("\\+")[0] : first_user_hours.split(" ")[1].split("-")[0];
+                second_time_zone = second_user_hours.contains("+") ? second_user_hours.split(" ")[1].split("\\+")[0] : second_user_hours.split(" ")[1].split("-")[0];
+            }
+            else if (first_user_hours.split(" ").length == 2) {
+                first_time_zone = first_user_hours.contains("+") ? first_user_hours.split(" ")[1].split("\\+")[0] : first_user_hours.split(" ")[1].split("-")[0];
+                second_time_zone = second_user_hours.contains("+") ? second_user_hours.split(" ")[2].split("\\+")[0] : second_user_hours.split(" ")[2].split("-")[0];
+            }
+            else if (second_user_hours.split(" ").length == 2) {
+                first_time_zone = first_user_hours.contains("+") ? first_user_hours.split(" ")[2].split("\\+")[0] : first_user_hours.split(" ")[2].split("-")[0];
+                second_time_zone = second_user_hours.contains("+") ? second_user_hours.split(" ")[1].split("\\+")[0] : second_user_hours.split(" ")[1].split("-")[0];
+            }
+            else {
+                first_time_zone = first_user_hours.contains("+") ? first_user_hours.split(" ")[2].split("\\+")[0] : first_user_hours.split(" ")[2].split("-")[0];
+                second_time_zone = second_user_hours.contains("+") ? second_user_hours.split(" ")[2].split("\\+")[0] : second_user_hours.split(" ")[2].split("-")[0];
+            }
+        }
+        else if (using_first_time_zone) {
+            if (first_user_hours.split(" ").length == 2) {
+                first_time_zone = first_user_hours.contains("+") ? first_user_hours.split(" ")[1].split("\\+")[0] : first_user_hours.split(" ")[1].split("-")[0];
+            }
+            else {
+                first_time_zone = first_user_hours.contains("+") ? first_user_hours.split(" ")[2].split("\\+")[0] : first_user_hours.split(" ")[2].split("-")[0];
+            }
+            second_time_zone = "CET";
+        }
+        else if (using_second_time_zone) {
+            if (second_user_hours.split(" ").length == 2) {
+                second_time_zone = second_user_hours.contains("+") ? second_user_hours.split(" ")[1].split("\\+")[0] : second_user_hours.split(" ")[1].split("-")[0];
+            }
+            else {
+                second_time_zone = second_user_hours.contains("+") ? second_user_hours.split(" ")[2].split("\\+")[0] : second_user_hours.split(" ")[2].split("-")[0];
+            }
+            first_time_zone = "CET";
+        }
+        else {
+            first_time_zone = "CET";
+            second_time_zone = "CET";
+        }
+        String new_first_user_hours = check_format(first_user_hours);
+        String new_second_user_hours = check_format(second_user_hours);
         LocalTime first_hours = LocalTime.parse(new_first_user_hours, DateTimeFormatter.ofPattern("HH:mm:ss"));
         LocalTime second_hours = LocalTime.parse(new_second_user_hours, DateTimeFormatter.ofPattern("HH:mm:ss"));
         LocalDateTime first_user_date_and_hours = first_user_date.atTime(first_hours);
         LocalDateTime second_user_date_and_hours = second_user_date.atTime(second_hours);
-        if (second_user_date_and_hours.isBefore(first_user_date_and_hours) || second_user_date_and_hours.isEqual(first_user_date_and_hours)){
+        ZonedDateTime first_zoned_date_and_hours;
+        ZonedDateTime second_zoned_date_and_hours;
+        first_zoned_date_and_hours = first_user_date_and_hours.atZone(ZoneId.of(TimeZones.valueOf(first_time_zone).label));
+        second_zoned_date_and_hours = second_user_date_and_hours.atZone(ZoneId.of(TimeZones.valueOf(second_time_zone).label));
+        if (second_zoned_date_and_hours.isBefore(first_zoned_date_and_hours) || second_zoned_date_and_hours.isEqual(first_zoned_date_and_hours)) {
             return "No time elapsed between those two dates";
         }
-        return choices(first_user_date_and_hours, second_user_date_and_hours, user_result);
+        return choices(first_zoned_date_and_hours, second_zoned_date_and_hours, user_result);
     }
 }
-
-/*
-public class Time{
-
-    public Time (String time, String format){
-        this.time = time;
-        this.format = format;
-    }
-
-    public String minus(Time t){
-        int hours1;
-        int minutes1;
-        int hours2;
-        int minutes2;
-        if (this.format.equals("24")) {
-            hours1 = Integer.parseInt(this.time.split(":")[0]);
-            minutes1 = Integer.parseInt(this.time.split(":")[1]);
-        }
-        else{
-            String hour = to24(this.time);
-            hours1 = Integer.parseInt(hour.split(":")[0]);
-            minutes1 = Integer.parseInt(hour.split(":")[1]);
-        }
-        if (t.format.equals("24")){
-            hours2 = Integer.parseInt(t.time.split(":")[0]);
-            minutes2 = Integer.parseInt(t.time.split(":")[1]);
-        }
-        else{
-            String hour = to24(t.time);
-            hours2 = Integer.parseInt(hour.split(":")[0]);
-            minutes2 = Integer.parseInt(hour.split(":")[1]);
-        }
-        int hours = hours1-hours2;
-        int minutes = minutes1 - minutes2;
-        if (hours <= 0){
-            hours = 24 + hours;
-        }
-        if (minutes < 0){
-            hours -= 1;
-            minutes = 60 + minutes;
-        }
-        return hours + ":" + minutes;
-    }
-
-    public static String now(){
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm");
-        LocalDateTime now = LocalDateTime.now();
-        return dtf.format(now);
-    }
-
-    public static String to24(String hour){
-        String[] hourMinFormat = hour.split(" ");
-        String[] hourMin = hourMinFormat[0].split(":");
-        int hours = Integer.parseInt(hourMin[0]);
-        int min = Integer.parseInt(hourMin[1]);
-        String format = hourMinFormat[1];
-        if (format.equals("PM")){
-            hours += 12;
-        }
-        return hours + ":" + min;
-    }
-
-    public String since(){
-        String format = this.format;
-        int currentInMinutes;
-        int timeInMinutes;
-        if (format.equals("12")){
-            timeInMinutes = toMinutes(to24(this.time));
-        }
-        else {
-            timeInMinutes = toMinutes(this.time);
-        }
-        String current = Time.now();
-        currentInMinutes = toMinutes(current);
-        if (timeInMinutes > currentInMinutes) {
-            currentInMinutes += 1440;
-        }
-        return toHours(String.valueOf(currentInMinutes - timeInMinutes));
-    }
-
-    public static int toMinutes(String hour){
-        String[] hourMin = hour.split(":");
-        int hours = Integer.parseInt(hourMin[0]);
-        int minutes = Integer.parseInt(hourMin[1]);
-        int hoursInMin = hours * 60;
-        return hoursInMin + minutes;
-    }
-
-    public static String toHours(String hour){
-        int time = Integer.parseInt(hour);
-        int hours = time / 60;
-        int minutes = time % 60;
-        String min = String.valueOf(minutes);
-        if (minutes < 10){
-            min = "0" + minutes;
-        }
-        return hours + ":" + min;
-    }
-}
-*/

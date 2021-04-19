@@ -35,6 +35,10 @@ public class SizeDialog extends Dialog<Integer> {
         HBox hbox = new HBox();
         hbox.getChildren().addAll(tf,ok);
         dp.setContent(hbox);
+        setOnCloseRequest(event -> ok.fire());
+        dp.getButtonTypes().add(ButtonType.CLOSE);
+        this.setDialogPane(dp);
+
     }
 
 

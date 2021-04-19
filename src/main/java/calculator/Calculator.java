@@ -59,7 +59,7 @@ public class Calculator {
 
     public static boolean isAlphaNum(String s){
         try{
-            Integer.parseInt(s);
+            Double.parseDouble(s);
             return true;
         }catch (Exception e){
             return false;

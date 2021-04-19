@@ -41,8 +41,8 @@ public class TutoDialog extends Dialog<String> {
                 "create or overwrite.\n" +
                 "When you press 'Enter' the memory will save itself."));
         classic.setOnAction(actionEvent -> tuto.setText("Classic Tuto"));
-        converter.setOnAction(actionEvent -> tuto.setText("Converter Tuto"));
-        time.setOnAction(actionEvent -> tuto.setText("Time Tuto"));
+        converter.setOnAction(actionEvent -> tuto.setText("Converter Tuto")); // TODO
+        time.setOnAction(actionEvent -> tuto.setText("Time Tuto")); // TODO
         bool.setOnAction(actionEvent -> tuto.setText("When you select the 'Boolean Computation' mode, you are faced" +
                 " with all of the different possible operations:\n" +
                 "And, Or, Not, Xor, Implication, Equivalence.\n" +

@@ -2,9 +2,7 @@ package GUI;
 
 import calculator.*;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.layout.Region;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -28,6 +26,7 @@ public class MainScreen extends CalculatorScreen{
         MenuItem size = new MenuItem("Memory Size");
         MenuItem get = new MenuItem("Get Computation");
         MenuItem save = new MenuItem("Save Memory");
+        MenuItem print = new MenuItem("Show Memory");
         ArrayList<Button> numbers = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             Button number = new Button(Integer.toString(i));
@@ -150,6 +149,7 @@ public class MainScreen extends CalculatorScreen{
                 case DIVIDE: ops.get(3).fire();break;
                 case BACK_SPACE:
                 case DELETE:back(1);break;
+                case ESCAPE:save.fire();break;
             }
         });
         load.setOnAction(actionEvent -> {
@@ -171,10 +171,14 @@ public class MainScreen extends CalculatorScreen{
             GetDialog dial = new GetDialog(mem);
             dial.showAndWait();
             Expression e = dial.getResult();
-            Printer p = new Printer(Notation.INFIX);
-            e.accept(p);
-            before.setText(p.getStr());
-            currentNum.add(e);
+            if(e!=null) {
+                Printer p = new Printer(Notation.INFIX);
+                e.accept(p);
+                before.setText(p.getStr());
+                currentNum.clear();
+                currentNum.add(e);
+            }
+            currentOp="";
             equalized=true;
         });
 
@@ -185,11 +189,21 @@ public class MainScreen extends CalculatorScreen{
             mem.setMax(res);
         });
         save.setOnAction(actionEvent -> {
+            fc.setTitle("Saving Memory");
+            fc.setInitialDirectory(new File("."));
+            fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Memory Files","*.mem"),
+                    new FileChooser.ExtensionFilter("All Files","*"));
             File file = fc.showSaveDialog(stage);
             if (file!=null)
                 mem.save(file.getAbsolutePath());
         });
-        memory.getItems().addAll(load,size,get,save);
+        print.setOnAction(actionEvent -> {
+            Dialog<String> dialog = new Dialog<>();
+            dialog.setContentText(mem.getLog());
+            dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
+            dialog.showAndWait();
+        });
+        memory.getItems().addAll(load,size,get,save,print);
         bar.getMenus().add(memory);
     }
 
