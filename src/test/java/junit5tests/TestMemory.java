@@ -21,7 +21,7 @@ public class TestMemory {
         List<Expression> params2 =
                 new ArrayList<>(Arrays.asList(new Plus(params1), new Plus(params1)));
         List<Expression> params3 =
-                new ArrayList<>(Arrays.asList(new Plus(params1), new Minus(params2), new MyNumber(7)));
+                new ArrayList<>(Arrays.asList(new Plus(params1), new MyNumber(7),new Minus(params2)));
         ArrayList<Expression> params4 = new ArrayList<>(Arrays.asList(new Implies(new ArrayList<>(Arrays.asList(new And(new ArrayList<>(Arrays.asList(new MyNumber(1), new MyNumber(1)))), new MyNumber(0)))),new MyNumber(1)));
         o = new Times(params3);
         o2 = new Divides(params3);
