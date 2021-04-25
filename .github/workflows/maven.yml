@@ -5,9 +5,9 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ master ]
+    branches: [ Thomas, Laurent_release ]
   pull_request:
-    branches: [ master ]
+    branches: [ Thomas, Laurent_release ]
 
 jobs:
   build:
@@ -22,3 +22,6 @@ jobs:
         java-version: 11
     - name: Build with Maven
       run: mvn -B package --file pom.xml
+    - name: Testing with Maven
+      run: mvn verify
+    

@@ -72,7 +72,7 @@ public class Memory {
     /**
      * Cette fonction sert à récupérer une expression dans la mémoire
      * @param index Indice de la profondeur où on doit aller rechercher l'expression
-     *              => size-1 c'est le dessus de la pile et 0 c'est la base de la pile
+     *               size-1 c'est le dessus de la pile et 0 c'est la base de la pile
      * @return L'expression recherchée
      */
     public Expression get(int index){
@@ -135,7 +135,7 @@ public class Memory {
         }
     }
 
-    private Expression parse(String data) throws IllegalConstruction {
+    public Expression parse(String data) throws IllegalConstruction {
         ArrayList<String> str = new ArrayList<>(Arrays.asList(data.split(" | , ")));
         String op = str.get(0);
         ArrayList<String> expression = getExp(str.subList(1,str.size()));

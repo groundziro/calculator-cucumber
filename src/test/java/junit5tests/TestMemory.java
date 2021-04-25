@@ -24,7 +24,7 @@ public class TestMemory {
                 new ArrayList<>(Arrays.asList(new Plus(params1), new Minus(params2), new MyNumber(7)));
         ArrayList<Expression> params4 = new ArrayList<>(Arrays.asList(new Implies(new ArrayList<>(Arrays.asList(new And(new ArrayList<>(Arrays.asList(new MyNumber(1), new MyNumber(1)))), new MyNumber(0)))),new MyNumber(1)));
         o = new Times(params3);
-        o2 = new Or(params4);
+        o2 = new Divides(params3);
         mem.setMax(2);
         mem.add(o);
         mem.add(o2);
@@ -55,17 +55,14 @@ public class TestMemory {
 
     @Test
     public void testSave(){
-        mem.save("Save1.txt");
+        mem.save("Save1.mem");
     }
 
     @Test
     public void testLoad(){
         testSave();
         Memory mem2 = new Memory();
-        mem2.load("Save1.txt");
+        mem2.load("Save1.mem");
         assertEquals(mem.getLog(),mem2.getLog());
     }
-
-
-
 }

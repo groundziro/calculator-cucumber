@@ -1,11 +1,9 @@
 package calculator;
 
-import java.util.Arrays;
-import java.util.List;
 
 public class Unit {
-    public final String type; // support: length
-    public final String kind; // support: km, m
+    public final String type;
+    public final String kind;
     public final Double value;
     public final Double strength;
 
@@ -13,236 +11,236 @@ public class Unit {
         this.type = type;
         this.kind = kind;
         this.value = value;
-        this.strength = getStrength(this.kind);
+        this.strength = get_strength(this.kind);
     }
 
-    public static Double getStrength(String value){
+    public static Double get_strength(String value){
         double output;
         switch (value){
-            case "km":
-            case "ml":
-            case "cubic cm":
-            case "millisec":
-            case "mg":
+            case "Kilometres":
+            case "Millilitres":
+            case "Cubic centimetres":
+            case "Milliseconds":
+            case "Milligrams":
                 output = 1000.0;
                 break;
             case "hm":
-            case "cg":
+            case "Centigrams":
                 output = 100.0;
                 break;
             case "dam":
-            case "decigrams":
+            case "Decigrams":
                 output = 10.0;
                 break;
-            case "m":
-            case "sqrt_m":
-            case "eur":
-            case "watts":
-            case "atmos":
-            case "cm per sec":
-            case "celsius":
-            case "sec":
-            case "l":
-            case "g":
+            case "Metres":
+            case "Square metres":
+            case "Europe - Euro":
+            case "Watts":
+            case "Atmospheres":
+            case "Centimetres per second":
+            case "Celsius":
+            case "Seconds":
+            case "Litres":
+            case "Grams":
                 output = 1.0;
                 break;
             case "dm":
-            case "decagrams":
+            case "Decagrams":
                 output = 0.1;
                 break;
-            case "cm":
-            case "m per sec":
-            case "hectograms":
+            case "Centimetres":
+            case "Metres per second":
+            case "Hectograms":
                 output = 0.01;
                 break;
-            case "mm":
-            case "kilowatts":
-            case "cubic m":
-            case "kilograms":
+            case "Millimetres":
+            case "Kilowatts":
+            case "Cubic metres":
+            case "Kilograms":
                 output = 0.001;
                 break;
-            case "in":
+            case "Inches":
                 output = 39.37008;
                 break;
-            case "ft":
+            case "Feet":
                 output = 3.28084;
                 break;
-            case "yd":
+            case "Yards":
                 output = 1.093613;
                 break;
-            case "mi":
+            case "Miles":
                 output = 0.000621;
                 break;
-            case "nm":
+            case "Nautical Miles":
                 output = 0.00054;
                 break;
-            case "sqrt_mm":
+            case "Square millimetres":
                 output = 1000000;
                 break;
-            case "sqrt_cm":
+            case "Square centimetres":
                 output = 10000;
                 break;
-            case "ha":
+            case "Hectares":
                 output = 0.0001;
                 break;
-            case "sqrt_km":
-            case "metric tonnes":
+            case "Square kilometres":
+            case "Metric tonnes":
                 output = 0.000001;
                 break;
-            case "sqrt_in":
+            case "Square inches":
                 output = 1550.003;
                 break;
-            case "sqrt_ft":
+            case "Square feet":
                 output = 10.76391;
                 break;
-            case "sqrt_yd":
+            case "Square yards":
                 output = 1.19599;
                 break;
-            case "ac":
+            case "Acres":
                 output = 0.000247;
                 break;
-            case "sqrt_mi":
+            case "Square miles":
                 output = 0.000000386102159;
                 break;
-            case "usd":
+            case "United States - Dollar":
                 output = 1.18;
                 break;
-            case "pound":
+            case "United Kingdom - Pound":
                 output = 0.85;
                 break;
-            case "china_yuan":
+            case "China - Yuan":
                 output = 7.73;
                 break;
-            case "japan_yen":
+            case "Japan - Yen":
                 output = 130.0;
                 break;
-            case "horsepower":
+            case "Horsepower (US)":
                 output = 0.001341;
                 break;
-            case "foot-pounds/minute":
+            case "Foot-pounds/minute":
                 output = 44.25373;
                 break;
             case "BTUs/minute":
                 output = 0.056869;
                 break;
-            case "bars":
+            case "Bars":
                 output = 1.01325;
                 break;
-            case "kilopascals":
+            case "Kilopascals":
                 output = 101.325;
                 break;
-            case "millimetres of mercury":
+            case "Millimetres of mercury":
                 output = 760.1275;
                 break;
-            case "pascals":
+            case "Pascals":
                 output = 101325.0;
                 break;
-            case "pounds per square inch":
+            case "Pounds per square inch":
                 output = 14.69595;
                 break;
-            case "km per hour":
+            case "Kilometres per hour":
                 output = 0.036;
                 break;
-            case "ft per sec":
+            case "Feet per second":
                 output = 0.032808;
                 break;
-            case "mi per hour":
+            case "Miles per hour":
                 output = 0.022371;
                 break;
-            case "knots":
+            case "Knots":
                 output = 0.01944;
                 break;
-            case "mach":
+            case "Mach":
                 output = 0.000029;
                 break;
-            case "fahrenheit":
+            case "Fahrenheit":
                 output = 33.8;
                 break;
-            case "kelvin":
+            case "Kelvin":
                 output = 274.15;
                 break;
-            case "microsec":
+            case "Microseconds":
                 output = 1000000.0;
                 break;
             case "min":
                 output = 0.016667;
                 break;
-            case "hours":
+            case "Hours":
                 output = 0.000278;
                 break;
-            case "days":
+            case "Days":
                 output = 0.000012;
                 break;
-            case "weeks":
+            case "Weeks":
                 output = 0.000002;
                 break;
-            case "years":
+            case "Years":
                 output = 0.000000031688088;
                 break;
-            case "teaspoons US":
+            case "Teaspoons (US)":
                 output = 202.8841;
                 break;
-            case "tablespoons US":
+            case "Tablespoons (US)":
                 output = 67.62805;
                 break;
-            case "fluid ounces US":
+            case "Fluid ounces (US)":
                 output = 33.81402;
                 break;
-            case "cups US":
+            case "Cups (US)":
                 output = 4.226753;
                 break;
-            case "pints US":
+            case "Pints (US)":
                 output = 2.113376;
                 break;
-            case "quarts US":
+            case "Quarts (US)":
                 output = 1.056688;
                 break;
-            case "gallons US":
+            case "Gallons (US)":
                 output = 0.264172;
                 break;
-            case "cubic in":
+            case "Cubic inches":
                 output = 61.02374;
                 break;
-            case "cubic ft":
+            case "Cubic feet":
                 output = 0.035315;
                 break;
-            case "cubic yd":
+            case "Cubic yards":
                 output = 0.001308;
                 break;
-            case "teaspoons UK":
+            case "Teaspoons (UK)":
                 output = 168.9364;
                 break;
-            case "tablespoons UK":
+            case "Tablespoons (UK)":
                 output = 56.31213;
                 break;
-            case "fluid ounces UK":
+            case "Fluid ounces (UK)":
                 output = 35.19508;
                 break;
-            case "pints UK":
+            case "Pints (UK)":
                 output = 1.759754;
                 break;
-            case "quarts UK":
+            case "Quarts (UK)":
                 output = 0.879877;
                 break;
-            case "gallons UK":
+            case "Gallons (UK)":
                 output = 0.219969;
                 break;
-            case "carats":
+            case "Carats":
                 output = 5.0;
                 break;
-            case "ounces":
+            case "Ounces":
                 output = 0.035274;
                 break;
-            case "pounds":
+            case "Pounds":
                 output = 0.002205;
                 break;
-            case "stone":
+            case "Stone":
                 output = 0.000157;
                 break;
-            case "short tons US":
+            case "Short tons (US)":
                 output = 0.000001;
                 break;
-            case "long tons UK":
+            case "Long tons (UK)":
                 output = 0.000000984206528;
                 break;
             default:

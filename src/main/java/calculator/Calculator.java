@@ -47,6 +47,8 @@ public class Calculator {
                 case "implies":
                     exp = new Implies(total);
                     break;
+                case "equi":
+                    exp = new Equivalence(total);
             }
             return exp;
         }catch (Exception e){
@@ -57,7 +59,7 @@ public class Calculator {
 
     public static boolean isAlphaNum(String s){
         try{
-            Integer.parseInt(s);
+            Double.parseDouble(s);
             return true;
         }catch (Exception e){
             return false;
