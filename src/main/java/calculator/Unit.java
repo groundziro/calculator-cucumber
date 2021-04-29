@@ -1,6 +1,10 @@
 package calculator;
 
-
+/**
+ * The Unit class contains the values associates with a unit.
+ *
+ * @author Laurent Bossart
+ */
 public class Unit {
     public final String type;
     public final String kind;

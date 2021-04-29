@@ -13,5 +13,4 @@ public abstract class Visitor implements Serializable {
 
     public abstract void visit(MyNumber n);
     public abstract void visit(Operation o);
-    //public abstract void visit(BooleanOperation b);
 }

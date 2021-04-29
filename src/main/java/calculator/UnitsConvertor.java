@@ -5,10 +5,17 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
-
+/**
+ * The UnitsConvertor class contains all what is needed to perform units specific actions.
+ *
+ * @author Laurent Bossart
+ */
 public class UnitsConvertor {
-    private HashMap<String, ArrayList<String>> map = new HashMap<>();
+    private final HashMap<String, ArrayList<String>> map = new HashMap<>();
 
+    /**
+     * This method create the mapping for the units.
+     */
     public void buildMap(){
         map.put("length", new ArrayList<>(Arrays.asList("Millimetres", "Centimetres", "Metres", "Kilometres", "Inches",
                                                         "Feet", "Yards", "Miles", "Nautical Miles")));
@@ -40,10 +47,23 @@ public class UnitsConvertor {
         map.put("temperature",new ArrayList<>(Arrays.asList("Celsius","Fahrenheit","Kelvin")));
     }
 
+    /**
+     * This method is used the get an entry in the map.
+     *
+     * @param type The type the user want to get in the map.
+     * @return The entry in the map.
+     */
     public ArrayList<String> getMap(String type){
         return map.get(type);
     }
 
+    /**
+     * This method is used to convert one unit to another.
+     *
+     * @param input The value associated the the first unit.
+     * @param goal The goal unit.
+     * @return The new unit with the new value.
+     */
     public Unit convert(Unit input, String goal){
         Double operation;
         List<String> types = Arrays.asList("length", "area", "currency", "power", "pressure", "speed", "time", "volume",

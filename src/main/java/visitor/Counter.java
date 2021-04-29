@@ -45,8 +45,4 @@ public class Counter extends Visitor{
         }
     }
 
-
-    public void visit(BooleanOperation b) {
-
-    }
 }
