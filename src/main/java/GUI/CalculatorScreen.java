@@ -37,11 +37,15 @@ public abstract class CalculatorScreen extends VBox {
         build(mode);
     }
 
-    public void back(int size){
+    protected void back(int size){
         String cur = current.getText();
         current.setText(cur.substring(0,cur.length()-size));
     }
 
+    /**
+     * Builds the common part of the screen for each mode of the calculator
+     * @param mode the mode that we are changing to
+     */
     private void build(int mode){
 
         Menu modes = new Menu("Modes");
@@ -97,5 +101,8 @@ public abstract class CalculatorScreen extends VBox {
         bar.getMenus().add(modes);
     }
 
+    /**
+     * Used to build the specific parts of each screen
+     */
     protected abstract void buildGrid();
 }
