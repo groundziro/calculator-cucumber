@@ -1,7 +1,6 @@
 package GUI;
 
 import calculator.Calculator;
-import calculator.IllegalConstruction;
 import calculator.Memory;
 import calculator.MyBoolean;
 import javafx.scene.control.Alert;
@@ -13,9 +12,10 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 public class BooleanOpScreen extends CalculatorScreen {
-    boolean first = true;
-    boolean notOp = false;
-    boolean equalized = false;
+    private boolean first = true;
+    private boolean notOp = false;
+    private boolean equalized = false;
+    private final ArrayList<String> lastInput = new ArrayList<>();
 
     public BooleanOpScreen(Memory m, Stage stage) {
         super(m, stage, 3);
@@ -34,28 +34,43 @@ public class BooleanOpScreen extends CalculatorScreen {
         for (String op : ops) {
             Button operation = new Button(op);
             operation.setOnAction(actionEvent -> {
+                if (!current.getText().isEmpty() && goodString(current.getText())==0){
+                    Alert alert = new Alert(Alert.AlertType.WARNING,"You finished typing your operation, you can" +
+                            " compute it or go back in order to add other operations.",ButtonType.OK);
+                    alert.showAndWait();
+                    return;
+                }
                 if (equalized) {
                     current.setText("");
                     equalized = false;
                 }
                 notOp = operation.getText().equals(ops[2]);
-                current.setText(current.getText() + (!first?" , ":"") +op +" ( ");
+                String s = (!first?" , ":"") +op +" ( ";
+                lastInput.add(s);
+                current.setText(current.getText() + s);
                 first = true;
             });
             operations.add(operation);
         }
         Button parenthesis = new Button(")");
-        parenthesis.setOnAction(actionEvent -> current.setText(current.getText()+" )"));
+        parenthesis.setOnAction(actionEvent -> {
+            String s = " )";
+            current.setText(current.getText()+s);
+            lastInput.add(s);
+        });
         operations.add(parenthesis);
         setOnKeyPressed(keyEvent->  {
             if (keyEvent.getCode()==KeyCode.R) {
                 before.setText("");
                 current.setText("");
+                lastInput.clear();
             }
             if (keyEvent.getCode()==KeyCode.NUMPAD0)
                 t.fire();
             if (keyEvent.getCode() == KeyCode.NUMPAD1)
                 f.fire();
+            if (keyEvent.getCode() == KeyCode.BACK_SPACE)
+                remove();
             if (keyEvent.getCode()== KeyCode.ENTER || keyEvent.getCode() == KeyCode.C){
                 int depth = goodString(current.getText());
                 if (depth==0) {
@@ -73,7 +88,6 @@ public class BooleanOpScreen extends CalculatorScreen {
                     }
                     first = true;
                     equalized = true;
-
                 }else {
                     Alert alert = new Alert(Alert.AlertType.WARNING,"There are " + depth+" missing parenthesis in your operation,"
                                             + "\n please verify your operations");
@@ -91,17 +105,36 @@ public class BooleanOpScreen extends CalculatorScreen {
 
     private void action(Button f) {
         f.setOnAction(actionEvent -> {
+            if (goodString(current.getText())==0){
+                Alert alert = new Alert(Alert.AlertType.ERROR,"There is no current operation," +
+                        " add at least an operation",ButtonType.OK);
+                alert.showAndWait();
+                return;
+            }
             if (equalized) {
                 current.setText("");
+                lastInput.clear();
                 equalized = false;
             }
+            String s;
             if (first) {
-                current.setText(current.getText() + f.getText());
+                s = f.getText();
+                current.setText(current.getText() + s);
                 first = false;
             }
-            else
-                current.setText(current.getText() + " , " + f.getText() + (notOp?" ) ":""));
+            else {
+                s = " , " + f.getText() + (notOp ? " ) " : "");
+                current.setText(current.getText() + s);
+            }
+            lastInput.add(s);
         });
+    }
+
+    private void remove(){
+        String lastIn = lastInput.remove(lastInput.size()-1);
+        int lengthToRemove = lastIn.length();
+        first = lastIn.contains("(") || lastIn.length() == 1;
+        back(lengthToRemove);
     }
 
     private int goodString(String text) {
