@@ -37,7 +37,7 @@ public abstract class CalculatorScreen extends VBox {
         build(mode);
     }
 
-    public void back(int size){
+    protected void back(int size){
         String cur = current.getText();
         current.setText(cur.substring(0,cur.length()-size));
     }
