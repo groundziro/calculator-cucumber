@@ -1,8 +1,10 @@
 package visitor;
 
+import calculator.BooleanOperation;
 import calculator.Expression;
 import calculator.MyNumber;
 import calculator.Operation;
+import calculator.Time;
 
 public class Counter extends Visitor{
     private final int type;
@@ -32,7 +34,7 @@ public class Counter extends Visitor{
                 break;
             case 0:
                 int max = -1;
-                counter+=1;
+                counter += 1;
                 for (Expression ignored : o.args) {
                     if (counter > max)
                         max = counter;
@@ -41,5 +43,10 @@ public class Counter extends Visitor{
                 counter = max;
                 break;
         }
+    }
+
+
+    public void visit(BooleanOperation b) {
+
     }
 }

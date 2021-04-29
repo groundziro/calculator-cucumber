@@ -1,9 +1,8 @@
 package visitor;
 
-import calculator.Divides;
-import calculator.Expression;
-import calculator.MyNumber;
-import calculator.Operation;
+
+import calculator.*;
+
 
 import java.util.ArrayList;
 
@@ -17,22 +16,32 @@ public class Evaluator extends Visitor {
         computedValue = n.getValue();
     }
 
-
     public void visit(Operation o){
         ArrayList<Integer> evaluatedArgs = new ArrayList<>();
         //first loop to recursively evaluate each subexpression
-        for(Expression a:o.args) {
-            a.accept(this);
-            evaluatedArgs.add(computedValue);
-        }
-        //second loop to accummulate all the evaluated subresults
+        getArgs(evaluatedArgs,o);
+        //second loop to accumulate all the evaluated sub-results
         int temp = evaluatedArgs.get(0);
         int max = evaluatedArgs.size();
-        for(int counter=1; counter<max; counter++) {
+        for (int counter = 1; counter < max; counter++) {
             temp = o.op(temp, evaluatedArgs.get(counter));
+        }
+        if (max == 1 && !classicOp(o.getSymbol())){
+            BooleanOperation b = (BooleanOperation) o;
+            temp = b.op(temp);
         }
         // store the accumulated result
         computedValue = temp;
     }
 
+    private boolean classicOp(String symbol) {
+        return symbol.equals("+")||symbol.equals("-")||symbol.equals("/")||symbol.equals("*");
+    }
+
+    private void getArgs(ArrayList<Integer> evaluatedArgs, Operation o){
+        for(Expression a: o.args){
+            a.accept(this);
+            evaluatedArgs.add(computedValue);
+        }
+    }
 }
