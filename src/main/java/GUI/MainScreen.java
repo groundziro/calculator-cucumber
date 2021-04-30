@@ -13,6 +13,8 @@ import java.util.ArrayList;
 
 public class MainScreen extends CalculatorScreen{
 
+    private boolean loaded = false;
+
     public MainScreen(Memory m, Stage stage) {
         super(m, stage,0);
         buildGrid();
@@ -186,6 +188,7 @@ public class MainScreen extends CalculatorScreen{
             current.setText("");
             currentOp=((Operation) currentExpr).getSymbol();
             equalized=false;
+            loaded=true;
         });
 
         size.setOnAction(actionEvent -> {
