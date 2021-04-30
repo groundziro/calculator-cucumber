@@ -10,6 +10,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * The TimeComputationScreen class is the screen associated to the time computation.
+ */
 public class TimeComputationScreen extends CalculatorScreen {
     private final Text conversionCurrent = new Text("Mixe");
     private final boolean isElapsedSince;
@@ -60,7 +63,9 @@ public class TimeComputationScreen extends CalculatorScreen {
         dateL.setConverter(converter);
 
         TextField hourLTf = new TextField();
+        hourLTf.setPromptText("Enter your time.");
         TextField hourRTf = new TextField();
+        hourRTf.setPromptText("Enter your time.");
 
         Button minus = new Button("-");
         Button plus = new Button("+");
@@ -72,7 +77,7 @@ public class TimeComputationScreen extends CalculatorScreen {
             String hourLTfS = hourLTf.getText().equals("") ? Time.current_time() : hourLTf.getText();
             String how_to_show = mode.getValue();
             if (!Time.hours_well_formatted(hourLTfS)) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.\n Use format HH:mm[:ss] [AM|PM] [TimeZone ID+X]\nList of time zones can be find in the help section.", ButtonType.OK);
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Please, check the help section to know how to use this function. [RTFM]", ButtonType.OK);
                 alert.showAndWait();
                 return;
             }
@@ -85,7 +90,7 @@ public class TimeComputationScreen extends CalculatorScreen {
             String hourRTfS = hourRTf.getText().equals("") ? Time.current_time() : hourRTf.getText();
             String how_to_show = mode.getValue();
             if (!Time.hours_well_formatted(hourLTfS) || !Time.hours_well_formatted(hourRTfS)) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Hours aren't well formatted.\nUse format HH:mm[:ss] [AM|PM] [TimeZone ID+X]\nList of time zones can be find in the help section.", ButtonType.OK);
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Please, check the help section to know how to use this function. [RTFM]", ButtonType.OK);
                 alert.showAndWait();
                 return;
             }
@@ -109,7 +114,7 @@ public class TimeComputationScreen extends CalculatorScreen {
             String hourLTfS = hourLTf.getText();
             String what_to_add_remove = input.getValue();
             if (!Time.add_remove_well_formatted(hourLTfS, what_to_add_remove)) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Please, check the to know how to use this function. [RTFM]", ButtonType.OK);
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Please, check the help section to know how to use this function. [RTFM]", ButtonType.OK);
                 alert.showAndWait();
                 return;
             }
@@ -123,8 +128,6 @@ public class TimeComputationScreen extends CalculatorScreen {
             conversionCur.setOnAction(actionEvent -> conversionCurrent.setText(conversionCur.getText()));
             conversion.getItems().add(conversionCur);
         }
-        // bar.getMenus().add(conversion);
-        // grid.addRow(0,conversionCurrent);
         if (!isElapsedSince && !isElapsedBetween) {
             grid.addRow(1, input);
             grid.addRow(2, hourLTf, plus, minus);

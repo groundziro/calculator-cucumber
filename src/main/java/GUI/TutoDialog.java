@@ -60,7 +60,10 @@ public class TutoDialog extends Dialog<String> {
                 "but it wasn't implemented to be used in the GUI.");
             nameTuto.setText(classic.getText());
         });
-        converter.setOnAction(actionEvent -> {tuto.setText("Converter Tuto");
+        converter.setOnAction(actionEvent -> {tuto.setText("The converter is quiet easy to use\n" +
+                "The first thing you have to do is to select 'Modes' > 'Converter' > select the king of conversion you want to make (e.g. length)\n" +
+                "On this screen you have two menus to select the start unit and the goal unit (for the example, let's say Millimetres and Nautical Miles).\n" +
+                "Then, just enter the amount of unit you want to convert and press enter. ");
         nameTuto.setText(converter.getText());}); // TODO
         time.setOnAction(actionEvent -> {tuto.setText("Time Tuto");
         nameTuto.setText(time.getText());}); // TODO

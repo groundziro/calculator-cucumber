@@ -11,7 +11,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
+import java.text.DecimalFormat;
+import java.util.Locale;
 
+
+/**
+ * The ConverterScreen class is the screen associated to the unit converter.
+ */
 public class ConverterScreen extends CalculatorScreen{
     String type;
     UnitsConvertor convertor = new UnitsConvertor();
@@ -41,7 +47,20 @@ public class ConverterScreen extends CalculatorScreen{
                     double x = Double.parseDouble(tf.getText());
                     Unit current_unit = new Unit(type, input.getValue(),x);
                     Unit goal = convertor.convert(current_unit,output.getValue());
-                    current.setText(String.valueOf(goal.value));
+                    String answer = String.format(Locale.ENGLISH, "%f", goal.value);
+                    while (true) {
+                        if (answer.endsWith("0")) {
+                            answer = answer.substring(0, answer.length() - 1);
+                        }
+                        else if (answer.endsWith(".")) {
+                            answer = answer.substring(0, answer.length() - 1);
+                            break;
+                        }
+                        else {
+                            break;
+                        }
+                    }
+                    current.setText(answer);
                 }
                 else {
                     Alert alert = new Alert(Alert.AlertType.ERROR, "Please, check the help section to know how to use this function. [RTFM]", ButtonType.OK);
