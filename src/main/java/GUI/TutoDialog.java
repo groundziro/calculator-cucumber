@@ -60,13 +60,30 @@ public class TutoDialog extends Dialog<String> {
                 "but it wasn't implemented to be used in the GUI.");
             nameTuto.setText(classic.getText());
         });
-        converter.setOnAction(actionEvent -> {tuto.setText("The converter is quiet easy to use\n" +
-                "The first thing you have to do is to select 'Modes' > 'Converter' > select the king of conversion you want to make (e.g. length)\n" +
-                "On this screen you have two menus to select the start unit and the goal unit (for the example, let's say Millimetres and Nautical Miles).\n" +
-                "Then, just enter the amount of unit you want to convert and press enter. ");
-        nameTuto.setText(converter.getText());}); // TODO
-        time.setOnAction(actionEvent -> {tuto.setText("Time Tuto");
-        nameTuto.setText(time.getText());}); // TODO
+        converter.setOnAction(actionEvent -> {tuto.setText("The converter is quiet easy to use.\n" +
+                "The first thing you have to do is to select 'Modes' > 'Converter' and selecting the kind of conversion you want to make (ex: length)\n" +
+                "On this screen you have two menus to select the start unit and the goal unit (for the example, let's say Millimetres and Metres).\n" +
+                "Then, just enter the amount of unit (ex: 184.349, note the integers are separed from the decimals by a dot) you want to convert and press enter." +
+                " Ex: 1000 Millimetres = 1 metre \n" +
+                "Important note: some units suffer a small precision issue due to the conversion and the use of doubles.");
+        nameTuto.setText(converter.getText());});
+        time.setOnAction(actionEvent -> {tuto.setText("The first possibility in the time computation menu is elapsed since.\n +" +
+                "The first option (Mixe by default) is the unit the user wants to add to the current time.\n" +
+                "If the user selects 'Mixe', the output is displayed as the number of days, hours, minutes and seconds. Otherwise it's only the number of complete unit selected.\n" +
+                "The second option is the date from which the user want to know how much time has elapsed.\n" +
+                "The last option is the hour from which the user wants to know how much time has elapsed. Then the user has to press the button " +
+                "'Elapsed since'. If the user do not enter a date or hour, the current is taken. The formats accepted are:\n" +
+                "-> HH:mm[:ss] (24h format)\n" +
+                "-> HH[:mm[:ss]] AM/PM (12h format)\n" +
+                "In addition to theses formats, a time zone can be added (ex: GMT+1). Ex: 2 PM GMT+2. The available time zones can be found here :" +
+                " https://en.wikipedia.org/wiki/List_of_UTC_time_offsets\n\n" +
+                "The second possibility is elapsed between.\n" +
+                "It works exactly like elapsed since, except the user can enter the beginning date and time and the end date and time. If nothing is entered, the current date or time " +
+                "is take.\n \n " +
+                "The last possibility is the addition/soustraction.\n" +
+                "The first option is 'Mixe' by default. It correspond to the unit the user wants to add/remove to the current date. If Mixe is selected, " +
+                "the input format is HH:mm[:ss], otherwise the input is an integer corresponding to the amount of unit to add/remove.");
+        nameTuto.setText(time.getText());});
         bool.setOnAction(actionEvent -> {
             tuto.setText("When you select the 'Boolean Computation' mode, you are faced" +
                     " with all of the different possible operations:\n" +
