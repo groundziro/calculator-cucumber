@@ -1,31 +1,42 @@
 package calculator;
 
-
+/**
+ * The Unit class contains the values associates with a unit.
+ *
+ * @author Laurent Bossart
+ */
 public class Unit {
     public final String type;
     public final String kind;
-    public final Double value;
-    public final Double strength;
+    public final double value;
+    public final double strength;
 
-    public Unit(String type, String kind, Double value){
+    public Unit(String type, String kind, double value){
         this.type = type;
         this.kind = kind;
         this.value = value;
         this.strength = get_strength(this.kind);
     }
 
-    public static Double get_strength(String value){
+    /**
+     * This method is used to get the value associated to a unit.
+     *
+     * @param value The unit we wants to get the value associated with.
+     * @return The value associated to the unit.
+     */
+    public static double get_strength(String value){
         double output;
         switch (value){
-            case "Kilometres":
             case "Millilitres":
             case "Cubic centimetres":
             case "Milliseconds":
             case "Milligrams":
+            case "Millimetres":
                 output = 1000.0;
                 break;
             case "hm":
             case "Centigrams":
+            case "Centimetres":
                 output = 100.0;
                 break;
             case "dam":
@@ -48,31 +59,15 @@ public class Unit {
             case "Decagrams":
                 output = 0.1;
                 break;
-            case "Centimetres":
             case "Metres per second":
             case "Hectograms":
                 output = 0.01;
                 break;
-            case "Millimetres":
             case "Kilowatts":
             case "Cubic metres":
             case "Kilograms":
+            case "Kilometres":
                 output = 0.001;
-                break;
-            case "Inches":
-                output = 39.37008;
-                break;
-            case "Feet":
-                output = 3.28084;
-                break;
-            case "Yards":
-                output = 1.093613;
-                break;
-            case "Miles":
-                output = 0.000621;
-                break;
-            case "Nautical Miles":
-                output = 0.00054;
                 break;
             case "Square millimetres":
                 output = 1000000;
@@ -244,7 +239,6 @@ public class Unit {
                 output = 0.000000984206528;
                 break;
             default:
-                System.out.println("Invalid kind");
                 output = 0.0;
                 break;
         }

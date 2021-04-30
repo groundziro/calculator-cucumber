@@ -3,17 +3,31 @@ package calculator;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.logging.Logger;
 
+/**
+ * The Time class contains all what is needed to perform time specific actions.
+ *
+ * @author Laurent Bossart
+ */
 public class Time {
 
-    private static final Logger logger = Logger.getLogger(Time.class.getName());
-
+    /**
+     * This method is used to know the current date and hours.
+     *
+     * @return A string containing the current date and current time.
+     */
     public static String current_time() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
         return formatter.format(LocalTime.now());
     }
 
+    /**
+     * This method is used to check if the user insertion for adding or removing an amount of time is correct.
+     *
+     * @param checking A string specified by the user. Should by hh:mm[:ss] (the amount of hours, minutes et seconds to add) or an a number specifying the amount to add.
+     * @param what This param is chosen by the user. It tells the program if the user wants to add days, hours, etc to the current date and time.
+     * @return true if the string specified by the user is well formatted, false otherwise.
+     */
     public static boolean add_remove_well_formatted(String checking, String what) {
         if (what.equals("Mixe")) {
             return checking.matches("^\\d+:\\d+(:\\d+)?$");
@@ -23,6 +37,12 @@ public class Time {
         }
     }
 
+    /**
+     * This method helps to know if the string representing time entered by the user is well formatted.
+     *
+     * @param checking The string specified by the user.
+     * @return true if the string is well formatted, false otherwise.
+     */
     public static boolean hours_well_formatted(String checking) {
         boolean hh_am_zone = checking.matches("^(((0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?)|(([1-9]|1[0-2])(:[0-5][0-9])?(:[0-5][0-9])? (AM|PM))) [A-Z]{1,4}((\\+([0-9]|1[1-4]))|(-([1-9]|1[1-2])))$");
         if (hh_am_zone) {
@@ -43,6 +63,12 @@ public class Time {
 
     }
 
+    /**
+     * This method check if the format is standardised. If so, transform the time to a standardised one.
+     *
+     * @param p_hour The time specified by the user.
+     * @return The standardised version of the time specified by the user.
+     */
     //  midnight as 12 am and noon as 12 pm
     private String check_format(String p_hour) {
         boolean format = p_hour.matches("^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$");
@@ -78,6 +104,12 @@ public class Time {
         return output2;
     }
 
+    /**
+     * This method converts a time with a time zone not standardised to a standardised one. The standard is 24 hours format hh:mm:ss.
+     *
+     * @param p_hour The time specified by the user.
+     * @return The time standardised.
+     */
     private String check_format_time_zone(String p_hour) {
         boolean is_AM_PM = p_hour.matches("^([1-9]|1[0-2])(:[0-5][0-9])?(:[0-5][0-9])? (AM|PM) [A-Z]{1,4}((\\+([0-9]|1[1-4]))|(-([0-9]|1[1-2])))$");
         String[] p_hour_list = p_hour.split(" ");
@@ -100,6 +132,12 @@ public class Time {
         return check_format(hours);
     }
 
+    /**
+     * This method convert a 12 hours time to a 24 hours time.
+     *
+     * @param p_hour An hour in the 12 hours format.
+     * @return The time specified by the user but in 24 hours format with seconds.
+     */
     private String check_format_AM_PM(String p_hour) {
         String time_format = p_hour.split(" ")[1];
         String time = p_hour.split(" ")[0];
@@ -133,6 +171,13 @@ public class Time {
         return check_format(output.toString());
     }
 
+    /**
+     * This method is used to remove an amount of time to a specific date and time.
+     *
+     * @param first_hour The amount the user wants to remove to the current date.
+     * @param what_to_add_remove What the user wants to remove (days, seconds, etc).
+     * @return The date that will be after removing the amount specified by the user.
+     */
     public String minus(String first_hour, String what_to_add_remove) {
         LocalDateTime current_date_and_hours = LocalDateTime.now().withNano(0);
         if (what_to_add_remove.equals("Mixe")) {
@@ -177,6 +222,13 @@ public class Time {
         }
     }
 
+    /**
+     * This method is used to add an amount of time to a specific date and time.
+     *
+     * @param first_hour The amount the user wants to add to the current date.
+     * @param what_to_add_remove What the user wants to add (days, seconds, etc).
+     * @return The date that will be after adding the amount specified by the user.
+     */
     public String plus(String first_hour, String what_to_add_remove) {
         LocalDateTime current_date_and_hours = LocalDateTime.now().withNano(0);
         if (what_to_add_remove.equals("Mixe")) {
@@ -221,9 +273,17 @@ public class Time {
         }
     }
 
+    /**
+     * This method is used to print in a specific format the time elapsed between two dates.
+     *
+     * @param first_date_time The start date and time.
+     * @param second_date_time The end date and time.
+     * @param user_result How the user wants the result to be displayed.
+     * @return The amount of time between two dates.
+     */
     public String choices(ZonedDateTime first_date_time, ZonedDateTime second_date_time, String user_result) {
         switch (user_result) {
-            case "Complete":
+            case "Mixe":
                 long days = ChronoUnit.DAYS.between(first_date_time, second_date_time);
                 long hours = ChronoUnit.HOURS.between(first_date_time, second_date_time);
                 long minutes = ChronoUnit.MINUTES.between(first_date_time, second_date_time);
@@ -252,6 +312,15 @@ public class Time {
         }
     }
 
+
+    /**
+     * This method compute the amount of time between the specified time and the current time.
+     *
+     * @param user_date The date selected by the user.
+     * @param user_hours The hours specified by the user.
+     * @param user_result How the user wants the output to be displayed.
+     * @return The amount of time elapsed between the time specified by the user.
+     */
     public String elapsed_since(LocalDate user_date, String user_hours, String user_result) {
         boolean using_time_zone = user_hours.matches("^(((0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?)|(([1-9]|1[0-2])(:[0-5][0-9])?(:[0-5][0-9])? (AM|PM))) [A-Z]{1,4}((\\+([0-9]|1[1-4]))|(-([0-9]|1[1-2])))$");
         String time_zone;
@@ -280,6 +349,17 @@ public class Time {
         return choices(user_zoned_date_and_hours, current_zoned_date_and_hours, user_result);
     }
 
+
+    /**
+     * This method compute the amount of time between two distinct moments. If the first date and time is "after" the second one, tell the user that no time has elapsed.
+     *
+     * @param first_user_date The first date specified by the user. If the user don't specify any, the current date is selected.
+     * @param first_user_hours The first time specified by the user. If the user don't specify any, the current time is selected.
+     * @param user_result How the user want the output to be displayed.
+     * @param second_user_date The second date specified by the user. If the user don't specify any, the current date is selected.
+     * @param second_user_hours The second time specified by the user. If the user don't specify any, the current time is selected.
+     * @return The amount of time elapsed between the two specified date and time.
+     */
     public String elapsed_between(LocalDate first_user_date, String first_user_hours, String user_result, LocalDate second_user_date, String second_user_hours) {
         boolean using_first_time_zone = first_user_hours.matches("^(((0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?)|(([1-9]|1[0-2])(:[0-5][0-9])?(:[0-5][0-9])? (AM|PM))) [A-Z]{1,4}((\\+([0-9]|1[1-4]))|(-([0-9]|1[1-2])))$");
         boolean using_second_time_zone = second_user_hours.matches("^(((0?[0-9]|1[0-9]|2[0-3]):[0-5][0-9](:[0-5][0-9])?)|(([1-9]|1[0-2])(:[0-5][0-9])?(:[0-5][0-9])? (AM|PM))) [A-Z]{1,4}((\\+([0-9]|1[1-4]))|(-([0-9]|1[1-2])))$");
