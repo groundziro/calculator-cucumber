@@ -180,7 +180,6 @@ public class UnitsConvertor {
                 return new Unit(input.type, goal, input.value * 1609.344);
             }
             else if (input.kind.equals("Miles") && goal.equals("Kilometres")) {
-                System.out.println("here");
                 return new Unit(input.type, goal, input.value * 1.609344);
             }
             else if (input.kind.equals("Nautical Miles") && goal.equals("Millimetres")) {
@@ -193,7 +192,6 @@ public class UnitsConvertor {
                 return new Unit(input.type, goal, input.value * 1852);
             }
             else if (input.kind.equals("Nautical Miles") && goal.equals("Kilometres")) {
-                System.out.println("here");
                 return new Unit(input.type, goal, input.value * 1.852);
             }
         }

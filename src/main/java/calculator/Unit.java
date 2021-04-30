@@ -53,7 +53,6 @@ public class Unit {
             case "Seconds":
             case "Litres":
             case "Grams":
-            case "Inches":
                 output = 1.0;
                 break;
             case "dm":
@@ -69,18 +68,6 @@ public class Unit {
             case "Kilograms":
             case "Kilometres":
                 output = 0.001;
-                break;
-            case "Feet":
-                output = 0.083333;
-                break;
-            case "Yards":
-                output = 0.027778;
-                break;
-            case "Miles":
-                output = 0.000016;
-                break;
-            case "Nautical Miles":
-                output = 0.000014;
                 break;
             case "Square millimetres":
                 output = 1000000;
@@ -252,7 +239,6 @@ public class Unit {
                 output = 0.000000984206528;
                 break;
             default:
-                System.out.println("Invalid kind");
                 output = 0.0;
                 break;
         }
