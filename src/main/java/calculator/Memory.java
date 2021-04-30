@@ -32,16 +32,28 @@ public class Memory {
     }
 
     /**
-     * Sert à vérifier si notre mémoire est vide
-     * @return true si la mémoire est vide
+     * Used to Undo the last operation: we remove the last operation done and we return the operation before it.
+     * @param toRemove The operation toRemove
+     * @return The second to last expression in the memory
+     */
+    public Expression undo(Expression toRemove){
+        if (mem.size()==1)
+            return toRemove;
+        Expression expressionToReturn = mem.get(mem.size()-2);
+        mem.remove(toRemove);
+        return expressionToReturn;
+    }
+    /**
+     * Check if the memory is empty
+     * @return true if the memory's empty
      */
     public boolean isEmpty(){
         return mem.isEmpty();
     }
 
     /**
-     * Sert à ajouter une expression à la mémoire
-     * @param e Expression à rajouter
+     * Add an expression to the memory
+     * @param e Expression to add
      */
     public void add(Expression e){
         mem.add(e);
@@ -49,12 +61,19 @@ public class Memory {
 
     }
 
+    /**
+     * Removes the oldest expression in our memory if it's full
+     */
     private void updateMem(){
         while (isFull() && mem.size()!=max){
             mem = new ArrayList<>(mem.subList(1,mem.size()));
         }
     }
 
+    /**
+     * Add a list of expression to the memory
+     * @param elist List containing the expressions to add
+     */
     public void addAll(List<Expression> elist){
         for (Expression e: elist) {
             add(e);
@@ -62,18 +81,18 @@ public class Memory {
     }
 
     /**
-     * Vérifie si notre mémoire est pleine
-     * @return Vrai si celle-ci est pleine
+     * Check if our memory is full
+     * @return true if the memory's full
      */
     public boolean isFull(){
         return mem.size()>=max;
     }
 
     /**
-     * Cette fonction sert à récupérer une expression dans la mémoire
-     * @param index Indice de la profondeur où on doit aller rechercher l'expression
-     *               size-1 c'est le dessus de la pile et 0 c'est la base de la pile
-     * @return L'expression recherchée
+     * This function returns an Expression at a particular index
+     * @param index depth of the expression that we want
+     *               size-1 is the top of the stack and 0 is the base
+     * @return The wanted expression
      */
     public Expression get(int index){
         int _max = mem.size()-1;
@@ -82,16 +101,15 @@ public class Memory {
     }
 
     /**
-     * Sert à mettre à jour la taille max de notre mémoire si on se rend compte en cours d'exécution
-     * que celle-ci est trop petite
-     * @param max Taille maximum de la mémoire
+     * Updates the maximum size of our memory
+     * @param max new size of the memory
      */
     public void setMax(int max) {
         this.max = (Math.max(max, 1));
         updateMem();
     }
 
-    //Pour le testing
+    //For testing purposes
     public int size(){
         return mem.size();
     }
@@ -101,8 +119,8 @@ public class Memory {
     }
 
     /**
-     * Sert à obtenir un log cohérent pour la sauvegarde
-     * @return Un log de ce que contient la pile
+     * We obtain the log of the memory for saving or printing purposes
+     * @return The log of the memory
      */
     public String getLog(){
         StringBuilder log = new StringBuilder();
@@ -115,8 +133,8 @@ public class Memory {
 
 
     /**
-     * Sert à charger un fichier de mémoire
-     * @param path Chemin du fichier en question
+     * Used to load a memory
+     * @param path path of the file that we wanna use
      */
     public void load(String path){
         try{
@@ -135,6 +153,12 @@ public class Memory {
         }
     }
 
+    /**
+     * Used to parse a string of data in order to load a memory or to use in the calculator
+     * @param data A string that we want to parse, corresponding to a line in a file
+     * @return The expression that encapsulates all of the expressions in the String
+     * @throws IllegalConstruction Caused by the construction of the Expression
+     */
     public Expression parse(String data) throws IllegalConstruction {
         ArrayList<String> str = new ArrayList<>(Arrays.asList(data.split(" | , ")));
         String op = str.get(0);
@@ -142,9 +166,7 @@ public class Memory {
         expression.remove(0);
         ArrayList<Expression> total = new ArrayList<>();
         ArrayList<ArrayList<String>> exps = getExps(expression);
-        //System.out.println(Arrays.toString(exps.get(0).toArray()));
         for (ArrayList<String> exp:exps) {
-            //System.out.println(exp);
             Expression e = parseRec(exp,new ArrayList<>());
             total.add(e);
         }
@@ -152,7 +174,11 @@ public class Memory {
     }
 
 
-
+    /**
+     *
+     * @param data A List containing the elements in a line
+     * @return An array containing all of the part of the expression without the commas
+     */
     private ArrayList<String> getExp(List<String> data){
         ArrayList<String> str = new ArrayList<>();
         int depth = 0;
@@ -170,6 +196,11 @@ public class Memory {
         return str;
     }
 
+    /**
+     * Used to return all the subexpressions of a particular expression
+     * @param expression A List containing all the elements of a bigger expression
+     * @return An array of arrays each containing the Strings representing the parts of an expression
+     */
     private ArrayList<ArrayList<String>> getExps(List<String> expression) {
         int depth = 0;
         ArrayList<ArrayList<String>> expressions = new ArrayList<>();
@@ -191,6 +222,14 @@ public class Memory {
         return expressions;
     }
 
+    /**
+     * Used to recursively parse a line of text containing an expression
+     * @param data List containing all the different elements of the expression that we want to parse.
+     *             If we have a subexpression at the start of our list then we recursively parse it inside the function.
+     * @param list A list containing all the subexpressions that we encountered when parsing. It is filled via the
+     *             recursion of the function
+     * @return Finally returns the expression that contains all of the subexpressions contained in data.
+     */
     private Expression parseRec(List<String> data, ArrayList<Expression> list) {
         if (!isAlphaNum(data.get(0)) && !data.get(0).equals("(")) {
             ArrayList<Expression> newL = new ArrayList<>();
@@ -208,14 +247,13 @@ public class Memory {
     }
 
 
-
+    /**
+     * Check if the string can be parsed to number
+     * @param s String to parse
+     * @return True if s can be parsed to a number
+     */
     private boolean isAlphaNum(String s) {
-        try{
-            Integer.parseInt(s);
-            return true;
-        }catch (Exception ignored) {
-            return false;
-        }
+        return Calculator.isAlphaNum(s);
     }
 
     /**

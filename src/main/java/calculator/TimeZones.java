@@ -2,7 +2,12 @@ package calculator;
 
 import java.util.HashSet;
 
-// https://en.wikipedia.org/wiki/List_of_UTC_time_offsets
+/**
+ * Enum used to convert time zone to UTC+X
+ *
+ * @author Laurent Bossart
+ * @see <a href="https://en.wikipedia.org/wiki/List_of_UTC_time_offsets">Time zones</a>
+ */
 public enum TimeZones {
     Y("UTC-1200"),
     X("UTC-1100"),

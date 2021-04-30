@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Printer extends Visitor{
     private String str;
-    private final Notation n;
+    private Notation n;
 
     public Printer(Notation notation){
         n = notation;
@@ -14,6 +14,10 @@ public class Printer extends Visitor{
 
     public String getStr(){
         return str;
+    }
+
+    public void setN(Notation notation){
+        n = notation;
     }
 
     @Override
