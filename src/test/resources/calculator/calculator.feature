@@ -144,8 +144,11 @@ Feature: Integer Arithmetic Expressions
     Examples:
       |  op     |  b1 |  b2 |result|
       |  "and"  |true |true |true  |
+      |  "and"  |false|true |false |
+      |  "or"   |false|false|false |
       |  "or"   |true |false|true  |
       |"implies"|false|false|true  |
+      |"implies"|true |false|false |
       |  "=="   |true |false|false |
       |  "=="   |false|false|true  |
 

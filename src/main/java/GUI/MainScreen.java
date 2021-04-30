@@ -150,7 +150,6 @@ public class MainScreen extends CalculatorScreen{
                 case DIVIDE: ops.get(3).fire();break;
                 case BACK_SPACE:
                 case DELETE:back(1);break;
-                case ESCAPE:save.fire();break;
             }
         });
         load.setOnAction(actionEvent -> {
