@@ -71,7 +71,52 @@ public class UnitsConvertor {
         List<String> length_types_si = Arrays.asList("Millimetres", "Centimetres", "Metres", "Kilometres");
         List<String> length_types_nosi = Arrays.asList("Inches", "Feet", "Yards", "Miles", "Nautical Miles");
 
-        if (input.type.equals("length") && length_types_si.contains(input.kind) && length_types_nosi.contains((goal))) {
+        if (input.kind.equals("Square metres") && goal.equals("Square inches")){
+            return new Unit(input.type, goal, input.value / 0.00064516);
+        }
+        else if (input.kind.equals("Square metres") && goal.equals("Square feet")){
+            return new Unit(input.type, goal, input.value / 0.09290304);
+        }
+        else if (input.kind.equals("Square metres") && goal.equals("Square yards")){
+            return new Unit(input.type, goal, input.value / 0.83612736);
+        }
+        else if (input.kind.equals("Square metres") && goal.equals("Acres")) {
+            return new Unit(input.type, goal, input.value / 4046.85642);
+        }
+        else if (input.kind.equals("Square metres") && goal.equals("Square miles")) {
+            return new Unit(input.type, goal, input.value / 2589988.11);
+        }
+        else if (input.kind.equals("Hectares") && goal.equals("Square inches")){
+            return new Unit(input.type, goal, input.value / 0.000000064516);
+        }
+        else if (input.kind.equals("Hectares") && goal.equals("Square feet")){
+            return new Unit(input.type, goal, input.value / 0.000009290304);
+        }
+        else if (input.kind.equals("Hectares") && goal.equals("Square yards")){
+            return new Unit(input.type, goal, input.value / 0.000083612736);
+        }
+        else if (input.kind.equals("Hectares") && goal.equals("Acres")){
+            return new Unit(input.type, goal, input.value / 0.404685642);
+        }
+        else if (input.kind.equals("Hectares") && goal.equals("Square miles")){
+            return new Unit(input.type, goal, input.value / 258.998811);
+        }
+        else if (input.kind.equals("Square kilometres") && goal.equals("Square inches")){
+            return new Unit(input.type, goal, input.value / 0.00000000064516);
+        }
+        else if (input.kind.equals("Square kilometres") && goal.equals("Square feet")){
+            return new Unit(input.type, goal, input.value / 0.00000009290304);
+        }
+        else if (input.kind.equals("Square kilometres") && goal.equals("Square yards")){
+            return new Unit(input.type, goal, input.value / 0.00000083612736);
+        }
+        else if (input.kind.equals("Square kilometres") && goal.equals("Acres")){
+            return new Unit(input.type, goal, input.value / 0.00404685642);
+        }
+        else if (input.kind.equals("Square kilometres") && goal.equals("Square miles")){
+            return new Unit(input.type, goal, input.value / 2.58998811);
+        }
+        else if (input.type.equals("length") && length_types_si.contains(input.kind) && length_types_nosi.contains((goal))) {
             if (input.kind.equals("Millimetres") && goal.equals("Inches")) {
                 return new Unit(input.type, goal, input.value / 25.4);
             }

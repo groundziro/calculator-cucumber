@@ -776,4 +776,459 @@ public class TestUnitsConvertor {
         answer = format_answer(answer);
         assertEquals(goal, answer);
     }
+
+    // =============================================== Square millimetres ==============================================
+    @Test
+    public void squareMillimetres_to_squareMillimetres() {
+        goal = "345";
+        u = new Unit("area", "Square millimetres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square millimetres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareMillimetres_to_squareCentimetres() {
+        goal = "3.45";
+        u = new Unit("area", "Square millimetres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square centimetres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareMillimetres_to_squareMetres() {
+        goal = "0.000345";
+        u = new Unit("area", "Square millimetres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square metres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareMillimetres_to_Hectares() {
+        goal = "0";
+        u = new Unit("area", "Square millimetres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Hectares").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareMillimetres_to_squareKilometres() {
+        goal = "0";
+        u = new Unit("area", "Square millimetres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square kilometres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareMillimetres_to_squareInches() {
+        goal = "0.534751";
+        u = new Unit("area", "Square millimetres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square inches").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareMillimetres_to_squareFeet() {
+        goal = "0.003714";
+        u = new Unit("area", "Square millimetres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square feet").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareMillimetres_to_squareYards() {
+        goal = "0.000413";
+        u = new Unit("area", "Square millimetres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square yards").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareMillimetres_to_Acres() {
+        goal = "0";
+        u = new Unit("area", "Square millimetres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Acres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareMillimetres_to_squareMiles() {
+        goal = "0";
+        u = new Unit("area", "Square millimetres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square miles").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    // =============================================== Square centimetres ==============================================
+    @Test
+    public void squareCentimetres_to_squareMillimetres() {
+        goal = "34500";
+        u = new Unit("area", "Square centimetres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square millimetres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareCentimetres_to_squareCentimetres() {
+        goal = "345";
+        u = new Unit("area", "Square centimetres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square centimetres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareCentimetres_to_squareMetres() {
+        goal = "0.0345";
+        u = new Unit("area", "Square centimetres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square metres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareCentimetres_to_Hectares() {
+        goal = "0.000003";
+        u = new Unit("area", "Square centimetres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Hectares").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareCentimetres_to_squareKilometres() {
+        goal = "0";
+        u = new Unit("area", "Square centimetres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square kilometres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareCentimetres_to_squareInches() {
+        goal = "53.475104";
+        u = new Unit("area", "Square centimetres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square inches").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareCentimetres_to_squareFeet() {
+        goal = "0.371355";
+        u = new Unit("area", "Square centimetres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square feet").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareCentimetres_to_squareYards() {
+        goal = "0.041262";
+        u = new Unit("area", "Square centimetres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square yards").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareCentimetres_to_Acres() {
+        goal = "0.000009";
+        u = new Unit("area", "Square centimetres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Acres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareCentimetres_to_squareMiles() {
+        goal = "0";
+        u = new Unit("area", "Square centimetres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square miles").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    // ================================================= Square metres =================================================
+    @Test
+    public void squareMetres_to_squareMillimetres() {
+        goal = "345000000";
+        u = new Unit("area", "Square metres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square millimetres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareMetres_to_squareCentimetres() {
+        goal = "3450000";
+        u = new Unit("area", "Square metres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square centimetres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareMetres_to_squareMetres() {
+        goal = "345";
+        u = new Unit("area", "Square metres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square metres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareMetres_to_Hectares() {
+        goal = "0.0345";
+        u = new Unit("area", "Square metres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Hectares").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareMetres_to_squareKilometres() {
+        goal = "0.000345";
+        u = new Unit("area", "Square metres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square kilometres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareMetres_to_squareInches() {
+        goal = "534751.069502";
+        u = new Unit("area", "Square metres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square inches").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareMetres_to_squareFeet() {
+        goal = "3713.549094";
+        u = new Unit("area", "Square metres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square feet").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareMetres_to_squareYards() {
+        goal = "412.616566";
+        u = new Unit("area", "Square metres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square yards").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareMetres_to_Acres() {
+        goal = "0.085251";
+        u = new Unit("area", "Square metres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Acres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareMetres_to_squareMiles() {
+        goal = "0.000133";
+        u = new Unit("area", "Square metres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square miles").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    // ==================================================== Hectares ===================================================
+    @Test
+    public void hectares_to_squareMillimetres() {
+        goal = "3450000000000";
+        u = new Unit("area", "Hectares", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square millimetres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void hectares_to_squareCentimetres() {
+        goal = "34500000000";
+        u = new Unit("area", "Hectares", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square centimetres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void hectares_to_squareMetres() {
+        goal = "3450000";
+        u = new Unit("area", "Hectares", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square metres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void hectares_to_Hectares() {
+        goal = "345";
+        u = new Unit("area", "Hectares", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Hectares").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void hectares_to_squareKilometres() {
+        goal = "3.45";
+        u = new Unit("area", "Hectares", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square kilometres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void hectares_to_squareInches() {
+        goal = "5347510695.021391";
+        u = new Unit("area", "Hectares", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square inches").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void hectares_to_squareFeet() {
+        goal = "37135490.937649";
+        u = new Unit("area", "Hectares", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square feet").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void hectares_to_squareYards() {
+        goal = "4126165.659739";
+        u = new Unit("area", "Hectares", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square yards").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void hectares_to_Acres() {
+        goal = "852.513567";
+        u = new Unit("area", "Hectares", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Acres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void hectares_to_squareMiles() {
+        goal = "1.332052";
+        u = new Unit("area", "Hectares", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square miles").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    // =============================================== Square kilometres ===============================================
+    @Test
+    public void squareKilometres_to_squareMillimetres() {
+        goal = "345000000000000";
+        u = new Unit("area", "Square kilometres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square millimetres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareKilometres_to_squareCentimetres() {
+        goal = "3450000000000";
+        u = new Unit("area", "Square kilometres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square centimetres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareKilometres_to_squareMetres() {
+        goal = "345000000";
+        u = new Unit("area", "Square kilometres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square metres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareKilometres_to_Hectares() {
+        goal = "34500";
+        u = new Unit("area", "Square kilometres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Hectares").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareKilometres_to_squareKilometres() {
+        goal = "345";
+        u = new Unit("area", "Square kilometres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square kilometres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareKilometres_to_squareInches() {
+        goal = "534751069502.13904";
+        u = new Unit("area", "Square kilometres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square inches").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareKilometres_to_squareFeet() {
+        goal = "3713549093.764854";
+        u = new Unit("area", "Square kilometres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square feet").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareKilometres_to_squareYards() {
+        goal = "412616565.973873";
+        u = new Unit("area", "Square kilometres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square yards").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareKilometres_to_Acres() {
+        goal = "85251.356657";
+        u = new Unit("area", "Square kilometres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Acres").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
+
+    @Test
+    public void squareKilometres_to_squareMiles() {
+        goal = "133.205245";
+        u = new Unit("area", "Square kilometres", value);
+        answer = String.format(Locale.ENGLISH,"%f", uc.convert(u, "Square miles").value);
+        answer = format_answer(answer);
+        assertEquals(goal, answer);
+    }
 }

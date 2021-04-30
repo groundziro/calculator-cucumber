@@ -11,7 +11,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
-import java.text.DecimalFormat;
 import java.util.Locale;
 
 
@@ -47,7 +46,7 @@ public class ConverterScreen extends CalculatorScreen{
                     double x = Double.parseDouble(tf.getText());
                     Unit current_unit = new Unit(type, input.getValue(),x);
                     Unit goal = convertor.convert(current_unit,output.getValue());
-                    String answer = String.format(Locale.ENGLISH, "%f", goal.value);
+                    String answer = String.format(Locale.ENGLISH, "%.12f", goal.value);
                     while (true) {
                         if (answer.endsWith("0")) {
                             answer = answer.substring(0, answer.length() - 1);
