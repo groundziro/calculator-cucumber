@@ -34,17 +34,18 @@ public class BooleanOpScreen extends CalculatorScreen {
         for (String op : ops) {
             Button operation = new Button(op);
             operation.setOnAction(actionEvent -> {
+                if (equalized) {
+                    current.setText("");
+                    equalized = false;
+                }
                 if (!current.getText().isEmpty() && goodString(current.getText())==0){
                     Alert alert = new Alert(Alert.AlertType.WARNING,"You finished typing your operation, you can" +
                             " compute it or go back in order to add other operations.",ButtonType.OK);
                     alert.showAndWait();
                     return;
                 }
-                if (equalized) {
-                    current.setText("");
-                    equalized = false;
-                }
-                notOp = operation.getText().equals(ops[2]);
+                notOp = operation.getText().equals("not");
+                System.out.println(notOp);
                 String s = (!first?" , ":"") +op +" ( ";
                 lastInput.add(s);
                 current.setText(current.getText() + s);
@@ -118,7 +119,7 @@ public class BooleanOpScreen extends CalculatorScreen {
             }
             String s;
             if (first) {
-                s = f.getText();
+                s = f.getText()+(notOp ? " ) " : "");
                 current.setText(current.getText() + s);
                 first = false;
             }
@@ -126,6 +127,7 @@ public class BooleanOpScreen extends CalculatorScreen {
                 s = " , " + f.getText() + (notOp ? " ) " : "");
                 current.setText(current.getText() + s);
             }
+            notOp=false;
             lastInput.add(s);
         });
     }
