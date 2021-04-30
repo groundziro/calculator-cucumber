@@ -4,8 +4,9 @@ import visitor.Counter;
 import visitor.Evaluator;
 import visitor.Printer;
 
-public class Calculator {
+import java.util.ArrayList;
 
+public class Calculator {
     /*
      For the moment the calculator only contains a print method and an eval method
      It would be useful to complete this with a read method, so that we would be able
@@ -14,6 +15,56 @@ public class Calculator {
      into an arithmetic expression:
      public Expression read(String s)
     */
+
+    public static Expression getOp(String s, ArrayList<Expression> total) {
+        try {
+            Expression exp = null;
+            switch (s) {
+                case "+":
+                    exp = new Plus(total);
+                    break;
+                case "-":
+                    exp = new Minus(total);
+                    break;
+                case "/":
+                    exp = new Divides(total);
+                    break;
+                case "*":
+                    exp = new Times(total);
+                    break;
+                case "xor":
+                    exp = new Xor(total);
+                    break;
+                case "not":
+                    exp = new Not(total);
+                    break;
+                case "and":
+                    exp = new And(total);
+                    break;
+                case "or":
+                    exp = new Or(total);
+                    break;
+                case "implies":
+                    exp = new Implies(total);
+                    break;
+                case "equi":
+                    exp = new Equivalence(total);
+            }
+            return exp;
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+            return new MyNumber(Integer.MIN_VALUE);
+        }
+    }
+
+    public static boolean isAlphaNum(String s){
+        try{
+            Double.parseDouble(s);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+    }
 
     public void print(Expression e) {
         System.out.println("The result of evaluating expression " + e);

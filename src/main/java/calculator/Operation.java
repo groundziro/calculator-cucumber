@@ -4,7 +4,6 @@ import visitor.Visitor;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 public abstract class Operation implements Expression
 {  
@@ -15,11 +14,10 @@ public abstract class Operation implements Expression
 
   // It is not allowed to create operation that have a null list of arguments.
   // Note that it is allowed to have an EMPTY list of arguments.
-  public /*constructor*/ Operation(List<Expression> elist)
-		  throws IllegalConstruction
-	{ 
+  public Operation(List<Expression> elist) throws IllegalConstruction {
 	  if (elist == null) {
-		  throw new IllegalConstruction(); }
+		  throw new IllegalConstruction();
+	  }
 	  else {
 		  args = new ArrayList<>(elist);
  	  }
@@ -29,13 +27,11 @@ public abstract class Operation implements Expression
   	return args;
   }
 
-  public /*constructor*/ Operation(List<Expression> elist,Notation n)
-		  throws IllegalConstruction
-  {
+  public Operation(List<Expression> elist, Notation n) throws IllegalConstruction {
   	this(elist);
   	notation = n;
   }
-  
+
   abstract public int op(int l, int r);
     // the operation itself is specified in the subclasses
 
@@ -105,7 +101,8 @@ public abstract class Operation implements Expression
 		return this.args.equals(other.getArgs());
 	  }
 
-    // The method hashCode also needs to be overridden it the equals method is overridden; otherwise there may be problems when you use your object in hashed collections such as HashMap, HashSet, LinkedHashSet
+    // The method hashCode also needs to be overridden it the equals method is overridden; otherwise there may be
+	// problems when you use your object in hashed collections such as HashMap, HashSet, LinkedHashSet
 	@Override
 	public int hashCode()
 	{

@@ -36,11 +36,54 @@ Feature: Integer Arithmetic Expressions
     And I provide a second number 5
     Then the operation evaluates to 1
 
+  Scenario: Compute an Equivalence
+    Given a boolean operation "=="
+    When I provide a bool false
+    And I provide a bool false
+    Then the boolean operation evaluates to true
+
+  Scenario: Compute an And:
+    Given a boolean operation "and"
+    When I provide a bool true
+    And I provide a bool true
+    Then the boolean operation evaluates to true
+
+  Scenario: Compute an Or:
+    Given a boolean operation "or"
+    When I provide a bool true
+    And I provide a bool false
+    Then the boolean operation evaluates to true
+
+  Scenario: Compute an implication:
+    Given a boolean operation "implies"
+    When I provide a bool false
+    And I provide a bool true
+    Then the boolean operation evaluates to true
+    But If I provide a bool true
+    And I provide a bool false
+    Then the boolean operation evaluates to false
+
+  Scenario: Compute variants of Xor :
+    Given a boolean operation "xor"
+    When I provide a bool true
+    And I provide a bool false
+    Then the boolean operation evaluates to true
+    But If I provide a bool true
+    And I provide a bool true
+    Then the boolean operation evaluates to false
+
+  Scenario: Compute a Not:
+    Given a boolean operation "not"
+    When I provide a bool true
+    Then the boolean operation evaluates to false
+    But If I provide a bool false
+    Then the boolean operation evaluates to true
+
   Scenario: Printing the sum of two integer numbers
     Given the sum of two numbers 8 and 6
     Then its INFIX notation is ( 8 + 6 )
-    And its PREFIX notation is + (8, 6)
-    And its POSTFIX notation is (8, 6) +
+    And its PREFIX notation is + ( 8 , 6 )
+    And its POSTFIX notation is ( 8 , 6 ) +
 
   # This is an example of a scenario in which we provide a list of numbers as input.
   # (In fact, this is not entirely true, since what is given as input is a table of
@@ -91,3 +134,30 @@ Feature: Integer Arithmetic Expressions
       | "-" | 8| 5|     3|
       | "*" | 7| 2|    14|
       | "/" | 6| 2|     3|
+
+  Scenario Outline: Evaluating boolean operations with two bool parameters
+    Given a boolean operation <op>
+    When I provide a bool <b1>
+    And I provide a bool <b2>
+    Then the boolean operation evaluates to <result>
+
+    Examples:
+      |  op     |  b1 |  b2 |result|
+      |  "and"  |true |true |true  |
+      |  "and"  |false|true |false |
+      |  "or"   |false|false|false |
+      |  "or"   |true |false|true  |
+      |"implies"|false|false|true  |
+      |"implies"|true |false|false |
+      |  "=="   |true |false|false |
+      |  "=="   |false|false|true  |
+
+  Scenario Outline: Evaluating all the variants for not
+    Given a boolean operation "not"
+    When I provide a bool <b>
+    Then the boolean operation evaluates to <result>
+
+    Examples:
+      |b    |result|
+      |true |false |
+      |false|true  |

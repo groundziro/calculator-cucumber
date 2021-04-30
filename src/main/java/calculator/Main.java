@@ -18,11 +18,14 @@ public class Main {
 
   	Expression e;
   	Calculator c = new Calculator();
+  	UnitsConvertor uC = new UnitsConvertor();
+  	Unit u;
 
 	try{
 		// Here is an example of how to use the calculator:
 
 		e = new MyNumber(8);
+		c.formatPrint(e, Notation.PREFIX);
 		c.print(e);
 		c.eval(e);
 
