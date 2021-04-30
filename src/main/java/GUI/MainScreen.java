@@ -80,8 +80,12 @@ public class MainScreen extends CalculatorScreen{
                         currentNum.clear();
                         currentNum.add(oldExpr);
                         currentNum.add(x);
-                        currentOp = op.getText();
+                        if (loaded) {
+                            currentOp = op.getText();
+                            loaded=false;
+                        }
                         currentExpr = Calculator.getOp(currentOp,currentNum);
+                        currentOp = op.getText();
                     }
                     before.setText(c.eval(currentExpr)+operations[finalI]);
                     currentNum.clear();
