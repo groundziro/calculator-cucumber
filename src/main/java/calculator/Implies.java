@@ -20,7 +20,7 @@ public class Implies extends BooleanOperation{
             case 0:
                 return (r+1<=1?0:1);
             case 1:
-                return 1;
+                return 0;
         }
         return -1;
     }

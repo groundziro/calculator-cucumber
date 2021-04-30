@@ -2,6 +2,7 @@ package cucumbertests;
 
 import calculator.*;
 import io.cucumber.java.Before;
+import io.cucumber.java.en.But;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -56,7 +57,8 @@ public class CalculatorSteps {
 				case "not": { op = new Not(params);break;}
 				case "or": { op = new Or(params);break;}
 				case "implies": {op = new Implies(params);break;}
-				case "==": {op= new Equivalence(params);break;}
+				case "==": { op= new Equivalence(params);break;}
+				case "xor":{ op = new Xor(params);break; }
 				default: { fail(); }
 			}
 		} catch (IllegalConstruction e) {
@@ -107,8 +109,15 @@ public class CalculatorSteps {
 		params.add(new MyNumber(val));
 	}
 
-	@When("^I provide a (.*) bool (true|false)$")
-	public void whenIProvideABool(String s, boolean val){
+	@But("^If I provide a bool (true|false)$")
+	public void butIfIProvideABool(boolean val){
+		op.getArgs().clear();
+		params.clear();
+		params.add(new MyBoolean(val));
+	}
+
+	@When("^I provide a bool (true|false)$")
+	public void whenIProvideABool(boolean val){
 		params.add(new MyBoolean(val));
 	}
 
