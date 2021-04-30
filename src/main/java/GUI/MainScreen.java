@@ -25,6 +25,7 @@ public class MainScreen extends CalculatorScreen{
         MenuItem load = new MenuItem("Load...");
         MenuItem size = new MenuItem("Memory Size");
         MenuItem get = new MenuItem("Get Computation");
+        MenuItem undo = new MenuItem("Undo last operation");
         MenuItem save = new MenuItem("Save Memory");
         MenuItem print = new MenuItem("Show Memory");
         ArrayList<Button> numbers = new ArrayList<>();
@@ -160,7 +161,6 @@ public class MainScreen extends CalculatorScreen{
             File res = fc.showOpenDialog(stage);
             if (res!=null) {
                 mem.load(res.getPath());
-                mem.print();
             }
         });
         get.setOnAction(actionEvent -> {
@@ -177,9 +177,11 @@ public class MainScreen extends CalculatorScreen{
                 before.setText(p.getStr());
                 currentNum.clear();
                 currentNum.add(e);
+                oldExpr = e;
+                currentExpr = e;
             }
-            currentOp="";
-            equalized=true;
+            currentOp=((Operation) currentExpr).getSymbol();
+            equalized=false;
         });
 
         size.setOnAction(actionEvent -> {
@@ -203,7 +205,18 @@ public class MainScreen extends CalculatorScreen{
             dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
             dialog.showAndWait();
         });
-        memory.getItems().addAll(load,size,get,save,print);
+        undo.setOnAction(actionEvent -> {
+            currentExpr = mem.undo(currentExpr);
+            Printer p = new Printer(Notation.INFIX);
+            currentExpr.accept(p);
+            before.setText(p.getStr()+ " = " + c.eval(currentExpr));
+            currentNum.clear();
+            currentNum.add(currentExpr);
+            oldExpr = currentExpr;
+            currentOp=((Operation) currentExpr).getSymbol();
+            equalized = false;
+        });
+        memory.getItems().addAll(load,size,get,undo,save,print);
         bar.getMenus().add(memory);
     }
 
