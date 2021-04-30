@@ -80,8 +80,8 @@ public class MainScreen extends CalculatorScreen{
                         currentNum.clear();
                         currentNum.add(oldExpr);
                         currentNum.add(x);
-                        currentExpr = Calculator.getOp(currentOp,currentNum);
                         currentOp = op.getText();
+                        currentExpr = Calculator.getOp(currentOp,currentNum);
                     }
                     before.setText(c.eval(currentExpr)+operations[finalI]);
                     currentNum.clear();
@@ -173,12 +173,13 @@ public class MainScreen extends CalculatorScreen{
             if(e!=null) {
                 Printer p = new Printer(Notation.INFIX);
                 e.accept(p);
-                before.setText(p.getStr());
+                before.setText(p.getStr()+ " = "+c.eval(e));
                 currentNum.clear();
                 currentNum.add(e);
                 oldExpr = e;
                 currentExpr = e;
             }
+            current.setText("");
             currentOp=((Operation) currentExpr).getSymbol();
             equalized=false;
         });
