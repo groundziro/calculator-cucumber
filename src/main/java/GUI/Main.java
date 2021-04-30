@@ -2,16 +2,13 @@ package GUI;
 
 import calculator.Memory;
 import javafx.application.Application;
-import javafx.event.Event;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.util.Optional;
 
 public class Main extends Application {
@@ -49,9 +46,9 @@ public class Main extends Application {
         if (tuto)
             tutoDialog.showAndWait();
         primaryStage.setScene(scene);
-        primaryStage.setOnCloseRequest(actionEvent ->{
-            m.save("tmp.mem");
-        });
+        primaryStage.setOnCloseRequest(actionEvent -> m.save("tmp.mem"));
         primaryStage.show();
+        primaryStage.setHeight(600);
+        primaryStage.setWidth(600);
     }
 }

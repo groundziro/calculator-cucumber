@@ -32,6 +32,18 @@ public class Memory {
     }
 
     /**
+     * Used to Undo the last operation: we remove the last operation done and we return the operation before it.
+     * @param toRemove The operation toRemove
+     * @return The second to last expression in the memory
+     */
+    public Expression undo(Expression toRemove){
+        if (mem.size()==1)
+            return toRemove;
+        Expression expressionToReturn = mem.get(mem.size()-2);
+        mem.remove(toRemove);
+        return expressionToReturn;
+    }
+    /**
      * Check if the memory is empty
      * @return true if the memory's empty
      */
