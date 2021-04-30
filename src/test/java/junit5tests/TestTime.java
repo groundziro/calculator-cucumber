@@ -5,7 +5,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -59,4 +58,16 @@ public class TestTime {
     public void elapsed_between() {
         assertEquals("0 days, 18 hours, 0 minutes and 0 seconds.", t.elapsed_between(date2, hour7, "Mixe", date1, hour1));
     }
+
+//    Commentend since the current date always change.
+//    @Test
+//    public void plus() {
+//        assertEquals("2021-05-01 18:25:31", t.plus("1", "Days"));
+//    }
+
+//    Commentend since the current date always change.
+//    @Test
+//    public void minus() {
+//        assertEquals("2021-04-30 18:25:31", t.minus("1", "Days"));
+//    }
 }
